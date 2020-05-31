@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kily-007.github.io/</id>
     <title>kily007</title>
-    <updated>2020-05-31T09:27:34.754Z</updated>
+    <updated>2020-05-31T09:36:17.416Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kily-007.github.io/"/>
     <link rel="self" href="https://kily-007.github.io/atom.xml"/>
@@ -16,45 +16,13 @@
         <link href="https://kily-007.github.io/post/gridea-tian-jia-bai-du-tong-ji/">
         </link>
         <updated>2020-05-31T05:56:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>Gridea默认仅支持谷歌统计，而国内访问谷歌网站受限，在此根据github上的资源，整合了添加百度统计的功能。</p>
+]]></summary>
         <content type="html"><![CDATA[<p>Gridea默认仅支持谷歌统计，而国内访问谷歌网站受限，在此根据github上的资源，整合了添加百度统计的功能。</p>
+<!-- more -->
 <h2 id="更改主题代码">更改主题代码</h2>
-<p>在对应的主题文件目录下，本人为Gridea\themes\pure\config.json，如下表所示，最下面的{ }模块中为百度统计添加代码。重新启动Gridea界面，在主题-自定义配置最下面会出现百度统计的模块则第一步成功。</p>
-<pre><code class="language-json">    {
-      &quot;name&quot;: &quot;placeholder&quot;,
-      &quot;label&quot;: &quot;占位提示符&quot;,
-      &quot;group&quot;: &quot;valine评论系统&quot;,
-      &quot;type&quot;: &quot;input&quot;,
-      &quot;value&quot;: &quot;Just Go Go&quot;,
-      &quot;note&quot;: &quot;评论区占位提示符&quot;
-    },
-    {
-      &quot;name&quot;: &quot;customCss&quot;,
-      &quot;label&quot;: &quot;自定义CSS&quot;,
-      &quot;group&quot;: &quot;自定义样式&quot;,
-      &quot;value&quot;: &quot;&quot;,
-      &quot;type&quot;: &quot;textarea&quot;,
-      &quot;note&quot;: &quot;&quot;
-    },
-    {
-      &quot;name&quot;: &quot;ga&quot;,
-      &quot;label&quot;: &quot;跟踪 ID&quot;,
-      &quot;group&quot;: &quot;谷歌统计&quot;,
-      &quot;value&quot;: &quot;&quot;,
-      &quot;type&quot;: &quot;input&quot;,
-      &quot;note&quot;: &quot;UA-xxxxxxxxx-x&quot;
-    },
-    {
-      &quot;name&quot;: &quot;baidutongji&quot;,
-      &quot;label&quot;: &quot;百度统计JS代码&quot;,
-      &quot;group&quot;: &quot;百度统计&quot;,
-      &quot;value&quot;: &quot;&quot;,
-      &quot;type&quot;: &quot;textarea&quot;,
-      &quot;note&quot;: &quot;&quot;
-    }
-  ]
-}
-
-</code></pre>
+<p>在对应的主题文件目录下，本人为Gridea\themes\pure\config.json，如下表所示，最下面的{ }模块中为百度统计添加代码。重新启动Gridea界面，在主题-自定义配置最下面会出现百度统计的模块则第一步成功。<br>
+<img src="https://kily-007.github.io//post-images/1590916537558.png" alt="" loading="lazy"></p>
 <h2 id="申请百度统计并配置js代码">申请百度统计并配置JS代码</h2>
 <ul>
 <li>注册百度统计-站长版 https://tongji.baidu.com/web/welcome/login</li>
