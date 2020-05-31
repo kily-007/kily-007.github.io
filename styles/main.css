@@ -53,6 +53,11 @@ hr {
 }
 /* Text-level semantics
    ========================================================================== */
+.gt-a-link {
+  color: white!important;
+  position: relative!important;
+  background: linear-gradient(180deg, transparent 75%, rgba(134, 142, 150, 0.4) 0) !important;
+}
 /**
  * Add the correct text decoration in Chrome, Edge, and Safari.
  */
@@ -322,6 +327,9 @@ a {
   text-decoration: none !important;
   transition: all 0.3s;
 }
+a:hover {
+  color: white;
+}
 body,
 div,
 a,
@@ -360,6 +368,12 @@ ul li {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+.gt-a-links {
+  color: white!important;
+  position: relative!important;
+  background: linear-gradient(180deg, transparent 75%, rgba(134, 142, 150, 0.4) 0) !important;
+  font-size: 25px !important;
 }
 .gt-post-content {
   word-break: normal;
