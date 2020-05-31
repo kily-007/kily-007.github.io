@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Gridea | kily007</title>
+<title>Gridea添加百度统计 | kily007</title>
 <link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1590915544413">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
@@ -49,11 +49,11 @@ var _hmt = _hmt || [];
 })();
 </script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -102,51 +102,133 @@ var _hmt = _hmt || [];
         </div>
     </div>
 </nav>
-        <div class="current-tag-container">
-            <h2 class="title gt-c-content-color-first">
-                #Gridea
-            </h2>
-        </div>
-        <div class="post-list-container">
-    <div class="post-inner">
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://kily-007.github.io/post/hello-gridea/">
-                            <span class="post-title gt-c-content-color-first">Hello Gridea</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2018-12-12 ·
-                        </time>
-                        
-                            <a href="https://kily-007.github.io/tag/MmWls1YQj/" class="post-tag">
-                                # Gridea
-                            </a>
-                        
-                    </div>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Gridea添加百度统计
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-05-31 ·
+                    </time>
+                    
                 </div>
-                
-                    <a href="https://kily-007.github.io/post/hello-gridea/" class="post-feature-image"
-                       style="background-image: url('https://kily-007.github.io//post-images/hello-gridea.png')">
-                    </a>
-                
+                <div class="post-content">
+                    <p>Gridea默认仅支持谷歌统计，而国内访问谷歌网站受限，在此根据github上的资源，整合了添加百度统计的功能。</p>
+<h2 id="更改主题代码">更改主题代码</h2>
+<p>在对应的主题文件目录下，本人为Gridea\themes\pure\config.json，如下表所示，最下面的{ }模块中为百度统计添加代码。重新启动Gridea界面，在主题-自定义配置最下面会出现百度统计的模块则第一步成功。</p>
+<pre><code class="language-json">    {
+      &quot;name&quot;: &quot;placeholder&quot;,
+      &quot;label&quot;: &quot;占位提示符&quot;,
+      &quot;group&quot;: &quot;valine评论系统&quot;,
+      &quot;type&quot;: &quot;input&quot;,
+      &quot;value&quot;: &quot;Just Go Go&quot;,
+      &quot;note&quot;: &quot;评论区占位提示符&quot;
+    },
+    {
+      &quot;name&quot;: &quot;customCss&quot;,
+      &quot;label&quot;: &quot;自定义CSS&quot;,
+      &quot;group&quot;: &quot;自定义样式&quot;,
+      &quot;value&quot;: &quot;&quot;,
+      &quot;type&quot;: &quot;textarea&quot;,
+      &quot;note&quot;: &quot;&quot;
+    },
+    {
+      &quot;name&quot;: &quot;ga&quot;,
+      &quot;label&quot;: &quot;跟踪 ID&quot;,
+      &quot;group&quot;: &quot;谷歌统计&quot;,
+      &quot;value&quot;: &quot;&quot;,
+      &quot;type&quot;: &quot;input&quot;,
+      &quot;note&quot;: &quot;UA-xxxxxxxxx-x&quot;
+    },
+    {
+      &quot;name&quot;: &quot;baidutongji&quot;,
+      &quot;label&quot;: &quot;百度统计JS代码&quot;,
+      &quot;group&quot;: &quot;百度统计&quot;,
+      &quot;value&quot;: &quot;&quot;,
+      &quot;type&quot;: &quot;textarea&quot;,
+      &quot;note&quot;: &quot;&quot;
+    }
+  ]
+}
+
+</code></pre>
+<h2 id="申请百度统计并配置js代码">申请百度统计并配置JS代码</h2>
+<ul>
+<li>注册百度统计-站长版 https://tongji.baidu.com/web/welcome/login</li>
+<li>添加博客网站到百度统计</li>
+<li>百度统计JS代码获取</li>
+<li>将对应的百度统计JS代码添加到Gridea界面中的主题-自定义配置-百度统计中</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://kily-007.github.io/post/hello-gridea/" class="post-title gt-a-link">
+                    Hello Gridea
+                </a>
             </div>
         
-    </div>
-</div>
-        <div class="pagination-container">
-    
-    
-</div>
+
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '412f3acb810c91919302',
+    clientSecret: '6f145827fc6f8026e5c0e17b3624260a92f8509d',
+    repo: 'kily-007.github.io',
+    owner: 'kily-007',
+    admin: ['kily-007'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+		
+		
+			<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '',
+		appKey: '',
+		avatar: '',
+		pageSize: 5,
+		recordIp: false,
+		placeholder: 'Just Go Go'
+	});
+</script>
+		
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
