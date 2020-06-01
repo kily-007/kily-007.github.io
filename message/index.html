@@ -118,80 +118,61 @@ var _hmt = _hmt || [];
         </div>
     </div>
 </nav>
+		<div class="post-container">
+	           
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-        <div class="post-list-container">
-    <div class="post-inner">
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '412f3acb810c91919302',
+    clientSecret: '6f145827fc6f8026e5c0e17b3624260a92f8509d',
+    repo: 'kily-007.github.io',
+    owner: 'kily-007',
+    admin: ['kily-007'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
         
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://kily-007.github.io/post/gridea-tian-jia-bai-du-tong-ji/">
-                            <span class="post-title gt-c-content-color-first">Gridea添加百度统计</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        <p>Gridea默认仅支持谷歌统计，而国内访问谷歌网站受限，在此根据github上的资源，整合了添加百度统计的功能。</p>
+		
+		
+			<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
 
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-05-31 ·
-                        </time>
-                        
-                            <a href="https://kily-007.github.io/tag/MmWls1YQj/" class="post-tag">
-                                # Gridea
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://kily-007.github.io/post/gridea-tian-jia-bai-du-tong-ji/" class="post-feature-image"
-                       style="background-image: url('https://kily-007.github.io//post-images/gridea-tian-jia-bai-du-tong-ji.png')">
-                    </a>
-                
-            </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://kily-007.github.io/post/hello-gridea/">
-                            <span class="post-title gt-c-content-color-first">Hello Gridea</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
 
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2018-12-12 ·
-                        </time>
-                        
-                            <a href="https://kily-007.github.io/tag/MmWls1YQj/" class="post-tag">
-                                # Gridea
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://kily-007.github.io/post/hello-gridea/" class="post-feature-image"
-                       style="background-image: url('https://kily-007.github.io//post-images/hello-gridea.png')">
-                    </a>
-                
-            </div>
-        
-    </div>
-	
-</div>
 
-        <div class="pagination-container">
-    
-    
-</div>
+	<div id="vcomments"></div>
 
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '',
+		appKey: '',
+		avatar: '',
+		pageSize: 5,
+		recordIp: false,
+		placeholder: 'Just Go Go'
+	});
+</script>
+		
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
@@ -265,6 +246,7 @@ var _hmt = _hmt || [];
     }
     siteTime();
 </script>
+		</div>
     </div>
 </div>
 </body>

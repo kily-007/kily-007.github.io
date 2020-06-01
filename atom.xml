@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kily-007.github.io/</id>
     <title>kily007</title>
-    <updated>2020-06-01T12:57:23.118Z</updated>
+    <updated>2020-06-01T13:41:03.921Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kily-007.github.io/"/>
     <link rel="self" href="https://kily-007.github.io/atom.xml"/>
@@ -19,17 +19,6 @@
         <summary type="html"><![CDATA[<p>Gridea默认仅支持谷歌统计，而国内访问谷歌网站受限，在此根据github上的资源，整合了添加百度统计的功能。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>Gridea默认仅支持谷歌统计，而国内访问谷歌网站受限，在此根据github上的资源，整合了添加百度统计的功能。</p>
-<!-- more -->
-<h2 id="更改主题代码">更改主题代码</h2>
-<p>在对应的主题文件目录下，本人为Gridea\themes\pure\config.json，如下图所示，橘红色圈中为百度统计添加代码。重新启动Gridea界面，在主题-自定义配置最下面会出现百度统计的模块则第一步成功。<br>
-<img src="https://kily-007.github.io//post-images/1590916537558.png" alt="" loading="lazy"></p>
-<h2 id="申请百度统计并配置js代码">申请百度统计并配置JS代码</h2>
-<ul>
-<li>注册百度统计-站长版 https://tongji.baidu.com/web/welcome/login</li>
-<li>添加博客网站到百度统计</li>
-<li>百度统计JS代码获取</li>
-<li>将对应的百度统计JS代码添加到Gridea界面中的主题-自定义配置-百度统计中</li>
-</ul>
 ]]></content>
     </entry>
     <entry>
@@ -43,27 +32,6 @@
 ]]></summary>
         <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
 ✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<!-- more -->🤡
-<p><img src="https://kily-007.github.io//post-images/1590902765496.jpg" alt="" loading="lazy"><br>
-🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
 ]]></content>
     </entry>
 </feed>
