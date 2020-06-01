@@ -372,8 +372,8 @@ ul li {
 .gt-a-links {
   color: white!important;
   position: relative!important;
-  background: linear-gradient(180deg, transparent 75%, rgba(134, 142, 150, 0.4) 0) !important;
-  font-size: 25px !important;
+  background: linear-gradient(180deg, transparent 92%, rgba(134, 142, 150, 0.4) 0) !important;
+  font-size: 20px !important;
 }
 .gt-post-content {
   word-break: normal;
@@ -485,12 +485,15 @@ ul li {
   flex-direction: column;
 }
 .navbar {
-  padding: 38px 96px !important;
+  padding: 6% 29% !important;
 }
 .navbar .navbar-brand {
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: absolute;
+  margin-left: -15%;
+  margin-top: -5%;
 }
 .navbar .navbar-brand .user-avatar {
   width: 40px;
@@ -507,7 +510,7 @@ ul li {
   justify-content: flex-end;
 }
 .navbar .navbar-nav .nav-item {
-  padding: 16px 32px;
+  padding: 8px 17px;
 }
 .navbar .navbar-nav .nav-item a {
   font-size: 15px;
