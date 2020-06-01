@@ -724,9 +724,10 @@ ul li {
   padding: 32px;
   display: flex;
   flex-direction: column;
+  margin-left: 45%;
 }
 .archives-container .year {
-  font-size: 34px;
+  font-size: 30px;
   font-weight: bold;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -736,10 +737,10 @@ ul li {
   padding: 16px 0;
 }
 .archives-container .post .post-title {
-  font-size: 16px;
+  font-size: 20px;
 }
 .archives-container .post .post-title small {
-  font-size: 80%;
+  font-size: 85%;
 }
 @media (max-width: 600px) {
   .archives-container {
