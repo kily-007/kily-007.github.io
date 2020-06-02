@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Gridea添加百度统计 | kily007</title>
-<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591028783538">
+<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591114441937">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -45,10 +45,10 @@ var _hmt = _hmt || [];
 <body>
 <div class="main gt-bg-theme-color-first">
 <div class="main-content">
-    <nav class="navbar navbar-expand-lg" style="background:url('/images/background.png');background-repeat: no-repeat;background-size: cover;height: 100%;width:100%">
+    <nav class="navbar navbar-expand-lg" style="background:url('https://i.loli.net/2020/06/03/vBPVKDy14ASfjcN.png');background-repeat: no-repeat;background-size: cover;height: 100%;width:100%">
 
     <div class="navbar-brand">
-        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <img class="user-avatar" src="https://i.loli.net/2020/06/03/5wsNTPWznpHjYKo.jpg" alt="头像">
         <div class="site-name" style="color: white;"> <!--gt-c-content-color-first-->
             kily007
         </div>
@@ -143,7 +143,7 @@ var _hmt = _hmt || [];
 <!-- more -->
 <h2 id="更改主题代码">更改主题代码</h2>
 <p>在对应的主题文件目录下，本人为Gridea\themes\pure\config.json，如下图所示，橘红色圈中为百度统计添加代码。重新启动Gridea界面，在主题-自定义配置最下面会出现百度统计的模块则第一步成功。<br>
-<img src="https://kily-007.github.io//post-images/1590916537558.png" alt="" loading="lazy"></p>
+<img src="https://i.loli.net/2020/06/02/ogHuRqzNx1VsLjQ.png" alt="1590916537558.png" loading="lazy"></p>
 <h2 id="申请百度统计并配置js代码">申请百度统计并配置JS代码</h2>
 <ul>
 <li>注册百度统计-站长版 https://tongji.baidu.com/web/welcome/login</li>
@@ -191,6 +191,14 @@ var _hmt = _hmt || [];
 		recordIp: true,
 		placeholder: 'Just Go Go'
 	});
+	if(window.location.hash){
+		var checkExist = setInterval(function() {
+		   if ($(window.location.hash).length) {
+			  $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+			  clearInterval(checkExist);
+		   }
+		}, 100);
+	}
 </script>
 		
 
