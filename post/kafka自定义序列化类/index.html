@@ -1,0 +1,850 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>kafka自定义序列化类 | kily007</title>
+<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591286512144">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3aca18fa9f3a7e31f0ce64c09c9e5165";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+<div class="main-content">
+    <nav class="navbar navbar-expand-lg" style="background:url('/images/background.png');background-repeat: no-repeat;height: 100%;width:100%;">
+
+<!--    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name" style="color: white;">
+            kily007
+        </div>
+    </div> -->
+
+	
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="position: absolute;top:4%;left:6%"> 
+			<div class="nav-item navbar-brand">
+			    <img class="user-avatar" src="/images/avatar.png" alt="头像">
+			    <div class="site-name" style="color: white;"> <!--gt-c-content-color-first-->
+			        kily007
+			    </div>
+			</div>
+            
+                <div class="nav-item" >
+                    
+                        <a href="/" class="menu gt-a-links">
+                            首页
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/post/about" class="menu gt-a-links">
+                            关于
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/archives" class="menu gt-a-links">
+                            归档
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/tags" class="menu gt-a-links">
+                            标签
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/neighbor" class="menu gt-a-links">
+                            邻居
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/life" class="menu gt-a-links">
+                            生活
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/message" class="menu gt-a-links">
+                            留言
+                        </a>
+                    
+                </div>
+				
+				
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    kafka自定义序列化类
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-12-05 ·
+                    </time>
+                    
+                        <a href="https://kily-007.github.io/tag/nT3koTOUc/" class="post-tags">
+                            # kafka
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="kafka版本">kafka版本</h2>
+<p>zookeeper使用版本：zookeeper-3.4.14.tar.gz</p>
+<p>kafka使用版本：kafka_2.12-2.0.0.tgz</p>
+<p>pom.xml依赖：</p>
+<!--more-->
+<pre><code class="language-xml">        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;
+            &lt;artifactId&gt;kafka_2.12&lt;/artifactId&gt;
+            &lt;version&gt;2.0.0&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;
+            &lt;artifactId&gt;kafka-clients&lt;/artifactId&gt;
+            &lt;version&gt;2.0.0&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<h2 id="kafka原生序列化">kafka原生序列化</h2>
+<p>kafka在发送和接受消息的时候，都是以byte[]字节型数组发送或者接受的。但是我们平常使用的时候，不但可以使用byte[]，还可以使用int、short、long、float、double、String等数据类型，这是因为在我们使用这些数据类型的时候，kafka根据我们指定的序列化和反序列化方式转成byte[]类型之后再进行发送或者接受的。 通常我们在使用kakfa发送或者接受消息的时候都需要指定消息的key和value序列化方式 ,例如：</p>
+<pre><code class="language-java">        config.put(&quot;key.serializer&quot;, &quot;org.apache.kafka.common.serialization.StringSerializer&quot;);
+        config.put(&quot;value.serializer&quot;, &quot;org.apache.kafka.common.serialization.StringSerializer&quot;);
+</code></pre>
+<h3 id="kafka序列化方式">kafka序列化方式</h3>
+<table>
+<thead>
+<tr>
+<th>序列化方式</th>
+<th>对应java数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.apache.kafka.common.serialization.ByteArraySerializer</td>
+<td>byte[]</td>
+<td>原生类型</td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.ByteBufferSerializer</td>
+<td>ByteBuffer</td>
+<td>关于ByteBuffer</td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.IntegerSerializer</td>
+<td>Interger</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.ShortSerializer</td>
+<td>Short</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.LongSerializer</td>
+<td>Long</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.DoubleSerializer</td>
+<td>Double</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.StringSerializer</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="kafka反序列化方式">kafka反序列化方式</h3>
+<table>
+<thead>
+<tr>
+<th>反序列化方式</th>
+<th>对应java数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.apache.kafka.common.serialization.ByteArrayDeserializer</td>
+<td>byte[]</td>
+<td>原生类型</td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.ByteBufferDeserializer</td>
+<td>ByteBuffer</td>
+<td>关于ByteBuffer</td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.IntegerDeserializer</td>
+<td>Interger</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.ShortDeserializer</td>
+<td>Short</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.LongDeserializer</td>
+<td>Long</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.DoubleDeserializer</td>
+<td>Double</td>
+<td></td>
+</tr>
+<tr>
+<td>org.apache.kafka.common.serialization.StringDeserializer</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="kafka原生序列化实现">kafka原生序列化实现</h2>
+<p>以String为例子，我们分析kafka如何实现序列化与反序列化</p>
+<h3 id="string序列化">String序列化</h3>
+<p>查看 org.apache.kafka.common.serialization.StringSerializer 类</p>
+<pre><code class="language-java">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.kafka.common.serialization;
+
+import org.apache.kafka.common.errors.SerializationException;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
+
+/**
+ *  String encoding defaults to UTF8 and can be customized by setting the property key.serializer.encoding,
+ *  value.serializer.encoding or serializer.encoding. The first two take precedence over the last.
+ */
+public class StringSerializer implements Serializer&lt;String&gt; {
+    private String encoding = &quot;UTF8&quot;;
+
+    @Override
+    public void configure(Map&lt;String, ?&gt; configs, boolean isKey) {
+        String propertyName = isKey ? &quot;key.serializer.encoding&quot; : &quot;value.serializer.encoding&quot;;
+        Object encodingValue = configs.get(propertyName);
+        if (encodingValue == null)
+            encodingValue = configs.get(&quot;serializer.encoding&quot;);
+        if (encodingValue instanceof String)
+            encoding = (String) encodingValue;
+    }
+
+    @Override
+    public byte[] serialize(String topic, String data) {
+        try {
+            if (data == null)
+                return null;
+            else
+                return data.getBytes(encoding);
+        } catch (UnsupportedEncodingException e) {
+            throw new SerializationException(&quot;Error when serializing string to byte[] due to unsupported encoding &quot; + encoding);
+        }
+    }
+}
+</code></pre>
+<p>String的序列化类是继承了Serializer接口，指定<String>泛型，然后实现的Serializer接口的configure()、serialize()方法。代码重点的实现是在serialize()，可以看出这个方法将我们传入的String类型的数据，简单的通过data.getBytes()方法进行了序列化。</p>
+<h3 id="string反序列化">string反序列化</h3>
+<p>查看 org.apache.kafka.common.serialization.StringDeserializer类</p>
+<pre><code class="language-java">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.kafka.common.serialization;
+
+import org.apache.kafka.common.errors.SerializationException;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
+
+/**
+ *  String encoding defaults to UTF8 and can be customized by setting the property key.deserializer.encoding,
+ *  value.deserializer.encoding or deserializer.encoding. The first two take precedence over the last.
+ */
+public class StringDeserializer implements Deserializer&lt;String&gt; {
+    private String encoding = &quot;UTF8&quot;;
+
+    @Override
+    public void configure(Map&lt;String, ?&gt; configs, boolean isKey) {
+        String propertyName = isKey ? &quot;key.deserializer.encoding&quot; : &quot;value.deserializer.encoding&quot;;
+        Object encodingValue = configs.get(propertyName);
+        if (encodingValue == null)
+            encodingValue = configs.get(&quot;deserializer.encoding&quot;);
+        if (encodingValue instanceof String)
+            encoding = (String) encodingValue;
+    }
+
+    @Override
+    public String deserialize(String topic, byte[] data) {
+        try {
+            if (data == null)
+                return null;
+            else
+                return new String(data, encoding);
+        } catch (UnsupportedEncodingException e) {
+            throw new SerializationException(&quot;Error when deserializing byte[] to string due to unsupported encoding &quot; + encoding);
+        }
+    }
+}
+</code></pre>
+<p>String的反序列化类是继承了Deserializer接口，指定<String>泛型，然后实现的Deserializer接口的configure()、deserialize()方法。代码重点的实现是在deserialize()，可以看出这个方法将我们传入的byte[]类型的数据，简单的通过return new String(data, encoding)方法进行了反序列化得到了String类型的数据。</p>
+<h3 id="float序列化">float序列化</h3>
+<p>我们再看float类型数据的序列化类型，查看org.apache.kafka.common.serialization.FloatSerializer类</p>
+<pre><code class="language-java">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.kafka.common.serialization;
+
+public class FloatSerializer implements Serializer&lt;Float&gt; {
+    @Override
+    public byte[] serialize(final String topic, final Float data) {
+        if (data == null)
+            return null;
+
+        long bits = Float.floatToRawIntBits(data);
+        return new byte[] {
+            (byte) (bits &gt;&gt;&gt; 24),
+            (byte) (bits &gt;&gt;&gt; 16),
+            (byte) (bits &gt;&gt;&gt; 8),
+            (byte) bits
+        };
+    }
+}
+</code></pre>
+<p>可以看到，FloatSerializer类继承了Serializer接口，指定<Float>泛型，然后实现的Serializer接口的serialize()方法，即直接将float类型数据转为byte数组返回。</p>
+<h3 id="float反序列化">float反序列化</h3>
+<p>查看org.apache.kafka.common.serialization.FloatSerializer类</p>
+<pre><code class="language-java">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.kafka.common.serialization;
+
+import org.apache.kafka.common.errors.SerializationException;
+
+public class FloatDeserializer implements Deserializer&lt;Float&gt; {
+    @Override
+    public Float deserialize(final String topic, final byte[] data) {
+        if (data == null)
+            return null;
+        if (data.length != 4) {
+            throw new SerializationException(&quot;Size of data received by Deserializer is not 4&quot;);
+        }
+
+        int value = 0;
+        for (byte b : data) {
+            value &lt;&lt;= 8;
+            value |= b &amp; 0xFF;
+        }
+        return Float.intBitsToFloat(value);
+    }
+}
+</code></pre>
+<p>可以看到，FloatSerializer类继承了Serializer接口，指定<Float>泛型，然后实现的Serializer接口的serialize()方法，即直接将byte数组转回为float类型返回。</p>
+<p>自此我们可以确定，kafka中的序列化方式就是将数据转为byte[]数组方式进行传递，在消费者端通过反序列化类解析byte[]数组方式来解析数据，下面我们来自己定义序列化类。</p>
+<h2 id="kakfa自定义序列化类">kakfa自定义序列化类</h2>
+<h3 id="基于fastjson的序列化方式">基于fastjson的序列化方式</h3>
+<p>配置pom.xml中引入依赖：</p>
+<pre><code class="language-xml">        &lt;dependency&gt;
+        	&lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        	&lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+        	&lt;version&gt;1.2.37&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<h4 id="student对象实体">student对象实体</h4>
+<pre><code class="language-java">/**
+ * 
+ * Title: Student.java 
+ * Description: TODO
+ *
+ * @author MrChen
+ * @date 2019年12月5日  上午11:22:38
+ */
+public class Student {
+	int id;
+	String name;
+	int age;
+	boolean sex;
+	float[] sorce;
+	
+	public Student(int id, String name, int age, boolean sex, float[] sorce) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+		this.sorce = sorce;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public boolean isSex() {
+		return sex;
+	}
+
+	public void setSex(boolean sex) {
+		this.sex = sex;
+	}
+
+	public float[] getSorce() {
+		return sorce;
+	}
+
+	public void setSorce(float[] sorce) {
+		this.sorce = sorce;
+	}
+	
+}
+</code></pre>
+<h4 id="序列化实现studentserializer">序列化实现StudentSerializer</h4>
+<pre><code class="language-java">
+/**
+ * 
+ * Title: StudentSerializer.java 
+ * Description: student序列化类
+ *
+ * @author MrChen
+ * @date 2019年12月4日  下午5:13:41
+ */
+public class StudentSerializer implements Serializer&lt;Student&gt;{
+
+	@Override
+	public void configure(Map&lt;String, ?&gt; configs, boolean isKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public byte[] serialize(String topic, Student data) {
+		// TODO Auto-generated method stub
+		return JSON.toJSONBytes(data);
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+</code></pre>
+<h4 id="反序列化实现studentdeserializer">反序列化实现StudentDeserializer</h4>
+<pre><code class="language-java">
+/**
+ * 
+ * Title: StudentDeserializer.java 
+ * Description: student反序列化类
+ *
+ * @author MrChen
+ * @date 2019年12月4日  下午5:13:11
+ */
+public class StudentDeserializer implements Deserializer&lt;Student&gt;{
+
+	@Override
+	public void configure(Map&lt;String, ?&gt; configs, boolean isKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public DemodulatorParameters deserialize(String topic, byte[] data) {
+		// TODO Auto-generated method stub
+		return JSON.parseObject(data, Student.class);
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+</code></pre>
+<h3 id="基于protostuff的序列化方式">基于protostuff的序列化方式</h3>
+<h4 id="工具类protostuffutil">工具类ProtostuffUtil</h4>
+<pre><code class="language-java">import com.dyuproject.protostuff.LinkedBuffer;
+import com.dyuproject.protostuff.ProtostuffIOUtil;
+import com.dyuproject.protostuff.Schema;
+import com.dyuproject.protostuff.runtime.RuntimeSchema;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * Created by shirukai on 2018/8/14
+ * protostuff 序列化/反序列化工具类
+ */
+public class ProtostuffUtil {
+    private static Map&lt;Class&lt;?&gt;, Schema&lt;?&gt;&gt; cachedSchema = new ConcurrentHashMap&lt;&gt;();
+
+    /**
+     * 序列化
+     *
+     * @param message 序列化数据
+     * @param tClass  .class
+     * @param &lt;T&gt;     类型
+     * @return byte[]
+     */
+    public static &lt;T&gt; byte[] serializer(T message, Class&lt;T&gt; tClass) {
+        Schema&lt;T&gt; schema = getSchema(tClass);
+        return ProtostuffIOUtil.toByteArray(message, schema, LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
+    }
+
+    /**
+     * 反序列化
+     *
+     * @param bytes  bytes
+     * @param tClass .class
+     * @param &lt;T&gt;    类型
+     * @return T
+     */
+    public static &lt;T&gt; T deserializer(byte[] bytes, Class&lt;T&gt; tClass) {
+        Schema&lt;T&gt; schema = getSchema(tClass);
+        T message = schema.newMessage();
+        ProtostuffIOUtil.mergeFrom(bytes, message, schema);
+        return message;
+    }
+
+    private static &lt;T&gt; Schema&lt;T&gt; getSchema(Class&lt;T&gt; tClass) {
+        Schema&lt;T&gt; schema = (Schema&lt;T&gt;) cachedSchema.get(tClass);
+        if (schema == null) {
+            schema = RuntimeSchema.createFrom(tClass);
+            cachedSchema.put(tClass, schema);
+        }
+        return schema;
+    }
+}
+</code></pre>
+<h4 id="序列化实现studentprotostuffserializer">序列化实现StudentProtostuffSerializer</h4>
+<pre><code class="language-java">import com.springboot.demo.kafka.entity.Person;
+import com.springboot.demo.utils.ProtostuffUtil;
+import org.apache.kafka.common.serialization.Serializer;
+
+import java.util.Map;
+
+/**
+ * Created by shirukai on 2018/8/25
+ */
+public class StudentProtostuffSerializer implements Serializer&lt;Student&gt; {
+    @Override
+    public void configure(Map&lt;String, ?&gt; configs, boolean isKey) {
+
+    }
+
+    @Override
+    public byte[] serialize(String topic, Student data) {
+        return ProtostuffUtil.serializer(data, Person.class);
+    }
+
+    @Override
+    public void close() {
+
+    }
+}
+</code></pre>
+<h4 id="反序列化实现studentprotostuffdeserializer">反序列化实现StudentProtostuffDeserializer</h4>
+<pre><code class="language-java">import com.springboot.demo.kafka.entity.Person;
+import com.springboot.demo.utils.ProtostuffUtil;
+import org.apache.kafka.common.serialization.Deserializer;
+
+import java.util.Map;
+
+/**
+ * Created by shirukai on 2018/8/25
+ */
+public class StudentProtostuffDeserializer implements Deserializer&lt;Student&gt; {
+    @Override
+    public void configure(Map&lt;String, ?&gt; configs, boolean isKey) {
+
+    }
+
+    @Override
+    public Person deserialize(String topic, byte[] data) {
+        return ProtostuffUtil.deserializer(data, Student.class);
+    }
+
+    @Override
+    public void close() {
+
+    }
+}
+</code></pre>
+<h2 id="总结">总结</h2>
+<p>根据自己的需求对kafka消息进行自定义序列化，将数据信息转为byte[]数组的形式，在反序列化端将byte[]反向转为数据信息。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://kily-007.github.io/post/springboot数据库访问/" class="post-title gt-a-link">
+                    springboot数据库访问
+                </a>
+            </div>
+        
+
+        
+		
+		
+			<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'C9YP6zy0q66Y54y9XEILvC0C-gzGzoHsz',
+		appKey: 'J5I9bBm34OtqU0zFzl9KR4p3',
+		avatar: 'monsterid',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: 'Just Go Go'
+	});
+	if(window.location.hash){
+		var checkExist = setInterval(function() {
+		   if ($(window.location.hash).length) {
+			  $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+			  clearInterval(checkExist);
+		   }
+		}, 100);
+	}
+</script>
+		
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/kily-007" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        <div>
+	<a href="https://www.zyglz.com"> © 资源管理站</a>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span id="busuanzi_container_site_uv" style='display:none'>访客人数：<span id="busuanzi_value_site_uv"></span>人</span>
+	<span id="busuanzi_container_site_pv" style='display:none'>总访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+</div>
+    </div>
+	
+    <!--<div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://kily-007.github.io//atom.xml" target="_blank">RSS</a></a>
+    </div>
+	-->
+	<span id="sitetime"></span>
+	
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+<script language=javascript>
+    function siteTime(){
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth()+1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+        var diff = t2-t1;
+        var diffYears = Math.floor(diff/years);
+        var diffDays = Math.floor((diff/days)-diffYears*365);
+        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+    }
+    siteTime();
+</script>
+    </div>
+</div>
+</div>
+</body>
+</html>

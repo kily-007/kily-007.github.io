@@ -1,0 +1,313 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>笔记-MySql主从复制原理 | kily007</title>
+<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591286512144">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3aca18fa9f3a7e31f0ce64c09c9e5165";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+<div class="main-content">
+    <nav class="navbar navbar-expand-lg" style="background:url('/images/background.png');background-repeat: no-repeat;height: 100%;width:100%;">
+
+<!--    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name" style="color: white;">
+            kily007
+        </div>
+    </div> -->
+
+	
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="position: absolute;top:4%;left:6%"> 
+			<div class="nav-item navbar-brand">
+			    <img class="user-avatar" src="/images/avatar.png" alt="头像">
+			    <div class="site-name" style="color: white;"> <!--gt-c-content-color-first-->
+			        kily007
+			    </div>
+			</div>
+            
+                <div class="nav-item" >
+                    
+                        <a href="/" class="menu gt-a-links">
+                            首页
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/post/about" class="menu gt-a-links">
+                            关于
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/archives" class="menu gt-a-links">
+                            归档
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/tags" class="menu gt-a-links">
+                            标签
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/neighbor" class="menu gt-a-links">
+                            邻居
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/life" class="menu gt-a-links">
+                            生活
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/message" class="menu gt-a-links">
+                            留言
+                        </a>
+                    
+                </div>
+				
+				
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    笔记-MySql主从复制原理
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-09-17 ·
+                    </time>
+                    
+                        <a href="https://kily-007.github.io/tag/yiYcIPeSgq/" class="post-tags">
+                            # MySql
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="mysql主从复制的作用">MySql主从复制的作用</h1>
+<ul>
+<li>读写分离</li>
+<li>备份</li>
+<li>高可用</li>
+<li>架构扩展</li>
+</ul>
+<!--more-->
+<h1 id="mysql主从形式">MySql主从形式</h1>
+<ul>
+<li>一主一从</li>
+<li>一主多从，提高系统读性能。</li>
+<li>多主一从，可以将多个数据库备份到一台性能较好的额服务器上。</li>
+<li>双主复制，互做主从复制，一方变更，会通过复制应用到另一方数据库中。</li>
+<li>级联复制，3-5个从节点连接主节点，其它节点作为二级或者三级节点与从节点相连。</li>
+</ul>
+<h1 id="mysql主从复制原理">MySql主从复制原理</h1>
+<p>MySql 主从复制涉及三个线程，一个运行在主节点(log dump thread)，两个(I/O thread,SQL thread)运行在从节点上。</p>
+<ul>
+<li><strong>log dump线程</strong>：当从节点连接主节点时，主节点创建log dump线程对bin-log加锁，读取内容发送到从节点。</li>
+<li><strong>I/O线程</strong>：当从节点上执行“start skave”命令后，从节点会创建一个I/O线程用来连接主节点，请求主库中更新的bin-log。I/O线程接收到主节点binlog dump进程发来的更新之后，保存在本地relay-log中。</li>
+<li>**SQL线程：**SQL线程负责读取relay-log中的内容，解析成具体的操作并执行，最终保证主从数据的一致性。</li>
+</ul>
+<p>MySQL 主从复制默认是异步的模式。MySQL增删改操作会全部记录在binary log中，当slave节点连接master时，会主动从master处获取最新的bin log文件。并把bin log中的sql relay。</p>
+<figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-MySql/%E7%AC%94%E8%AE%B0-MySql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%8601.png" alt="笔记-MySql主从复制原理01" loading="lazy"></figure>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://kily-007.github.io/post/笔记-java创建线程的几种方式/" class="post-title gt-a-link">
+                    笔记-java创建线程的几种方式
+                </a>
+            </div>
+        
+
+        
+		
+		
+			<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'C9YP6zy0q66Y54y9XEILvC0C-gzGzoHsz',
+		appKey: 'J5I9bBm34OtqU0zFzl9KR4p3',
+		avatar: 'monsterid',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: 'Just Go Go'
+	});
+	if(window.location.hash){
+		var checkExist = setInterval(function() {
+		   if ($(window.location.hash).length) {
+			  $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+			  clearInterval(checkExist);
+		   }
+		}, 100);
+	}
+</script>
+		
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/kily-007" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        <div>
+	<a href="https://www.zyglz.com"> © 资源管理站</a>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span id="busuanzi_container_site_uv" style='display:none'>访客人数：<span id="busuanzi_value_site_uv"></span>人</span>
+	<span id="busuanzi_container_site_pv" style='display:none'>总访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+</div>
+    </div>
+	
+    <!--<div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://kily-007.github.io//atom.xml" target="_blank">RSS</a></a>
+    </div>
+	-->
+	<span id="sitetime"></span>
+	
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+<script language=javascript>
+    function siteTime(){
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth()+1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+        var diff = t2-t1;
+        var diffYears = Math.floor(diff/years);
+        var diffDays = Math.floor((diff/days)-diffYears*365);
+        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+    }
+    siteTime();
+</script>
+    </div>
+</div>
+</div>
+</body>
+</html>

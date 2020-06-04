@@ -373,7 +373,7 @@ ul li {
   color: white!important;
   position: relative!important;
   background: linear-gradient(180deg, transparent 92%, rgba(134, 142, 150, 0.4) 0) !important;
-  font-size: 20px !important;
+  font-size: 23px;
 }
 .gt-post-content {
   word-break: normal;
@@ -485,15 +485,11 @@ ul li {
   flex-direction: column;
 }
 .navbar {
-  padding: 6% 29% !important;
+  padding: 8% 23% !important;
 }
 .navbar .navbar-brand {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  position: absolute;
-  margin-left: -15%;
-  margin-top: -5%;
 }
 .navbar .navbar-brand .user-avatar {
   width: 40px;
@@ -501,19 +497,24 @@ ul li {
   border-radius: 50%;
 }
 .navbar .navbar-brand .site-name {
-  font-size: 28px !important;
+  font-size: 35px !important;
+  font-family: "华文行楷";
   font-weight: bold;
   margin-left: 16px;
 }
 .navbar .navbar-nav {
-  width: 100%;
-  justify-content: flex-end;
+  width: 40%;
+  justify-content: center;
 }
 .navbar .navbar-nav .nav-item {
-  padding: 8px 17px;
+  padding: 0px 1%;
+  align-items: center;
+  height: 2.25rem;
+  min-width: 70px;
 }
 .navbar .navbar-nav .nav-item a {
-  font-size: 15px;
+  font-size: 23px;
+  font-family: "楷体";
   flex-shrink: 0;
 }
 .navbar .img-more {
@@ -727,7 +728,7 @@ ul li {
   padding: 32px;
   display: flex;
   flex-direction: column;
-  margin-left: 45%;
+  margin-left: 42%;
 }
 .archives-container .year {
   font-size: 30px;
@@ -1746,11 +1747,11 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 }
 
         .gt-bg-theme-color-first {
-          background: #ffffff!important;
+          background: #f8f9fa!important;
         }
         
         .gt-bg-theme-color-second {
-          background: #dddddd!important;
+          background: #e9ecef!important;
         }
         
         .gt-bg-content-color-first {
@@ -1762,19 +1763,19 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
         }
         
         .gt-bg-accent-color-first {
-          background: #868e96!important;
+          background: #adb5bd!important;
         }
         
         .gt-bg-accent-color-second {
-          background: RGBA(134,142,150,0.2)!important;
+          background: RGBA(173,181,189,0.2)!important;
         }
         
         .gt-c-theme-color-first {
-          color: #ffffff!important;
+          color: #f8f9fa!important;
         }
         
         .gt-c-theme-color-second {
-          color: #dddddd!important;
+          color: #e9ecef!important;
         }
         
         .gt-c-content-color-first {
@@ -1786,11 +1787,11 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
         }
         
         .gt-c-accent-color-first {
-          color: #868e96!important;
+          color: #adb5bd!important;
         }
         
         .gt-c-accent-color-second {
-          color: RGBA(134,142,150,0.2)!important;
+          color: RGBA(173,181,189,0.2)!important;
         }
         
         body {
@@ -1798,39 +1799,39 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
         }
         
         a {
-          color: #868e96!important;
+          color: #adb5bd!important;
         }
         
         .post-content h1 {
           display: inline-block;
           color: #212529!important;
           position: relative!important;
-          background: linear-gradient(180deg, transparent 75%, RGBA(134,142,150,0.4) 0)!important;
+          background: linear-gradient(180deg, transparent 75%, RGBA(173,181,189,0.4) 0)!important;
         }
         
         .post-content h2 {
           display: inline-block;
           color: #212529!important;
           position: relative!important;
-          background: linear-gradient(180deg, transparent 75%, RGBA(134,142,150,0.4) 0)!important;
+          background: linear-gradient(180deg, transparent 75%, RGBA(173,181,189,0.4) 0)!important;
         }
         
         .gt-a-link {
           color: #212529!important;
           position: relative!important;
-          background: linear-gradient(180deg, transparent 75%, RGBA(134,142,150,0.4) 0)!important;
+          background: linear-gradient(180deg, transparent 75%, RGBA(173,181,189,0.4) 0)!important;
         }
         
         .gt-post-content a {
-          color: #868e96!important;
+          color: #adb5bd!important;
         }
         
         .gt-post-content blockquote {
-          background: RGBA(134,142,150,0.2)!important;
-          border-color: #868e96!important;
+          background: RGBA(173,181,189,0.2)!important;
+          border-color: #adb5bd!important;
         }
         
         .gt-post-content code {
-          background: RGBA(134,142,150,0.2)!important;
+          background: RGBA(173,181,189,0.2)!important;
         }
          

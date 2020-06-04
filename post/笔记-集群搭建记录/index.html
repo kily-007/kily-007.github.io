@@ -1,0 +1,887 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>集群搭建记录 | kily007</title>
+<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591286512144">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3aca18fa9f3a7e31f0ce64c09c9e5165";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+<div class="main-content">
+    <nav class="navbar navbar-expand-lg" style="background:url('/images/background.png');background-repeat: no-repeat;height: 100%;width:100%;">
+
+<!--    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name" style="color: white;">
+            kily007
+        </div>
+    </div> -->
+
+	
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="position: absolute;top:4%;left:6%"> 
+			<div class="nav-item navbar-brand">
+			    <img class="user-avatar" src="/images/avatar.png" alt="头像">
+			    <div class="site-name" style="color: white;"> <!--gt-c-content-color-first-->
+			        kily007
+			    </div>
+			</div>
+            
+                <div class="nav-item" >
+                    
+                        <a href="/" class="menu gt-a-links">
+                            首页
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/post/about" class="menu gt-a-links">
+                            关于
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/archives" class="menu gt-a-links">
+                            归档
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/tags" class="menu gt-a-links">
+                            标签
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/neighbor" class="menu gt-a-links">
+                            邻居
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/life" class="menu gt-a-links">
+                            生活
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/message" class="menu gt-a-links">
+                            留言
+                        </a>
+                    
+                </div>
+				
+				
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    集群搭建记录
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-09-04 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>2018/12/12整理</p>
+<p>Centos7  jdk1.8.0   hadoop-2.8.4    zookeeper-3.5.4    hbase-2.0.1    flume1.8.0    spark-2.3.1-bin-hadoop2.7<br>
+scala-2.12.6           redis-4.0.11</p>
+<p>校准系统时间：sudo /usr/sbin/ntpdate stdtime.gov.hk<br>
+根据矫正过的系统时间设置硬件时钟：sudo hwclock -w</p>
+<h1 id="目录">目录</h1>
+<p>1、安装hadoop-2.8.4	1</p>
+<p>2、配置zookeeper-3.5.4-beta	4</p>
+<p>3、安装hbase	5</p>
+<p>4、hbase建库建表	7</p>
+<p>5、安装flume	8</p>
+<p>6、安装spark	9</p>
+<p>7、安装redis-4.0.11	10</p>
+<p>8、kafka集群安装配置	12</p>
+<p>9、spark streaming 接收kafka通道数据流</p>
+<h1 id="1-安装hadoop-284">1、安装hadoop-2.8.4</h1>
+<h2 id="1-修改主机名">1、修改主机名</h2>
+<p>机名修改vim /etc/hostname</p>
+<p>映射修改vim /etc/hosts</p>
+<p>192.168.1.100 master</p>
+<p>192.168.1.101 slave1</p>
+<p>192.168.1.102 slave2</p>
+<p>检查是否ping通：ping master –c 3</p>
+<h2 id="2-创建hadoop用户和用户组">2、创建hadoop用户和用户组</h2>
+<p>添加用户：useradd hadoop</p>
+<p>密码：passwd hadoop</p>
+<p>将用户添加到组：usermod –a –G hadoop hadoop</p>
+<p>查询结果：cat /etc/group</p>
+<p>设置管理员权限：visudo<br>
+修改文件如下:</p>
+<p>root ALL=(ALL) ALL<br>
+hadoop ALL=(ALL) ALL</p>
+<p>2、设置SSH免密登录</p>
+<p>用hadoop用户登录<br>
+#查看是否安装了ssh服务：rpm –qa | grep ssh<br>
+查看ssh服务是否启动：ps -e | grep ssh<br>
+测试SSH是否能用：ssh 主机名<br>
+cd ~/.ssh/<br>
+创建钥匙：ssh-keygen -t rsa<br>
+将公匙加入keys中：cat id_rsa.pub &gt;&gt; authorized_keys<br>
+修改文件夹权限chmod 600 ./authorized_keys<br>
+把node1和node2的id_rsa.pub传给master:<br>
+scp id_rsa.pub admin@master:~/.ssh/id_rsa.pub.slave1<br>
+在master上综合所有公匙：<br>
+cat id_rsa.pub&gt;&gt;authorized_keys<br>
+cat id_rsa.pub.slave1&gt;&gt;authorized_keys<br>
+cat id_rsa.pub.slave2&gt;&gt;authorized_keys<br>
+将master中的公匙authorized_keys复制到node1和node2的.ssh目录下<br>
+scp authorized_keys admin@slave1:/home/admin/.ssh/authorized_keys<br>
+scp authorized_keys admin@slave2:/home/admin/.ssh/authorized_keys</p>
+<p>修改屏幕分辨率:<br>
+1 查看现有分辨率  xrandr<br>
+2 添加自己想要的分辨率  cvt 1600 900<br>
+3 增加新的分辨率 xrandr --newmode &quot;16000x900_60.00&quot;  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync<br>
+--newmode后面的参数就是使用cvt的返回值Modeline后面的部分<br>
+4.为当前显示增加这个分辨率 xrandr --addmode VGA-1 1440x900_60.00<br>
+5 设置分辨率 xrandr --output VGA-1 --mode 1600x900_60.00</p>
+<p>3、安装jdk<br>
+查看原装jdk：  rpm -qa | grep java<br>
+卸载原先的jdk：<br>
+sudo rpm -e --nodeps java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64<br>
+sudo rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.181-7.b13.el7.x86_64<br>
+sudo rpm -e --nodeps java-1.7.0-openjdk-1.7.0.171-2.6.15.5.el7.x86_64<br>
+sudo rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.191-2.6.15.5.el7.x86_64</p>
+<p>sudo mkdir /usr/java<br>
+解压到/sur/java中：sudo tar -zxvf 下载/jdk-8u172-linux-x64.tar.gz -C /usr/java/<br>
+配置本用户的环境变量：sudo vim /etc/profile<br>
+export JAVA_HOME=/usr/java/jdk1.8.0<br>
+export CLASSPATH=.:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi><mi>A</mi><mi>V</mi><msub><mi>A</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mi mathvariant="normal">/</mi><mi>l</mi><mi>i</mi><mi>b</mi><mi mathvariant="normal">/</mi><mi>d</mi><mi>t</mi><mi mathvariant="normal">.</mi><mi>j</mi><mi>a</mi><mi>r</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">JAVA_HOME/lib/dt.jar:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">b</span><span class="mord">/</span><span class="mord mathdefault">d</span><span class="mord mathdefault">t</span><span class="mord">.</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span>JAVA_HOME/lib/tools.jar<br>
+export PATH=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi><mi>A</mi><mi>V</mi><msub><mi>A</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mi mathvariant="normal">/</mi><mi>b</mi><mi>i</mi><mi>n</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">JAVA_HOME/bin:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord">/</span><span class="mord mathdefault">b</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span>PATH</p>
+<p>4、用hadoop用户进入安装hadoop<br>
+解压hadoop：tar -zxvf 下载/hadoop-2.8.4.tar.gz -C /home/admin/app/</p>
+<p>sudo vim /home/admin/app/hadoop/etc/hadoop/hadoop-env.sh<br>
+找到JAVA_HOME变量，修改此变量如下<br>
+export JAVA_HOME=/usr/java/jdk1.8.0</p>
+<p>赋予读写权限：sudo chmod 774 /home/admin/app/hadoop/etc/hadoop/</p>
+<p>修改配置文件：vim /home/admin/app/hadoop/etc/hadoop/core-site.xml<br>
+①core-site.xml<br>
+<configuration><br>
+<property><br>
+<name>hadoop.tmp.dir</name><br>
+<value>file:/home/admin/app/hadoop/tmp</value><br>
+</property><br>
+<property><br>
+<name>fs.defaultFS</name><br>
+<value>hdfs://master:9000</value><br>
+</property><br>
+</configuration></p>
+<p>②hdfs-site.xml<br>
+<configuration><br>
+<property><br>
+<name>dfs.replication</name><br>
+<value>2</value><br>
+</property><br>
+<property><br>
+<name>dfs.namenode.name.dir</name><br>
+<value>file:/home/admin/app/hadoop/tmp/dfs/name</value><br>
+</property><br>
+<property><br>
+<name>dfs.datanode.data.dir</name><br>
+<value>file:/home/admin/app/hadoop/tmp/dfs/data</value><br>
+</property><br>
+<property><br>
+<name>dfs.datanode.http.address</name><!--hbase访问ip--><br>
+<value>0.0.0.0:50075</value><br>
+</property><br>
+<property><br>
+<name>dfs.replication.interval</name><!--hadoop检查备份的时间间隔--><br>
+<value>30</value><br>
+</property><br>
+<property><br>
+<name>dfs.datanode.handler.count</name><!--增加datanode的handler数--><br>
+<value>300</value><br>
+</property><br>
+<property><br>
+<name>dfs.namenode.handler.count</name><!--namenode的handler数--><br>
+<value>300</value><br>
+</property><br>
+<property><br>
+<name>dfs.datanode.max.xcievers</name><!--datanode的handler数--><br>
+<value>1024</value><br>
+</property><br>
+</configuration></p>
+<p>③mapred-site.xml<br>
+<configuration><br>
+<property><br>
+<name>mapreduce.framework.name</name><br>
+<value>yarn</value><br>
+</property><br>
+<property><br>
+<name>mapreduce.jobhistory.address</name><br>
+<value>master:10020</value><br>
+</property><br>
+<property><br>
+<name>mapreduce.jobhistory.webapp.address</name><br>
+<value>master:19888</value><br>
+</property><br>
+</configuration></p>
+<p>④yarn-site.xml<br>
+<configuration><br>
+<property><br>
+<name>yarn.resourcemanager.hostname</name><br>
+<value>master</value><br>
+</property><br>
+<property><br>
+<name>yarn.nodemanager.aux-services</name><br>
+<value>mapreduce_shuffle</value><br>
+</property><br>
+<property><br>
+<name>yarn.log-aggregation-enable</name><br>
+<value>true</value><br>
+</property><br>
+</configuration></p>
+<p>⑤在master机上在slaves中将localhost改为node1和node2</p>
+<p>修改hadoop启动与停止pid文件<br>
+将hadoop/sbin/hadoop-daemon.sh中添加HADOOP_PID_DIR=/home/admin/app/hadoop/pids<br>
+将hadoop/sbin/yarn-daemon.sh中添加TARN_PID_DIR=/home/admin/app/hadoop/pids</p>
+<p>⑥时间同步:<br>
+在hadoop-env.sh添加:<br>
+export HADOOP_OPTS=&quot;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>A</mi><mi>D</mi><mi>O</mi><mi>O</mi><msub><mi>P</mi><mi>O</mi></msub><mi>P</mi><mi>T</mi><mi>S</mi><mo>−</mo><mi>D</mi><mi>u</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi mathvariant="normal">.</mi><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>z</mi><mi>o</mi><mi>n</mi><mi>e</mi><mo>=</mo><mi>G</mi><mi>M</mi><mi>T</mi><mo>+</mo><mn>08</mn><mi mathvariant="normal">&quot;</mi><mi mathvariant="normal">在</mi><mi>y</mi><mi>a</mi><mi>r</mi><mi>n</mi><mo>−</mo><mi>e</mi><mi>n</mi><mi>v</mi><mi mathvariant="normal">.</mi><mi>s</mi><mi>h</mi><mi>Y</mi><mi>A</mi><mi>R</mi><msub><mi>N</mi><mi>O</mi></msub><mi>P</mi><mi>T</mi><mi>S</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi></mrow><annotation encoding="application/x-tex">HADOOP_OPTS -Duser.timezone=GMT+08&quot;
+在yarn-env.sh
+YARN_OPTS=&quot;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">.</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mord">8</span><span class="mord">&quot;</span><span class="mord cjk_fallback">在</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord">.</span><span class="mord mathdefault">s</span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">O</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">&quot;</span></span></span></span>YARN_OPTS -Duser.timezone=GMT+08&quot;</p>
+<p>⑦发送到slave1,slave2<br>
+scp -r hadoop admin@slave1:/home/admin/app/</p>
+<p>首次启动格式化：hdfs namenode -format</p>
+<p>在浏览器中<br>
+http://master:8088<br>
+master:50070</p>
+<p>hadoop进程：<br>
+master: NameNode,SecondaryNameNode,ResourceManager<br>
+slave1:DataNode,NodeManager<br>
+slave2:DataNode,NodeManager</p>
+<p>5、<br>
+192.168.146.140 master<br>
+192.168.146.141 node1<br>
+192.168.146.142 node2</p>
+<p>关闭防火墙：systemctl stop firewalld<br>
+查看防火墙状态：firewall-cmd --state</p>
+<p>2、配置zookeeper-3.5.4-beta<br>
+1解压：cd /home /下载<br>
+tar -zxvf 下载/zookeeper-3.5.4-beta.tar.gz -C /home/admin/app</p>
+<p>2配置环境变量：<br>
+vim /etc/profile<br>
+source /etc/profile</p>
+<p>export ZOOKEEPER_HOME=/home/admin/app/zookeeper<br>
+export PATH=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mi>A</mi><mi>T</mi><mi>H</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">PATH:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span>ZOOKEEPER_HOME/bin:$ZOOKEEPER_HOME/conf</p>
+<p>3修改配置文件<br>
+cd /home/hadoop/zookeeper-3.5.4-beta/conf<br>
+cp zoo_sample.cfg zoo.cfg<br>
+vim zoo.cfg</p>
+<p>tickTime=5000<br>
+initLimit=10<br>
+syncLimit=5<br>
+dataDir=/home/hadoop/app/zookeeper/data<br>
+clientPort=2181<br>
+dataLogDir=/home/hadoop/app/zookeeper/datalog</p>
+<p>server.1=master:2888:3888<br>
+server.2=node1:2888:3888<br>
+server.3=node2:2888:3888<br>
+在zookeeper文件夹下创建data和datalog文件夹，在data文件夹下创建一个文件myid，内容为数字x，x为上配置中server.x中的数字：<br>
+vim /home/hadoop//zookeeper-3.5.4-beta/data/myid</p>
+<p>4启动zookeeper：注意要按照myid大小顺序来依次在主机上启动:<br>
+zkServer.sh  start<br>
+zkServer.sh restart<br>
+zkServer.sh stop<br>
+启动zookeeper/bin/zkServer.sh start<br>
+重启zookeeper/bin/zkServer.sh restart</p>
+<p>查看状态zookeeper/bin/zkServer.sh status<br>
+修改文件夹权限：sudo chmod -R 777 zookeeper<br>
+修改文件及子文件所属用户和用户组：sudo chown -R hadoop:hadoop zookeeper</p>
+<p>启动成功：输入zkServer.sh status命令可以看到如下信息则表示安装配置成功<br>
+Mode:follower(或者是leader)</p>
+<p>zookeeper进程:<br>
+master:QuorumPeerMain<br>
+slave1:QuorumPeerMain<br>
+slave2:QuorumPeerMain</p>
+<p>连接客户端:zkCli.sh -timeout 5000 -r -server master:2181</p>
+<p>3、安装hbase<br>
+1解压：cd /下载<br>
+tar -zxvf 下载/hbase-2.0.1-bin.tar.gz -C /home/admin/app</p>
+<p>2配置环境变量：<br>
+vim /etc/profile<br>
+source /etc/profile</p>
+<p>export HBASE_HOME=/home/admin/app/hbase<br>
+export PATH=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mi>A</mi><mi>T</mi><mi>H</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">PATH:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span>HBASE_HOME/bin</p>
+<p>3配置文件sudo gedit hbase/conf/hbase-env.sh</p>
+<ol>
+<li>
+<p>hbase-env.sh<br>
+export JAVA_HOME=/usr/java/jdk1.8.0<br>
+export HBASE_MANAGES_ZK=false</p>
+</li>
+<li>
+<p>hbase-site.xml<br>
+<configuration><br>
+<property><br>
+<name>hbase.rootdir</name><br>
+<value>hdfs://master:9000/hbase</value><br>
+</property><br>
+<property><br>
+<name>hbase.cluster.distributed</name><br>
+<value>true</value><br>
+</property><br>
+<property><br>
+<name>hbase.zookeeper.quorum</name><br>
+<value>master,slave1,slave2</value><br>
+</property><br>
+<property><br>
+<name>hbase.master</name><br>
+<value>master:60000</value><br>
+</property><br>
+</configuration></p>
+</li>
+<li>
+<p>regionservers<br>
+slave1<br>
+slave2</p>
+</li>
+</ol>
+<p>将hbase文件发送到slave1和slave2的相应位置:<br>
+scp -r hbase admin@slave1:/home/admin/app/<br>
+scp -r hbase admin@slave2:/home/admin/app/</p>
+<p>4启动hbase:   start-hbase.sh<br>
+启动HBase的shell命令：hbase shell</p>
+<p>先启动regionserver，在启动HMaster<br>
+在regionServer上./hbase-daemon.sh start regionserver<br>
+在master上执行：./bin/hbase-daemon.sh start master</p>
+<p>5访问web页面:http://master:16010</p>
+<p>6.设置备用hmaster: 在hbase/conf下新建文件backup-masters ,添加slave1作为备用hmaster</p>
+<p>7hbase启动错:Causedby:java.lang.ClassNotFoundException:org.apache.htrace.SamplerBuilder</p>
+<p>解决办法:cp $HBASE_HOME/lib/client-facing-thirdparty/htrace-core-3.1.0-incubating.jar $HBASE_HOME/lib/</p>
+<p>hbase进程：<br>
+master: HMaster<br>
+slave1:HRegionServer<br>
+slave2:HRegionServer</p>
+<p>4、hbase建库建表<br>
+①<br>
+建表：  create ‘stu’, ‘information’ ,‘score’<br>
+禁用表：disable ‘stu’<br>
+删除表：（删除之前必须先禁用）：drop 'stu'<br>
+验证表是否被删除: exists 'stu'<br>
+清空表:truncate 'test'<br>
+create 'test','ts',SPLITS=&gt;['0050','0100','0150','0200','0250','0300','0350','0400','0450','0500','0550','0600','0650','0700','0750','0800','0850','0900','0950','1000']</p>
+<p>create 'test','ts',SPLITS=&gt;['10','20','30']<br>
+②增<br>
+插值：<br>
+put 'stu','row0','information:name','Chengang'<br>
+put 'stu','row0','information:sex','man'<br>
+put 'stu','row0','information:age','23'<br>
+put 'stu','row0','score:math','99'<br>
+put 'stu','row0','score:English','89'<br>
+put 'stu','row0','score:hbase','100'</p>
+<p>③删<br>
+删除特定单元格：delete ‘stu’,’row2’,’score:hbase’<br>
+删除所有单元格：delete ‘stu’,’row2’<br>
+④查<br>
+读取指定行：get ’<stu >’,’row1’<br>
+读取指定列：get 'stu','row1',{COLUMN=&gt;'information:name'}<br>
+⑤改<br>
+更新：put 'stu','row2','score:English','99'</p>
+<p>⑥常用指令：<br>
+1列出表中所有数据：scan ‘stu’<br>
+2计算表的行数量：count ‘stu’<br>
+3为用户hadoop授予特定的权限:grant ‘hadoop’,’RXA’<br>
+R - 代表读取权限<br>
+W - 代表写权限<br>
+X - 代表执行权限<br>
+C - 代表创建权限<br>
+A - 代表管理权限<br>
+4撤销用户hadoop访问表(所有权限)的权限：revoke ‘hadoop’<br>
+5列出stu表的所有用户权限: user_permission ‘stu’</p>
+<p>5、安装flume<br>
+1、解压 安装<br>
+sudo tar -zxvf apache-flume-1.8.0-bin.tar.gz -C /home/hadoop<br>
+2、配置环境变量<br>
+sudo gedit /etc/profile<br>
+source /etc/profile<br>
+export FLUME_HOME=/home/hadoop/flume<br>
+export FLUME_CONF=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mi>L</mi><mi>U</mi><mi>M</mi><msub><mi>E</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mi mathvariant="normal">/</mi><mi>c</mi><mi>o</mi><mi>n</mi><mi>f</mi><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>P</mi><mi>A</mi><mi>T</mi><mi>H</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">FLUME_HOME/conf
+export PATH=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord">/</span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>PATH:$FLUME_HOME<br>
+3、配置flume-env.sh<br>
+cd /home/hadoop/flume/conf<br>
+sudo cp ./flume-env.sh.template ./flume-env.sh<br>
+sudo gedit ./flume-env.sh<br>
+export JAVA_HOME=/usr/java/jdk1.8.0<br>
+4、	写hbase-sink-aysn.conf,用于执行flume写入hbase<br>
+gedit /home/hadoop/flume/conf/hbase-sink-aysn.conf</p>
+<p>将以下复制：</p>
+<h1 id="name-the-components-on-this-agent">Name the components on this agent</h1>
+<p>a1.sources = r1<br>
+a1.sinks = k1<br>
+a1.channels = c1</p>
+<h1 id="describeconfigure-the-source">Describe/configure the source</h1>
+<p>a1.sources.r1.type = syslogtcp<br>
+a1.sources.r1.bind = master<br>
+a1.sources.r1.port = 44444<br>
+a1.sources.r1.eventSize = 1000</p>
+<h1 id="describe-the-sink">Describe the sink</h1>
+<p>a1.sinks.k1.type = asynchbase<br>
+a1.sinks.k1.table = student<br>
+a1.sinks.k1.columnFamily = information<br>
+a1.sinks.k1.serializer.payloadColumn=id,name,age,<br>
+a1.sinks.k1.batchSize = 10<br>
+a1.sinks.k1.serializer = org.apache.flume.sink.hbase.AsyncHbaseEventSerializer</p>
+<p>a1.channels.c1.type = memory<br>
+a1.channels.c1.capacity = 1000<br>
+a1.channels.c1.transactionCapacity = 100</p>
+<h1 id="bind-the-source-and-sink-to-the-channel">Bind the source and sink to the channel</h1>
+<p>a1.sources.r1.channels = c1<br>
+a1.sinks.k1.channel = c1</p>
+<p>5、启动flume服务<br>
+flume-ng agent -c conf -f tcp_hbase.conf -n a1 -Dflume.root.logger=INFO,console --conf = conf</p>
+<p>查看写入的数据文件hadoop fs -ls /flume<br>
+打开数据文件hadoop fs -cat /flume/master.1531133606859</p>
+<ol start="6">
+<li>安装spark<br>
+安装spark之前需要先安装scala<br>
+1解压到/home/hadoop/app  : tar -zxvf scala-2.12.6.tgz -C /home/admin/app<br>
+将 scala-2.12.6重命名为scala<br>
+2配置环境变量:<br>
+export SCALA_HOME=/home/admin/app/scala<br>
+export PATH=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mi>A</mi><mi>T</mi><mi>H</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">PATH:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span>SCALA_HOME/bin<br>
+3测试是否安装成功:scala -version<br>
+安装spark<br>
+1  解压到/home/hadoop/app  :<br>
+tar -zxvf spark-2.3.1-bin-hadoop2.7.tgz -C /home/admin/app<br>
+将 spark-2.3.1-bin-hadoop2.7重命名为spark<br>
+2  配置环境变量:<br>
+export SPARK_HOME=/home/admin/app/spark<br>
+export PATH=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mi>A</mi><mi>T</mi><mi>H</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">PATH:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span>SPARK_HOME/sbin:<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>P</mi><mi>A</mi><mi>R</mi><msub><mi>K</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mi mathvariant="normal">/</mi><mi>b</mi><mi>i</mi><mi>n</mi><mn>3</mn><mi mathvariant="normal">配</mi><mi mathvariant="normal">置</mi><mi mathvariant="normal">/</mi><mi>s</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>k</mi><mi mathvariant="normal">/</mi><mi>c</mi><mi>o</mi><mi>n</mi><mi>f</mi><mi mathvariant="normal">/</mi><mi>s</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>k</mi><mo>−</mo><mi>e</mi><mi>n</mi><mi>v</mi><mi mathvariant="normal">.</mi><mi>s</mi><mi>h</mi><mi mathvariant="normal">文</mi><mi mathvariant="normal">件</mi><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>J</mi><mi>A</mi><mi>V</mi><msub><mi>A</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mo>=</mo><mi mathvariant="normal">/</mi><mi>u</mi><mi>s</mi><mi>r</mi><mi mathvariant="normal">/</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi mathvariant="normal">/</mi><mi>j</mi><mi>d</mi><mi>k</mi><mn>1.8.0</mn><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>H</mi><mi>A</mi><mi>D</mi><mi>O</mi><mi>O</mi><msub><mi>P</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mo>=</mo><mi mathvariant="normal">/</mi><mi>h</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">/</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>a</mi><mi>p</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>S</mi><mi>C</mi><mi>A</mi><mi>L</mi><msub><mi>A</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mo>=</mo><mi mathvariant="normal">/</mi><mi>h</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">/</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>a</mi><mi>p</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>a</mi><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>H</mi><mi>B</mi><mi>A</mi><mi>S</mi><msub><mi>E</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mo>=</mo><mi mathvariant="normal">/</mi><mi>h</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">/</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>a</mi><mi>p</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>h</mi><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>H</mi><mi>A</mi><mi>D</mi><mi>O</mi><mi>O</mi><msub><mi>P</mi><mi>C</mi></msub><mi>O</mi><mi>N</mi><msub><mi>F</mi><mi>D</mi></msub><mi>I</mi><mi>R</mi><mo>=</mo><mi mathvariant="normal">/</mi><mi>h</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">/</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>a</mi><mi>p</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>e</mi><mi>t</mi><mi>c</mi><mi mathvariant="normal">/</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>S</mi><mi>P</mi><mi>A</mi><mi>R</mi><msub><mi>K</mi><mi>M</mi></msub><mi>A</mi><mi>S</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>H</mi></msub><mi>O</mi><mi>S</mi><mi>T</mi><mo>=</mo><mi>m</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>S</mi><mi>P</mi><mi>A</mi><mi>R</mi><msub><mi>K</mi><mi>M</mi></msub><mi>A</mi><mi>S</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>P</mi></msub><mi>O</mi><mi>R</mi><mi>T</mi><mo>=</mo><mn>7077</mn><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>S</mi><mi>P</mi><mi>A</mi><mi>R</mi><msub><mi>K</mi><mi>M</mi></msub><mi>A</mi><mi>S</mi><mi>T</mi><mi>E</mi><msub><mi>R</mi><mi>W</mi></msub><mi>E</mi><mi>B</mi><mi>U</mi><msub><mi>I</mi><mi>P</mi></msub><mi>O</mi><mi>R</mi><mi>T</mi><mo>=</mo><mn>7078</mn><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>S</mi><mi>P</mi><mi>A</mi><mi>R</mi><msub><mi>K</mi><mi>W</mi></msub><mi>O</mi><mi>R</mi><mi>K</mi><mi>E</mi><msub><mi>R</mi><mi>M</mi></msub><mi>E</mi><mi>M</mi><mi>O</mi><mi>R</mi><mi>Y</mi><mo>=</mo><mn>30</mn><mi>G</mi><mi>e</mi><mi>x</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>L</mi><msub><mi>D</mi><mi>L</mi></msub><mi>I</mi><mi>B</mi><mi>R</mi><mi>A</mi><mi>R</mi><msub><mi>Y</mi><mi>P</mi></msub><mi>A</mi><mi>T</mi><mi>H</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">SPARK_HOME/bin
+    3  配置/spark/conf/spark-env.sh文件
+ export JAVA_HOME=/usr/local/jdk1.8.0 
+ export HADOOP_HOME=/home/hadoop/app/hadoop 
+ export SCALA_HOME=/home/hadoop/app/scala 
+ export HBASE_HOME=/home/hadoop/app/hbase 
+ export HADOOP_CONF_DIR=/home/hadoop/app/hadoop/etc/hadoop 
+ export SPARK_MASTER_HOST=master 
+ export SPARK_MASTER_PORT=7077 
+ export SPARK_MASTER_WEBUI_PORT=7078 
+ export SPARK_WORKER_MEMORY=30G 
+ export LD_LIBRARY_PATH=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord">/</span><span class="mord mathdefault">b</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord">3</span><span class="mord cjk_fallback">配</span><span class="mord cjk_fallback">置</span><span class="mord">/</span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord">/</span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">/</span><span class="mord mathdefault">s</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord">.</span><span class="mord mathdefault">s</span><span class="mord mathdefault">h</span><span class="mord cjk_fallback">文</span><span class="mord cjk_fallback">件</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord">1</span><span class="mord">.</span><span class="mord">8</span><span class="mord">.</span><span class="mord">0</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord">/</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">p</span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">A</span><span class="mord mathdefault">L</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord">/</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">p</span><span class="mord">/</span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord">/</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">p</span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord">/</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">p</span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord">/</span><span class="mord mathdefault">e</span><span class="mord mathdefault">t</span><span class="mord mathdefault">c</span><span class="mord">/</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">o</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord">7</span><span class="mord">0</span><span class="mord">7</span><span class="mord">7</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">W</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord">7</span><span class="mord">0</span><span class="mord">7</span><span class="mord">8</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">W</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mord mathdefault">G</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">t</span><span class="mord mathdefault">L</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>HADOOP_HOME/lib/native</li>
+</ol>
+<p>4  cp spark-env.sh.template spark-env.sh<br>
+加入spark.master                     spark://master:8040<br>
+5  cp slaves.template slaves<br>
+加入<br>
+master<br>
+slave1<br>
+slave2</p>
+<p>6 启动spark集群: start-all.sh   stop-all.sh</p>
+<p>7.spark提交任务<br>
+./bin/spark-submit --class com.spark.kafkaConsumer.SparkFromKafka --master spark://master:7077 --executor-memory 8G --total-executor-cores 8 /home/hadoop/workspace/KafkaConsumer/target/KafkaConsumer-0.0.1-SNAPSHOT-jar-with-dependencies.jar</p>
+<p>spark-shell --master yarn<br>
+nmap -p 7077 master_ip</p>
+<p>7.安装redis-4.0.11<br>
+192.168.1.100   7001    7004<br>
+192.168.1.101  7002    7005<br>
+192.168.1.102  7003    7006<br>
+1.解压到/home/hadoop/app :tar -zxvf redis-4.0.11.tar.gz -C /home/admin/app<br>
+重命名为redis</p>
+<p>编译:make &amp;&amp; make install</p>
+<p>2.配置redis集群：<br>
+在redis/目录下：<br>
+mkdir -p redis-cluster/{7001,7004}<br>
+cp redis.conf redis-cluster/7001/redis-7001.conf<br>
+cp redis.conf redis-cluster/7004/redis-7004.conf<br>
+修改：<br>
+bind 192.168.1.100<br>
+port 7001<br>
+daemonize yes （redis后台运行）<br>
+cluster-enabled yes（启动集群模式）<br>
+appendonly yes (开启自动持久化)<br>
+dir /home/admin/app/redis/redis-cluster/7001/data  (data存放目录)<br>
+logfile /home/admin/app/redis/redis-cluster/7001/log/redis-7001.log<br>
+pidfile /var/run/redis_7001.pid （pid 7001和port要对应）<br>
+cluster-config-file nodes-7001.conf<br>
+cluster-node-timeout 15000</p>
+<p>3.指定配置文件启动: cd redis/src    ./redis-server ../reids.conf</p>
+<p>5.集群搭建<br>
+每台机子上都按上述步骤安装redis</p>
+<p>6.配置步骤参照https://www.cnblogs.com/ding2016/p/7892542.html</p>
+<p>6.2删除某文件夹下所有文件:<br>
+rm -r app/redis/redis-cluster/7002/data/*<br>
+rm -r app/redis/redis-cluster/7002/log/*<br>
+7.启动集群: redis/</p>
+<p>启动六个节点的服务:<br>
+master:<br>
+src/redis-server redis-cluster/7001/redis-7001.conf<br>
+app/redis/src/redis-server app/redis/redis-cluster/7004/redis-7004.conf<br>
+slave1:<br>
+app/redis/src/redis-server app/redis/redis-cluster/7002/redis-7002.conf<br>
+app/redis/src/redis-server app/redis/redis-cluster/7005/redis-7005.conf<br>
+slave2:<br>
+app/redis/src/redis-server app/redis/redis-cluster/7003/redis-7003.conf<br>
+app/redis/src/redis-server app/redis/redis-cluster/7006/redis-7006.conf</p>
+<p>查看服务是否启动:  ps -ef | grep redis</p>
+<p>进入redis目录启动集群  ;<br>
+src/redis-trib.rb create --replicas 1 192.168.1.100:7001 192.168.1.101:7002 192.168.1.102:7003 192.168.1.100:7004 192.168.1.101:7005 192.168.1.102:7006</p>
+<p>src/redis-trib.rb create --replicas 1 110.1.1.1:7001 110.1.1.101:7002 110.1.1.102:7003 110.1.1.1:7004 110.1.1.101:7005 110.1.1.102:7006</p>
+<p>进入客户端:   ./src/redis-cli -c  -h 192.168.1.100 -p 7001<br>
+查看redis的延迟数据:   Redis-cli --latency -h 127.0.0.1 -p 6379</p>
+<p>7.5重启后报错:Node 192.168.1.101:7001 is not empty. Either the node already knows other no<br>
+ps -ef | grep redis ,<br>
+kill 掉6个redis进程,删除reids/redis-cluster/7001/data中的所有文件<br>
+重新启动所有服务</p>
+<p>新增结点:src/redis-trib.rb add-node 192.168.1.100:7007 192.168.1.100:7001</p>
+<p>8.常见redis命令<br>
+集群<br>
+cluster info 打印集群的信息<br>
+cluster nodes 列出集群当前已知的所有节点（node），以及这些节点的相关信息。<br>
+节点<br>
+cluster meet <ip> <port> 将ip和port所指定的节点添加到集群当中，让它成为集群的一份子。<br>
+cluster forget &lt;node_id&gt; 从集群中移除 node_id 指定的节点。<br>
+cluster replicate &lt;node_id&gt; 将当前节点设置为node_id指定的节点的从节点。<br>
+cluster saveconfig 将节点的配置文件保存到硬盘里面。<br>
+槽(slot)<br>
+cluster addslots <slot> [slot ...] 将一个或多个槽（slot）指派（assign）给当前节点。<br>
+cluster delslots <slot> [slot ...] 移除一个或多个槽对当前节点的指派。<br>
+cluster flushslots 移除指派给当前节点的所有槽，让当前节点变成一个没有指派任何槽的节点。<br>
+cluster setslot <slot> node &lt;node_id&gt; 将槽 slot 指派给 node_id 指定的节点，如果槽已经指派给另一个节点，那么先让另一个节点删除该槽&gt;，然后再进行指派。<br>
+cluster setslot <slot> migrating &lt;node_id&gt; 将本节点的槽 slot 迁移到 node_id 指定的节点中。<br>
+cluster setslot <slot> importing &lt;node_id&gt; 从 node_id 指定的节点中导入槽 slot 到本节点。<br>
+cluster setslot <slot> stable 取消对槽 slot 的导入（import）或者迁移（migrate）。<br>
+键<br>
+cluster keyslot <key> 计算键 key 应该被放置在哪个槽上。<br>
+cluster countkeysinslot <slot> 返回槽 slot 目前包含的键值对数量。<br>
+cluster getkeysinslot <slot> <count> 返回 count 个 slot 槽中的键。</p>
+<p>redis数据备份及回复</p>
+<ol>
+<li>dump.rdb 方式<br>
+安装数据解析工具执行命令:<br>
+easy_install pip<br>
+install rdbtools<br>
+将rdb文件转为json文件<br>
+rdb --command json redis-cluster/7001/data/dump.rdb&gt;redis-cluster/7001/data/dump.json</li>
+</ol>
+<p>8 .kafka集群安装配置<br>
+①解压到指定文件夹 tar -zxvf  下载/kafka_2.12-2.0.0.tgz -C /home/admin/app/</p>
+<p>②修改配置文件 kafka/config/server.properties<br>
+broker.id=0<br>
+listeners=PLAINTEXT://master:9092<br>
+advertised.listeners=PLAINTEXT://master:9092<br>
+log.dirs=/home/admin/app/kafka/kafka-logs<br>
+zookeeper.connect=master:2181,slave1:2181,slave2:2181</p>
+<p>③讲kafka文件发送到slave1和slave2<br>
+scp -r kafka admin@slave1:/home/admin/app/<br>
+scp -r kafka admin@slave2:/home/admin/app/</p>
+<p>④修改slave1中的配置文件kafka/config/server.properties<br>
+broker.id=1<br>
+listeners=PLAINTEXT://slave1:9092<br>
+advertised.listeners=PLAINTEXT://slave1:9092<br>
+log.dirs=/home/hadoop/app/kafka/kafka-logs<br>
+zookeeper.connect=master:2181,slave1:2181,slave2:2181</p>
+<p>⑤修改slave2中的配置文件kafka/config/server.properties<br>
+broker.id=2<br>
+listeners=PLAINTEXT://slave2:<br>
+advertised.listeners=PLAINTEXT://slave2:9092<br>
+log.dirs=/home/hadoop/app/kafka/kafka-logs<br>
+zookeeper.connect=master:2181,slave1:2181,slave2:2181</p>
+<p>⑥测试<br>
+在每个节点启动kafka服务: bin/kafka-server-start.sh -daemon config/server.properties &amp;<br>
+后台启动:bin/kafka-server-start.sh config/server.properties 1&gt;/dev/null 2&gt;&amp;1 &amp;<br>
+1创建topic:    ./bin/kafka-topics.sh --create --zookeeper master:2181,slave1:2181,slave2:2181 --replication-factor 2 --partitions 1 --topic topic1<br>
+2生产者bin/kafka-console-producer.sh --broker-list slave1:9092 --topic topic6<br>
+3消费者bin/kafka-console-consumer.sh --bootstrap-server master:9092 --topic topic6 –from-beginning<br>
+4查看所有topic: ./bin/kafka-topics.sh --list --zookeeper master:2181<br>
+5查看某topic详细信息: bin/kafka-topics.sh --describe --zookeeper master:2181 --topic topic1<br>
+6 查看所有topic详细信息: bin/kafka-topics.sh --describe --zookeeper master:2181<br>
+7删除topic :bin/kafka-topics.sh --delete --zookeeper master:2181 --topic topic1<br>
+8停止kafka服务:bin/kafka-server-stop.sh<br>
+9错误记录: kafka进程启动后一会儿自动挂掉,修改/kafka/kafka-logs/meta.properties中的broker.id与server.properties中的broker.id一致<br>
+10错误记录: KafkaConsumer is not safe for multi-threaded access<br>
+KafkaConsumer是非线程安全的类，当使用多个线程操作同一个KafkaConsumer对象时就会引起这个错误。</p>
+<p>PartitionCount：分区个数<br>
+??ReplicationFactor：副本个数<br>
+??Partition：分区<br>
+??Leader：负责处理消息的读和写，leader是从所有节点中随机选择的.当前partition起作用的breaker.id<br>
+??Replicas: 列出了所有的副本节点，不管节点是否在服务中.<br>
+??Isr：是正在服务中的节点.</p>
+<p>9.spark streaming 接收kafka通道数据流</p>
+<p>②集群<br>
+./bin/spark-submit --class edu.wuli.gqzx.kafkaConsumer.SparkFromKafka --master spark://master:7077 --executor-memory 8G --total-executor-cores 30 /home/admin/workspace/workspace2/KafkaConsumer/target/KafkaConsumer-0.0.1-SNAPSHOT-jar-with-dependencies.jar</p>
+<p>10.spark数据处理记录<br>
+①map函数与flatmap函数<br>
+map函数:       顾名思义，将一个函数传入map中，然后利用传入的这个函数，将集合中的每个元素处理，并将处理后的结果返回。<br>
+flatMap函数:      flatMap与map唯一不一样的地方就是传入的函数在处理完后返回值必须是List，其实这也不难理解，既然是flatMap，那除了map以外必然还有flat的操作，所以需要返回值是List才能执行flat这一步.</p>
+<p>11.redis优化记录<br>
+redis-7001.conf文件:<br>
+maxmemory 68719476736   #559<br>
+maxmemory-policy volatile-ttl   #590<br>
+cluster-require-full-coverage no    #905</p>
+<p>1） 在Redis配置文件中(一般叫Redis.conf)，通过设置“maxmemory”属性的值可以限制Redis最大使用的内存若是启用了Redis快照功能，应该设置“maxmemory”值为系统可使用内存的45%，因为快照时需要一倍的内存来复制整个数据集，也就是说如果当前已使用45%，在快照期间会变成95%(45%+45%+5%)，其中5%是预留给其他的开销。 如果没开启快照功能，maxmemory最高能设置为系统可用内存的95%。<br>
+2)  当内存使用达到设置的最大阀值时，需要选择一种key的回收策略，可在Redis.conf配置文件中修改“maxmemory-policy”属性值。 若是Redis数据集中的key都设置了过期时间，那么“volatile-ttl”策略是比较好的选择。但如果key在达到最大内存限制时没能够迅速过期，或者根本没有设置过期时间。那么设置为“allkeys-lru”值比较合适，它允许Redis从整个数据集中挑选最近最少使用的key进行删除(LRU淘汰算法)。Redis还提供了一些其他淘汰策略，如下：<br>
+volatile-lru：使用LRU算法从已设置过期时间的数据集合中淘汰数据。<br>
+volatile-ttl：从已设置过期时间的数据集合中挑选即将过期的数据淘汰。<br>
+volatile-random：从已设置过期时间的数据集合中随机挑选数据淘汰。<br>
+allkeys-lru：使用LRU算法从所有数据集合中淘汰数据。<br>
+allkeys-random：从数据集合中任意选择数据淘汰<br>
+no-enviction：禁止淘汰数据。<br>
+3） 槽是否全覆盖：cluster-require-full-coverage no。默认是yes，只要有结点宕机导致16384个槽没全被覆盖，整个集群就全部停止服务，所以一定要改为no<br>
+4） list-compress-depth 0<br>
+设置: 列表也可能被压缩<br>
+0:禁用所有列表压缩。<br>
+1:depth 1的意思是“在1个节点进入列表后，从头部或尾部开始压缩”<br>
+So:[head]-&gt;node-&gt;node-&gt;...-&gt;node-&gt;[tail]，[head],[tail]将始终未压缩；内部节点将压缩。<br>
+2: [head]-&gt;[next]-&gt;node-&gt;node-&gt;...-&gt;node-&gt;[prev]-&gt;[tail]<br>
+2在这里的意思是:不要压缩head或head-&gt;next或tail-&gt;prev或tail，而是压缩它们之间的所有节点。<br>
+3:[head]-&gt;[next]-&gt;[next]-&gt;node-&gt;node-&gt;...-&gt;node-&gt;[prev]-&gt;[prev]-&gt;[tail]<br>
+5) 内核参数 overcommit_memory 1<br>
+有三种方式修改内核参数，但要有root权限：<br>
+（1）编辑/etc/sysctl.conf ，改vm.overcommit_memory=1，然后sysctl -p 使配置文件生效<br>
+（2）sysctl vm.overcommit_memory=1<br>
+（3）echo 1 &gt; /proc/sys/vm/overcommit_memory<br>
+建议使用方法 1<br>
+它是 内存分配策略<br>
+可选值：0、1、2。<br>
+0， 表示内核将检查是否有足够的可用内存供应用进程使用；如果有足够的可用内存，内存申请允许；否则，内存申请失败，并把错误返回给应用进程。<br>
+1， 表示内核允许分配所有的物理内存，而不管当前的内存状态如何。<br>
+2， 表示内核允许分配超过所有物理内存和交换空间总和的内存</p>
+<ol start="12">
+<li>hbase优化记录</li>
+</ol>
+<p>putlist大小<br>
+2<em>524288000/74176<br>
+2</em>524288000/60608</p>
+<ol>
+<li>hbase.ipc.server.callqueue.handler.factor<br>
+指定调用队列的数量：<br>
+0 意味着单个共享队列。<br>
+1 意味着每个处理程序的一个队列。<br>
+一个0和1之间的值，按处理程序的数量成比例地分配队列数。例如，0.5 的值在每个处理程序之间共享一个队列。<br>
+2)使用 hbase.ipc.server.callqueue.read.ratio（hbase.ipc.server.callqueue.read.share在0.98中）将调用队列分成读写队列：<br>
+0.5 意味着将有相同数量的读写队列。<br>
+&lt;0.5 表示为读多于写。
+<blockquote>
+<p>0.5 表示写多于读</p>
+</blockquote>
+</li>
+</ol>
+<p>3)禁用 Nagle 的算法。延迟的 ACKs 可以增加到200毫秒的 RPC 往返时间。设置以下参数：<br>
+在 Hadoop 的 core-site.xml 中：<br>
+ipc.server.tcpnodelay = true<br>
+ipc.client.tcpnodelay = true<br>
+在 HBase 的 hbase-site.xml 中：<br>
+hbase.ipc.client.tcpnodelay = true<br>
+hbase.ipc.server.tcpnodelay = true</p>
+<ol start="13">
+<li>操作系统优化<br>
+1)修改linux打开文件数和进程数<br>
+sudo vim /etc/security/limits.conf  加入:</li>
+</ol>
+<ul>
+<li>soft nofile 102400</li>
+<li>hard nofile 409600<br>
+sudo vim /etc/security/limits.d/20-nproc.conf</li>
+<li>soft nproc 409600</li>
+<li>hard nproc 819200<br>
+2）禁用透明大页面压缩<br>
+root用户执行 echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag<br>
+开机禁用:<br>
+sudo vim /etc/rc.local<br>
+echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://kily-007.github.io/post/笔记-java中的锁/" class="post-title gt-a-link">
+                    笔记-java中的锁
+                </a>
+            </div>
+        
+
+        
+		
+		
+			<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'C9YP6zy0q66Y54y9XEILvC0C-gzGzoHsz',
+		appKey: 'J5I9bBm34OtqU0zFzl9KR4p3',
+		avatar: 'monsterid',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: 'Just Go Go'
+	});
+	if(window.location.hash){
+		var checkExist = setInterval(function() {
+		   if ($(window.location.hash).length) {
+			  $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+			  clearInterval(checkExist);
+		   }
+		}, 100);
+	}
+</script>
+		
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/kily-007" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        <div>
+	<a href="https://www.zyglz.com"> © 资源管理站</a>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span id="busuanzi_container_site_uv" style='display:none'>访客人数：<span id="busuanzi_value_site_uv"></span>人</span>
+	<span id="busuanzi_container_site_pv" style='display:none'>总访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+</div>
+    </div>
+	
+    <!--<div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://kily-007.github.io//atom.xml" target="_blank">RSS</a></a>
+    </div>
+	-->
+	<span id="sitetime"></span>
+	
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+<script language=javascript>
+    function siteTime(){
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth()+1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+        var diff = t2-t1;
+        var diffYears = Math.floor(diff/years);
+        var diffDays = Math.floor((diff/days)-diffYears*365);
+        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+    }
+    siteTime();
+</script>
+    </div>
+</div>
+</div>
+</body>
+</html>

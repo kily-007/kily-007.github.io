@@ -1,0 +1,582 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>笔记-MySql | kily007</title>
+<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591286512144">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3aca18fa9f3a7e31f0ce64c09c9e5165";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+<div class="main-content">
+    <nav class="navbar navbar-expand-lg" style="background:url('/images/background.png');background-repeat: no-repeat;height: 100%;width:100%;">
+
+<!--    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name" style="color: white;">
+            kily007
+        </div>
+    </div> -->
+
+	
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="position: absolute;top:4%;left:6%"> 
+			<div class="nav-item navbar-brand">
+			    <img class="user-avatar" src="/images/avatar.png" alt="头像">
+			    <div class="site-name" style="color: white;"> <!--gt-c-content-color-first-->
+			        kily007
+			    </div>
+			</div>
+            
+                <div class="nav-item" >
+                    
+                        <a href="/" class="menu gt-a-links">
+                            首页
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/post/about" class="menu gt-a-links">
+                            关于
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/archives" class="menu gt-a-links">
+                            归档
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/tags" class="menu gt-a-links">
+                            标签
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/neighbor" class="menu gt-a-links">
+                            邻居
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/life" class="menu gt-a-links">
+                            生活
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/message" class="menu gt-a-links">
+                            留言
+                        </a>
+                    
+                </div>
+				
+				
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    笔记-MySql
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-08-09 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="mysql中常用俩种引擎">MySql中常用俩种引擎</h1>
+<h2 id="myisam">MyISAM</h2>
+<p>(Indexed Sequential Access Method有索引的顺序访问方法)</p>
+<ul>
+<li>不支持事务，但是每次查询都是原子的</li>
+<li>支持表级锁，即每次操作是对整个表加锁；</li>
+<li>存储表的总行数；</li>
+<li>一个MYISAM表有三个文件：索引文件、表结构文件、数据文件；</li>
+<li>采用非聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本 一致，但是辅索引不用保证唯一性。</li>
+</ul>
+<!--more-->
+<h2 id="innodb">InnoDB</h2>
+<ul>
+<li>支持ACID的事务，支持事务的四种隔离级别；</li>
+<li>支持行级锁及外键约束，因此可以支持写并发；</li>
+<li>不存储总行数；</li>
+<li>一个InnoDb引擎存储在一个文件空间（共享表空间，表大小不受操作系统控制，一个 表可能分布在多个文件里），也有可能为多个（设置为独立表空，表大小受操作系统 文件大小限制，一般为2G），受操作系统文件大小的限制；</li>
+<li>主键索引采用聚集索引（索引的数据域存储数据文件本身），辅索引的数据域存储主键的值；因此从辅索引查找数据，需要先通过辅索引找到主键值，再访问辅索引；最好使用自增主键，防止插入数据时，为维持B+树结构，文件的大调整。</li>
+</ul>
+<h2 id="myisam与-innodb区别">MyISAM与 InnoDB区别</h2>
+<ul>
+<li>count运算上的区别：因为MylSAM缓存有表meta-data(行数等)，因此在做COUNT(*)时对于一个结构很好的查询是不需要消耗多少资源的。而对于InnoDB来说，则没有这种缓存。</li>
+<li>是否支持事物和崩溃后的安全恢复：MyISAM强调的是性能，每次查询具有原子性，其执行速度比InnoDB类型更快，但是不提供事物支持。但是InnoDB提供事物支持，外键等高级数据库功能。具有事物(commit)、回滚(rollback)、和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID compliant))型表。</li>
+<li>是否支持外键： MyISAM不支持，而InnoDB支持。</li>
+</ul>
+<p>MyISAM更适合读密集的表，而InnoDB更适合写密集的的表。 在数据库做主从分离的情况下，经常选择MyISAM作 为主库的存储引擎。 一般来说，如果需要事务支持，并且有较高的并发读取频率(MyISAM的表锁的粒度太大，所以 当该表写并发量较高时，要等待的查询就会很多了)，InnoDB是不错的选择。如果你的数据量很大（MyISAM支持压 缩特性可以减少磁盘的空间占用），而且不需要支持事务时，MyISAM是好的选择。</p>
+<h1 id="mysql的基本存储结构">MySQL的基本存储结构</h1>
+<h2 id="页的组成部分">页的组成部分</h2>
+<ul>
+<li>MySQL的基本存储结构是页（记录都存在页里），页的基本结构如下图：</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-MySql/%E7%AC%94%E8%AE%B0-MySql01.png" alt="笔记-MySql01" loading="lazy"></figure>
+<p><strong>一个页面的存储由以下几部分组成：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">中文名</th>
+<th style="text-align:center">占用空间大小</th>
+<th style="text-align:center">简单描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">File Header</td>
+<td style="text-align:center">文件头</td>
+<td style="text-align:center">38字节</td>
+<td style="text-align:center">描述页的信息</td>
+</tr>
+<tr>
+<td style="text-align:center">Page Header</td>
+<td style="text-align:center">页头</td>
+<td style="text-align:center">56字节</td>
+<td style="text-align:center">页的状态信息</td>
+</tr>
+<tr>
+<td style="text-align:center">Infimum + SupreMum</td>
+<td style="text-align:center">最小记录和最大记录</td>
+<td style="text-align:center">26字节</td>
+<td style="text-align:center">两个虚拟的行记录（后面会说明）</td>
+</tr>
+<tr>
+<td style="text-align:center">User Records</td>
+<td style="text-align:center">用户记录</td>
+<td style="text-align:center">不确定</td>
+<td style="text-align:center">实际存储的行记录内容</td>
+</tr>
+<tr>
+<td style="text-align:center">Free Space</td>
+<td style="text-align:center">空闲空间</td>
+<td style="text-align:center">不确定</td>
+<td style="text-align:center">页中尚未使用的空间</td>
+</tr>
+<tr>
+<td style="text-align:center">Page Directory</td>
+<td style="text-align:center">页目录</td>
+<td style="text-align:center">不确定</td>
+<td style="text-align:center">页中的记录相对位置</td>
+</tr>
+<tr>
+<td style="text-align:center">File Trailer</td>
+<td style="text-align:center">文件结尾</td>
+<td style="text-align:center">8字节</td>
+<td style="text-align:center">结尾信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="页中的存储">页中的存储</h2>
+<p>当我们在存储数据的时候，记录会存储到User Records部分 。但是在一个页新形成的时候是不存在<code>User Records</code> 这个部分的，每当我们在插入一条记录的时候，都会从Free Space中去申请一块大小符合该记录大小的空间并划分到<code>User Records</code>，当<code>Free Space</code>的部分空间全部被<code>User Records</code>部分替换掉之后，就意味着当前页使用完毕，如果还有新的记录插入，需要再去申请新的页，过程如下：</p>
+<figure data-type="image" tabindex="2"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-MySql/%E7%AC%94%E8%AE%B0-MySql02.png" alt="笔记-MySql02" loading="lazy"></figure>
+<ul>
+<li><strong>每个数据页可以组成一个双向列表；</strong></li>
+<li><strong>每个数据页中的记录又可以生成一个单向列表：</strong>
+<ul>
+<li>每个数据页都会为存储在它里边的记录生成一个页目录，在通过主键查找某条记录的时候可以在页目录使用二分法快速定位到对应的槽，然后再遍历该槽中对应分组中的记录即可快速找到指定的记录。</li>
+<li>以其他列(非主键)作为搜索条件：只能从最小记录开始依次遍历单链表中的每条记录<br>
+所以说，如果我们写select * from user where indexname = 'xxx’这样没有进行任何优化的sql语句，默认会这样做：<br>
+1.<strong>定位到记录所在的页:需要遍历双向链表，找到所在的页</strong><br>
+2.<strong>从所在的页内中查找相应的记录:由于不是根据主键查询，只能遍历所在页的单链表了</strong><br>
+很明显，在数据量很大的情况下这样查找会很慢！这样的时间复杂度为O（n）。</li>
+</ul>
+</li>
+</ul>
+<p>使用索引之后，索引做了些什么可以让我们查询加快速度呢？其实就是将无序的数据变成有序(相对)：</p>
+<figure data-type="image" tabindex="3"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-MySql/%E7%AC%94%E8%AE%B0-MySql03.png" alt="笔记-MySql03" loading="lazy"></figure>
+<p>要找到id为8的记录简要步骤：</p>
+<figure data-type="image" tabindex="4"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-MySql/%E7%AC%94%E8%AE%B0-MySql04.png" alt="笔记-MySql04" loading="lazy"></figure>
+<p>很明显的是：没有用索引我们是需要遍历双向链表来定位对应的页，现在通过 “目录” 就可以很快地定位到对应的页 上了！（二分查找，时间复杂度近似为O(logn)）</p>
+<p>其实底层结构就是B+树，B+树作为树的一种实现，能够让我们很快地查找出对应的记录。</p>
+<h1 id="数据库四大特性">数据库四大特性</h1>
+<h2 id="原子性atomicity">原子性（Atomicity）</h2>
+<p>原子性是指事物包含的所有操作要么全部成功，要么全部失败回滚。因此事物的操作如果成功就必须完全应用到数据库，如果操作失败则不能对数据库有任何影响。</p>
+<h2 id="一致性consistency">一致性（Consistency）</h2>
+<p>一致性是指事物必须使数据库从一个一致状态变换到另一个一致性状态，也就是说一个事物执行之前和执行之后都必须处于一致性状态。</p>
+<h2 id="隔离性isolation">隔离性（Isolation）</h2>
+<p>多个事物并发操作时，多个并发事物之间要相互隔离。</p>
+<h2 id="持久性durability">持久性（Durability）</h2>
+<p>持久性是指一个事物一旦提交了，那么对数据库中的数据的改变就是永久性的。</p>
+<h1 id="数据库的四种隔离级别">数据库的四种隔离级别</h1>
+<h2 id="读取未提交read-uncommitted">读取未提交（Read Uncommitted）</h2>
+<p>在该隔离级别，所有事务都可以看到其他未提交事务的执行结果。这是万万不可出现的。</p>
+<h2 id="读已提交read-committed">读已提交（Read Committed）</h2>
+<p>这是大多数数据库系统的默认隔离级别（但不是MySql默认的）。它满足了隔离的简单定义：一个事物只能看见已经提交的事务所做的改变。但是该隔离级别可能会产生不可重复读的现象，即同一事务的其他实例在该实例处理期间可能会有新的commit对<strong>数据更新</strong>，所以同一select可能返回不同的结果。</p>
+<p>采用MVCC多版本并发控制解决不可重复读的问题。</p>
+<h2 id="可重读repeatable-read">可重读（Repeatable Read）</h2>
+<p>这是MySql的默认事务隔离级别，它确保同一事务的多个实例在并发读取数据时，会看到同样的数据行。但这会导致里另一个问题：幻读。幻读是指用户读取某一范围的数据行时，另一个事务又在该范围内<strong>插入</strong>了新行，当用户再读取该范围的数据行时，会发现有新的“幻影”行。</p>
+<h2 id="可串行化serializable">可串行化（Serializable）</h2>
+<p>这是最高的隔离级别，它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加共享锁，在这个级别，可能导致大量的超时现象和锁竞争。</p>
+<h1 id="最左前缀原则">最左前缀原则</h1>
+<p>MySQL中的索引可以以一定顺序引用多列，这种索引叫作联合索引。如User表的name和city加联合索引就是 (name,city)o而左前原则指的是，如果查询的时候查询条件精确匹配索引的左边连续一列或几列，则此列就可以 被用到。如下：</p>
+<pre><code class="language-sql">select * from user where name=xx and city=xx ; ／／可以命中索引 
+select * from user where name=xx ; // 可以命中索引 
+select * from user where city=xx; // 无法命中索引 
+</code></pre>
+<p>这里需要注意的是，查询的时候如果两个条件都用上了，但是顺序不同，如 city= xx and name ＝xx ，那么现在 的查询引擎会自动优化为匹配联合索引的顺序，这样是能够命中索引的.</p>
+<p>由于左前原则，在创建联合索引时，索引字段的顺序需要考虑字段值去重之后的个数，较多的放前面。 ORDERBY子句也遵循此规则。</p>
+<p><strong>注意避免冗余索引</strong>：冗余索引指的是索引的功能相同，能够命中 就肯定能命中 ，那么 就是冗余索引如（name,city ）和（name ）这两 个索引就是冗余索引，能够命中后者的查询肯定是能够命中前者的 在大多数情况下，都应该尽量扩展已有的索引而 不是创建新索引。<br>
+MySQLS.7 版本后，可以通过查询 sys 库的 schemal_r dundant_indexes 表来查看冗余索引</p>
+<h1 id="mysql如何为表字段添加索引">MySql如何为表字段添加索引</h1>
+<p>1.添加PRIMARY KEY（主键索引）</p>
+<pre><code class="language-sql">ALTER TABLE `table_name` ADD PRIMARY KEY ( `column` )
+</code></pre>
+<p>2.添加UNIQUE(唯一索引)</p>
+<pre><code class="language-sql">ALTER TABLE `table_name` ADD UNIQUE ( `column` ) 
+</code></pre>
+<p>3.添加INDEX(普通索引)</p>
+<pre><code class="language-sql">ALTER TABLE `table_name` ADD INDEX index_name ( `column` )
+</code></pre>
+<p>4.添加FULLTEXT(全文索引)</p>
+<pre><code class="language-sql">ALTER TABLE `table_name` ADD FULLTEXT ( `column`) 
+</code></pre>
+<p>5.添加多列索引</p>
+<pre><code class="language-sql">ALTER TABLE `table_name` ADD INDEX index_name ( `column1`, `column2`, `column3` )
+</code></pre>
+<h1 id="索引">索引</h1>
+<h2 id="聚集索引">聚集索引</h2>
+<p>在聚集索引中，表中行的物理顺序与键值的逻辑（索引）顺序相同。一个表只能包含一 个聚集索引。 如果某索引不是聚集索引，则表中行的物理顺序与键值的逻辑顺序不匹配。与非聚集索引相比，聚集索引通常提供更快的数据访问速度。</p>
+<h2 id="辅助索引">辅助索引</h2>
+<p><strong>辅助索引与聚集索引的区别</strong>在于辅助索引的叶子节点并不包含行记录的全部数据，而是存储相应行数据的聚集索引键，即主键。当通过辅助索引来查询数据时，InnoDB存储引擎会遍历辅助索引找到主键，然后再通过主键在聚集索引中找到完整的行记录数据。</p>
+<h2 id="hash索引">hash索引</h2>
+<p>哈希索引（hash index）基于哈希表实现，只有精确匹配索引所有列的查询才有效。对于每一行数据，存储引擎都会对所有的索引列计算一个哈希码（hash code），哈希码是一个较小的值，并且不同键值的行计算出来的哈希码也不一样。哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。</p>
+<p>hash索引的示意图：</p>
+<figure data-type="image" tabindex="5"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-MySql/%E7%AC%94%E8%AE%B0-MySql05.jpg" alt="hash索引" loading="lazy"></figure>
+<p>hash索引的限制：</p>
+<ul>
+<li>哈希索引只包含哈希值和行指针，而不存储字段值，所以不能使用索引中的值来避免读取行。</li>
+<li>哈希索引数据并不是按照索引值顺序存储的，所以也就无法用于排序。</li>
+<li>哈希索引也不支持部分索引列匹配查找，因为哈希索引始终是使用索引列的全部内容来计算哈希值的。</li>
+<li>哈希索引只支持等值比较查询，包括=、IN()、&lt;&gt;（注意&lt;&gt;和&lt;=&gt;是不同的操作）。也不支持任何范围查询，例如WHERE price&gt;100。</li>
+<li>访问哈希索引的数据非常快，除非有很多哈希冲突（不同的索引列值却有相同的哈希值）。当出现哈希冲突的时候，存储引擎必须遍历链表中所有的行指针，逐行进行比较，直到找到所有符合条件的行。</li>
+<li>如果哈希冲突很多的话，一些索引维护操作的代价也会很高。例如，如果在某个选择性很低（哈希冲突很多）的列上建立哈希索引，那么当从表中删除一行时，存储引擎需要遍历对应哈希值的链表中的每一行，找到并删除对应行的引用，冲突越多，代价越大。</li>
+</ul>
+<h2 id="b-树">B-树</h2>
+<p>在说B+树之前我们先介绍一下B树与B+树的数据结构。</p>
+<p>B-树定义：</p>
+<p>一棵m阶的B-Tree有如下特性：</p>
+<ol>
+<li>每个节点最多有m个孩子。</li>
+<li>除了根节点和叶子节点外，其它每个节点至少有Ceil(m/2)个孩子。</li>
+<li>若根节点不是叶子节点，则至少有2个孩子</li>
+<li>所有叶子节点都在同一层，且不包含其它关键字信息</li>
+<li>每个非终端节点包含n个关键字信息（P0,P1,…Pn, k1,…kn）</li>
+<li>关键字的个数n满足：ceil(m/2)-1 &lt;= n &lt;= m-1</li>
+<li>ki(i=1,…n)为关键字，且关键字升序排序。</li>
+<li>Pi(i=1,…n)为指向子树根节点的指针。P(i-1)指向的子树的所有节点关键字均小于ki，但都大于k(i-1)。</li>
+</ol>
+<p>B-Tree中的每个节点根据实际情况可以包含大量的关键字信息和分支，如下图所示为一个3阶的B-Tree：</p>
+<figure data-type="image" tabindex="6"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-MySql/%E7%AC%94%E8%AE%B0-MySql06.png" alt="" loading="lazy"></figure>
+<p>每个节点占用一个盘块的磁盘空间，一个节点上有两个升序排序的关键字和三个指向子树根节点的指针，指针存储的是子节点所在磁盘块的地址。两个关键词划分成的三个范围域对应三个指针指向的子树的数据的范围域。以根节点为例，关键字为17和35，P1指针指向的子树的数据范围为小于17，P2指针指向的子树的数据范围为17~35，P3指针指向的子树的数据范围为大于35。</p>
+<p>模拟查找关键字29的过程：</p>
+<ol>
+<li>根据根节点找到磁盘块1，读入内存。【磁盘I/O操作第1次】</li>
+<li>比较关键字29在区间（17,35），找到磁盘块1的指针P2。</li>
+<li>根据P2指针找到磁盘块3，读入内存。【磁盘I/O操作第2次】</li>
+<li>比较关键字29在区间（26,30），找到磁盘块3的指针P2。</li>
+<li>根据P2指针找到磁盘块8，读入内存。【磁盘I/O操作第3次】</li>
+<li>在磁盘块8中的关键字列表中找到关键字29。</li>
+</ol>
+<p>分析上面过程，发现需要3次磁盘I/O操作，和3次内存查找操作。由于内存中的关键字是一个有序表结构，可以利用二分法查找提高效率。而3次磁盘I/O操作是影响整个B-Tree查找效率的决定因素。B-Tree相对于AVLTree缩减了节点个数，使每次磁盘I/O取到内存的数据都发挥了作用，从而提高了查询效率。</p>
+<p>数据库系统的设计者巧妙利用了磁盘预读原理， 将一个节点的大小设为等于一个页，这样每个节点只需要一次I/O就可以完全载入。为了达到这个目的，在实际实现B-Tree还需要使用如下技巧： 每次新建节点时，直接申请一个页的空间，这样就保证一个节点物理上也存储在一个页里， 加之计算机存储分配都是按页对齐的，就实现了一个node只需一次I/O。</p>
+<h2 id="b树">B+树</h2>
+<p>B+Tree是在B-Tree基础上的一种优化，使其更适合实现外存储索引结构，InnoDB存储引擎就是用B+Tree实现其索引结构。</p>
+<p>从上一节中的B-Tree结构图中可以看到每个节点中不仅包含数据的key值，还有data值。而每一个页的存储空间是有限的，如果data数据较大时将会导致每个节点（即一个页）能存储的key的数量很小，当存储的数据量很大时同样会导致B-Tree的深度较大，增大查询时的磁盘I/O次数，进而影响查询效率。在B+Tree中，所有数据记录节点都是按照键值大小顺序存放在同一层的叶子节点上，而非叶子节点上只存储key值信息，这样可以大大加大每个节点存储的key值数量，降低B+Tree的高度。</p>
+<p>B+Tree相对于B-Tree有几点不同：</p>
+<ol>
+<li>非叶子节点只存储键值信息。</li>
+<li>所有叶子节点之间都有一个链指针。</li>
+<li>数据记录都存放在叶子节点中。</li>
+</ol>
+<p>将上一节中的B-Tree优化，由于B+Tree的非叶子节点只存储键值信息，假设每个磁盘块能存储4个键值及指针信息，则变成B+Tree后其结构如下图所示：</p>
+<figure data-type="image" tabindex="7"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-MySql/%E7%AC%94%E8%AE%B0-MySql07.png" alt="" loading="lazy"></figure>
+<p>通常在B+Tree上有两个头指针，一个指向根节点，另一个指向关键字最小的叶子节点，而且所有叶子节点（即数据节点）之间是一种链式环结构。因此可以对B+Tree进行两种查找运算：一种是对于主键的范围查找和分页查找，另一种是从根节点开始，进行随机查找。</p>
+<p>可能上面例子中只有22条数据记录，看不出B+Tree的优点，下面做一个推算：</p>
+<p>InnoDB存储引擎中页的大小为16KB，一般表的主键类型为INT（占用4个字节）或BIGINT（占用8个字节），指针类型也一般为4或8个字节，也就是说一个页（B+Tree中的一个节点）中大概存储16KB/(8B+8B)=1K个键值（因为是估值，为方便计算，这里的K取值为〖10〗<sup>3）。也就是说一个深度为3的B+Tree索引可以维护10</sup>3 * 10^3 * 10^3 = 10亿 条记录。</p>
+<p>实际情况中每个节点可能不能填充满，因此在数据库中，B+Tree的高度一般都在2<sub>4层。MySQL的InnoDB存储引擎在设计时是将根节点常驻内存的，也就是说查找某一键值的行记录时最多只需要1</sub>3次磁盘I/O操作。</p>
+<p>数据库中的B+Tree索引可以分为<strong>聚集索引</strong>（clustered index）和<strong>辅助索引</strong>（secondary index）。上面的B+Tree示例图在数据库中的实现即为聚集索引，聚集索引的B+Tree中的叶子节点存放的是整张表的行记录数据。<strong>辅助索引与聚集索引的区别</strong>在于辅助索引的叶子节点并不包含行记录的全部数据，而是存储相应行数据的聚集索引键，即主键。当通过辅助索引来查询数据时，InnoDB存储引擎会遍历辅助索引找到主键，然后再通过主键在聚集索引中找到完整的行记录数据</p>
+<h1 id="局部性原理与磁盘预读">局部性原理与磁盘预读</h1>
+<p>由于存储介质的特性，磁盘本身存取就比主存慢很多，再加上机械运动耗费，磁盘的存取速 度往往是主存的几百分分之一，因此为了提高效率，要尽量减少磁盘I/O。为了达到这个目 的，磁盘往往不是严格按需读取，而是每次都会预读，即使只需要一个字节，磁盘也会从这个位置开始，顺序向后读取一定长度的数据放入内存。这样做的理论依据是计算机科学中著名的**局部性原理：**当一个数据被用到时，其附近的数据也通常会马上被使用。程序运行期间 所需要的数据通常比较集中。</p>
+<p>由于磁盘顺序读取的效率很高（不需要寻道时间，只需很少的旋转时间），因此对于具有局部性的程序来说，预读可以提高I/O效率。预读的长度一般为页（page）的整倍数。页是计算机管理存储器的逻辑块，硬件及操作系统 往往将主存和磁盘存储区分割为连续的大小相等的块，每个存储块称为一页（在许多操作系 统中，页得大小通常为4k），主存和磁盘以页为单位交换数据。当程序要读取的数据不在主存中时，会触发一个缺页异常，此时系统会向磁盘发出读盘信号，磁盘会找到数据的起始位置并向后连续读取一页或几页载入内存中，然后异常返回，程序继续运行。</p>
+<h1 id="常见大表的优化手段">常见大表的优化手段</h1>
+<p>当MySQL单表记录数过大时，数据库的CRUD性能会明显下降，一些常见的优化措施如下：</p>
+<h2 id="限定数据的范围">限定数据的范围</h2>
+<p>务必禁止不带任何限制数据范围条件的查询语句。比如：我们当用户在查询订单历史的时 候，我们可以控制在一个月的范围内。</p>
+<h2 id="读写分离">读写分离</h2>
+<p>经典的数据库拆分方案，主库负责写，从库负责读。</p>
+<h2 id="垂直分区">垂直分区</h2>
+<ul>
+<li>
+<p>根据数据库里面数据表的相关性进行拆分。 例如，用户表中既有用户的登录信息又有用户的基本信 息，可以将用户表拆分成两个单独的表，甚至放到单独的库做分库。简单来说垂直拆分是指数据表列的拆分， 把一张列比较多的表拆分为多张表。</p>
+</li>
+<li>
+<p>垂直拆分的优点： 可以使得行数据变小，在查询时减少读取的Block数，减少I/O次数。此外，垂直分区可以简 化表的结构，易于维护。垂直拆分的缺点： 主键会出现冗余，需要管理冗余列，并会引起Join操作，可以通过 在应用层进行Join来解决。此外，垂直分区会让事务变得更加复杂；</p>
+</li>
+</ul>
+<h2 id="水平分区">水平分区</h2>
+<ul>
+<li>保持数据表结构不变，通过某种策略存储数据分片。这样每一片数据分散到不同的表或者库中，达 到了分布式的目的。 水平拆分可以支撑非常大的数据量。 水平拆分是指数据表行的拆分，表的行数超过200万 行时，就会变慢，这时可以把一张的表的数据拆成多张表来存放。举个例子：我们可以将用户信息表拆分成多 个用户信息表，这样就可以避免单一表数据量过大对性能造成影响。</li>
+<li>水平拆分可以支持非常大的数据量。需要注意的一点是:分表仅仅是解决了单一表数据过大的问题，但由于表的 数据还是在同一台机器上，其实对于提升MySQL并发能力没有什么意义，所以 水平拆分最好分库 。水平拆分能 够 支持非常大的数据量存储，应用端改造也少，但 分片事务难以解决 ，跨界点Join性能较差，逻辑复杂。 《Java工程师修炼之道》的作者推荐 尽量不要对数据进行分片，因为拆分会带来逻辑、部署、运维的各种复杂 度 ，一般的数据表在优化得当的情况下支撑千万以下的数据量是没有太大问题的。如果实在要分片，尽量选择 客户端分片架构，这样可以减少一次和中间件的网络I/O。</li>
+</ul>
+<h2 id="数据库分片的两种常见方案">数据库分片的两种常见方案</h2>
+<ul>
+<li>
+<p>客户端代理： 分片逻辑在应用端，封装在jar包中，通过修改或者封装JDBC层来实现。 当当网的 ShardingJDBC 、阿里的TDDL是两种比较常用的实现。</p>
+</li>
+<li>
+<p>中间件代理： 在应用和数据中间加了一个代理层。分片逻辑统一维护在中间件服务中。 我们现在谈的 Mycat 、360的Atlas、网易的DDB等等都是这种架构的实现。</p>
+</li>
+</ul>
+<h1 id="sql注入和防注入">Sql注入和防注入</h1>
+<h2 id="sql注入">Sql注入</h2>
+<h3 id="简介">简介</h3>
+<p>SQL注入是比较常见的网络攻击方式之一，它不是利用操作系统的BUG来实现攻击，而是针对程序员编程时的疏忽，通过SQL语句，实现无帐号登录，甚至篡改数据库。</p>
+<h3 id="sql注入攻击的总体思路">SQL注入攻击的总体思路</h3>
+<p>1.寻找到SQL注入的位置</p>
+<p>2.判断服务器类型和后台数据库类型</p>
+<p>3.针对不通的服务器和数据库特点进行SQL注入攻击</p>
+<h3 id="sql注入攻击实例">SQL注入攻击实例</h3>
+<p>比如在一个登录界面，要求输入用户名和密码：</p>
+<p>可以这样输入实现免帐号登录：</p>
+<p>用户名： ‘or 1 = 1 –</p>
+<p>密 码：</p>
+<p>点登陆,如若没有做特殊处理,那么这个非法用户就很得意的登陆进去了.(当然现在的有些语言的数据库API已经处理了这些问题)这是为什么呢? 下面我们分析一下：从理论上说，后台认证程序中会有如下的SQL语句：</p>
+<pre><code class="language-sql">String sql = &quot;select * from user_table where username=' &quot;+userName+&quot; ' and password=' &quot;+password+&quot; '&quot;;
+//当输入了上面的用户名和密码，上面的SQL语句变成：
+SELECT * FROM user_table WHERE username='’or 1 = 1 -- and password='’
+</code></pre>
+<p>分析SQL语句：</p>
+<p>条件后面username=”or 1=1 用户名等于 ” 或1=1 那么这个条件一定会成功；然后后面加两个-，这意味着注释，它将后面的语句注释，让他们不起作用，这样语句永远都能正确执行，用户轻易骗过系统，获取合法身份。这还是比较温柔的，如果是执行SELECT * FROM user_table WHEREusername='' ;DROP DATABASE (DB Name) --' and password=''  ….其后果可想而知…</p>
+<h2 id="防注入方法">防注入方法</h2>
+<h3 id="预编译语句集preparedstatement">预编译语句集（PreparedStatement）</h3>
+<p>采用预编译语句集，它内置了处理SQL注入的能力，只要使用它的setXXX方法传值即可。</p>
+<p>使用好处：</p>
+<p>(1).代码的可读性和可维护性.</p>
+<p>(2).PreparedStatement尽最大可能提高性能.</p>
+<p>(3).最重要的一点是极大地提高了安全性.原理：</p>
+<pre><code class="language-java">PreparedStatement preparedStatement =connection.prepareStatement(preSql);
+preparedStatement.setString(1, username);
+preparedStatement.setString(2, pwd);
+</code></pre>
+<p>原理：</p>
+<p>sql注入只对sql语句的准备(编译)过程有破坏作用</p>
+<p>而PreparedStatement已经准备好了,执行阶段只是把输入串作为数据处理,</p>
+<p>而不再对sql语句进行解析,准备,因此也就避免了sql注入问题.</p>
+<h3 id="使用正则表达式过滤传入的参数">使用正则表达式过滤传入的参数</h3>
+<p>下面是具体的正则表达式：</p>
+<p>检测SQL meta-characters的正则表达式 ：</p>
+<p>/(%27)|(\’)|(--)|(%23)|(#)/ix</p>
+<p>修正检测SQL meta-characters的正则表达式 ：/((%3D)|(=))[^\n]*((%27)|(\’)|(--)|(%3B)|(😃)/i</p>
+<p>典型的SQL 注入攻击的正则表达式 ：/\w*((%27)|(\’))((%6F)|o|(%4F))((%72)|r|(%52))/ix</p>
+<p>检测SQL注入，UNION查询关键字的正则表达式 ：/((%27)|(\’))union/ix(%27)|(\’)</p>
+<p>检测MS SQL Server SQL注入攻击的正则表达式：</p>
+<p>/exec(\s|+)+(s|x)p\w+/ix</p>
+<h3 id="字符串过滤">字符串过滤</h3>
+<p>过滤掉一些敏感特殊字符关键字</p>
+<pre><code class="language-java">String inj_str = &quot;'|and|exec|insert|select|delete|update|
+count|*|%|chr|mid|master|truncate|char|declare|;|or|-|+|,&quot;;
+String inj_stra[] = split(inj_str,&quot;|&quot;);
+</code></pre>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://kily-007.github.io/post/格力一面面经/" class="post-title gt-a-link">
+                    格力一面面经
+                </a>
+            </div>
+        
+
+        
+		
+		
+			<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'C9YP6zy0q66Y54y9XEILvC0C-gzGzoHsz',
+		appKey: 'J5I9bBm34OtqU0zFzl9KR4p3',
+		avatar: 'monsterid',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: 'Just Go Go'
+	});
+	if(window.location.hash){
+		var checkExist = setInterval(function() {
+		   if ($(window.location.hash).length) {
+			  $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+			  clearInterval(checkExist);
+		   }
+		}, 100);
+	}
+</script>
+		
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/kily-007" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        <div>
+	<a href="https://www.zyglz.com"> © 资源管理站</a>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span id="busuanzi_container_site_uv" style='display:none'>访客人数：<span id="busuanzi_value_site_uv"></span>人</span>
+	<span id="busuanzi_container_site_pv" style='display:none'>总访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+</div>
+    </div>
+	
+    <!--<div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://kily-007.github.io//atom.xml" target="_blank">RSS</a></a>
+    </div>
+	-->
+	<span id="sitetime"></span>
+	
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+<script language=javascript>
+    function siteTime(){
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth()+1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+        var diff = t2-t1;
+        var diffYears = Math.floor(diff/years);
+        var diffDays = Math.floor((diff/days)-diffYears*365);
+        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+    }
+    siteTime();
+</script>
+    </div>
+</div>
+</div>
+</body>
+</html>

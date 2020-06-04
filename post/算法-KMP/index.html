@@ -1,0 +1,420 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>算法-KMP | kily007</title>
+<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591286512144">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3aca18fa9f3a7e31f0ce64c09c9e5165";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+<div class="main-content">
+    <nav class="navbar navbar-expand-lg" style="background:url('/images/background.png');background-repeat: no-repeat;height: 100%;width:100%;">
+
+<!--    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name" style="color: white;">
+            kily007
+        </div>
+    </div> -->
+
+	
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="position: absolute;top:4%;left:6%"> 
+			<div class="nav-item navbar-brand">
+			    <img class="user-avatar" src="/images/avatar.png" alt="头像">
+			    <div class="site-name" style="color: white;"> <!--gt-c-content-color-first-->
+			        kily007
+			    </div>
+			</div>
+            
+                <div class="nav-item" >
+                    
+                        <a href="/" class="menu gt-a-links">
+                            首页
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/post/about" class="menu gt-a-links">
+                            关于
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/archives" class="menu gt-a-links">
+                            归档
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/tags" class="menu gt-a-links">
+                            标签
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/neighbor" class="menu gt-a-links">
+                            邻居
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/life" class="menu gt-a-links">
+                            生活
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/message" class="menu gt-a-links">
+                            留言
+                        </a>
+                    
+                </div>
+				
+				
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    算法-KMP
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-09-14 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="kmp算法">KMP算法</h1>
+<h2 id="暴力匹配">暴力匹配</h2>
+<p>问题：有一个文本串S，和一个模式串P，现在要查找P在S中的位置，直接思路：暴力查找。</p>
+<pre><code class="language-java">public int strMatch(String S,String P){
+    int i=0;
+    int j=0;
+    while(i&lt;S.length()&amp;&amp;j&lt;P.length()){
+        if(S[i]==P[j]){
+            i++;
+            j++;
+        }else{
+            i=i-j+1;
+            j=0;
+        }
+    }
+    if(j==P.length()){
+        return i-j;
+    }else{
+        return -1;
+    }
+}
+</code></pre>
+<h2 id="kmp算法-2">KMP算法</h2>
+<p>假设现在文本串S匹配到 i 位置，模式串P匹配到 j 位置</p>
+<ul>
+<li>
+<p>如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++，继续匹配下一个字符；</p>
+</li>
+<li>
+<p>如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]。此举意味着失配时，模式串P相对于文本串S向右移动了j - next [j] 位。则代码变为：</p>
+<pre><code class="language-java">public int strMatch(String S,String P){
+    int i=0;
+    int j=0;
+    while(i&lt;S.length()&amp;&amp;j&lt;P.length()){
+        if(j==-1||S[i]==P[j]){
+            i++;
+            j++;
+        }else{
+            j=next[j];
+        }
+    }
+    if(j==P.length()){
+        return i-j;
+    }else{
+        return -1;
+    }
+}
+</code></pre>
+</li>
+</ul>
+<p>当S[10]跟P[6]匹配失败时，KMP不是跟暴力匹配那样简单的把模式串右移一位，而是执行第②条指令：“如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]”，即j 从6变到2（后面我们将求得P[6]，即字符D对应的next 值为2），所以相当于模式串向右移动的位数为j - next[j]（j - next[j] = 6-2 = 4）。</p>
+<figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95-KMP.png" alt="1568455105448" loading="lazy"></figure>
+<h3 id="求next数组">求next数组</h3>
+<p>next 数组的求解：就是找最大对称长度的前缀后缀，然后整体右移一位，初值赋为-1（当然，你也可以直接计算某个字符对应的next值，就是看这个字符之前的字符串中有多大长度的相同前缀后缀）。</p>
+<p>​    换言之，对于给定的模式串：ABCDABD，它的最大长度表及next 数组分别如下：</p>
+<figure data-type="image" tabindex="2"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95-KMPNext%E6%95%B0%E7%BB%84.png" alt="" loading="lazy"></figure>
+<p>根据最大长度表求出了next 数组后，从而有失配时，模式串向右移动的位数为：失配字符所在位置 - 失配字符对应的next <strong>值</strong>.</p>
+<pre><code class="language-java">public int[] getNextJ(int[] next){
+    int k=-1;
+    int j=0;
+    while(j&lt;next.length{
+        if(k==-1||p[k]==p[j]){
+            k++;
+            j++;
+            next[j]=k;
+        }else{
+            k=next[k];
+        }
+    }
+}
+</code></pre>
+<h2 id="bm算法">BM算法</h2>
+<p>KMP的匹配是从模式串的开头开始匹配的，而1977年，德克萨斯大学的Robert S. Boyer教授和J Strother Moore教授发明了一种新的字符串匹配算法：Boyer-Moore算法，简称BM算法。该算法从模式串的尾部开始匹配，且拥有在最坏情况下O(N)的时间复杂度。在实践中，比KMP算法的实际效能高。</p>
+<p>​    BM算法定义了两个规则：</p>
+<ul>
+<li>坏字符规则：当文本串中的某个字符跟模式串的某个字符不匹配时，我们称文本串中的这个失配字符为坏字符，此时模式串需要向右移动，移动的位数 = 坏字符在模式串中的位置 - 坏字符在模式串中最右出现的位置。此外，如果&quot;坏字符&quot;不包含在模式串之中，则最右出现位置为-1。</li>
+<li>好后缀规则：当字符失配时，后移位数 = 好后缀在模式串中的位置 - 好后缀在模式串上一次出现的位置，且如果好后缀在模式串中没有再次出现，则为-1。</li>
+</ul>
+<p>下面举例说明BM算法。例如，给定文本串“HERE IS A SIMPLE EXAMPLE”，和模式串“EXAMPLE”，现要查找模式串是否在文本串中，如果存在，返回模式串在文本串中的位置。</p>
+<p>​    <em>1</em>. 首先，&quot;文本串&quot;与&quot;模式串&quot;头部对齐，从尾部开始比较。&quot;S&quot;与&quot;E&quot;不匹配。这时，&quot;S&quot;就被称为&quot;坏字符&quot;（bad character），即不匹配的字符，它对应着模式串的第6位。且&quot;S&quot;不包含在模式串&quot;EXAMPLE&quot;之中（相当于最右出现位置是-1），这意味着可以把模式串后移6-(-1)=7位，从而直接移到&quot;S&quot;的后一位。</p>
+<blockquote>
+<figure data-type="image" tabindex="3"><img src="https://img-blog.csdn.net/20140728192101322" alt="img" loading="lazy"></figure>
+</blockquote>
+<p>​    <em>2</em>. 依然从尾部开始比较，发现&quot;P&quot;与&quot;E&quot;不匹配，所以&quot;P&quot;是&quot;坏字符&quot;。但是，&quot;P&quot;包含在模式串&quot;EXAMPLE&quot;之中。因为“P”这个“坏字符”对应着模式串的第6位（从0开始编号），且在模式串中的最右出现位置为4，所以，将模式串后移6-4=2位，两个&quot;P&quot;对齐。</p>
+<blockquote>
+<figure data-type="image" tabindex="4"><img src="https://img-blog.csdn.net/20140728192109185" alt="img" loading="lazy"></figure>
+</blockquote>
+<blockquote>
+<figure data-type="image" tabindex="5"><img src="https://img-blog.csdn.net/20140728192118623" alt="img" loading="lazy"></figure>
+</blockquote>
+<p>​    <em>3</em>. 依次比较，得到 “MPLE”匹配，称为&quot;好后缀&quot;（good suffix），即所有尾部匹配的字符串。注意，&quot;MPLE&quot;、&quot;PLE&quot;、&quot;LE&quot;、&quot;E&quot;都是好后缀。</p>
+<blockquote>
+<figure data-type="image" tabindex="6"><img src="https://img-blog.csdn.net/20140728193254930" alt="img" loading="lazy"></figure>
+</blockquote>
+<p>​    <em>4</em>. 发现“I”与“A”不匹配：“I”是坏字符。如果是根据坏字符规则，此时模式串应该后移2-(-1)=3位。问题是，有没有更优的移法？</p>
+<blockquote>
+<figure data-type="image" tabindex="7"><img src="https://img-blog.csdn.net/20140728193420403" alt="img" loading="lazy"></figure>
+</blockquote>
+<blockquote>
+<figure data-type="image" tabindex="8"><img src="https://img-blog.csdn.net/20140728193428671" alt="img" loading="lazy"></figure>
+</blockquote>
+<p>​    <em>5</em>. 更优的移法是利用好后缀规则：当字符失配时，后移位数 = 好后缀在模式串中的位置 - 好后缀在模式串中上一次出现的位置，且如果好后缀在模式串中没有再次出现，则为-1。<br>
+​    所有的“好后缀”（MPLE、PLE、LE、E）之中，只有“E”在“EXAMPLE”的头部出现，所以后移6-0=6位。<br>
+​    可以看出，“坏字符规则”只能移3位，“好后缀规则”可以移6位。每次后移这两个规则之中的较大值。这两个规则的移动位数，只与模式串有关，与原文本串无关。</p>
+<blockquote>
+<figure data-type="image" tabindex="9"><img src="https://img-blog.csdn.net/20140728194226031" alt="img" loading="lazy"></figure>
+</blockquote>
+<p>​    <em>6</em>. 继续从尾部开始比较，“P”与“E”不匹配，因此“P”是“坏字符”，根据“坏字符规则”，后移 6 - 4 = 2位。因为是最后一位就失配，尚未获得好后缀。</p>
+<blockquote>
+<figure data-type="image" tabindex="10"><img src="https://img-blog.csdn.net/20140728194006343" alt="img" loading="lazy"></figure>
+</blockquote>
+<p>​    由上可知，BM算法不仅效率高，而且构思巧妙，容易理解。</p>
+<h2 id="sunday算法">Sunday算法</h2>
+<p>上文中，我们已经介绍了KMP算法和BM算法，这两个算法在最坏情况下均具有线性的查找时间。但实际上，KMP算法并不比最简单的c库函数strstr()快多少，而BM算法虽然通常比KMP算法快，但BM算法也还不是现有字符串查找算法中最快的算法，本文最后再介绍一种比BM算法更快的查找算法即Sunday算法。</p>
+<p>​    Sunday算法由Daniel M.Sunday在1990年提出，它的思想跟BM算法很相似：</p>
+<ul>
+<li>只不过Sunday算法是从前往后匹配，在匹配失败时关注的是文本串中参加匹配的最末位字符的下一位字符。
+<ul>
+<li>如果该字符没有在模式串中出现则直接跳过，即移动位数 = 匹配串长度 + 1；</li>
+<li>否则，其移动位数 = 模式串中最右端的该字符到末尾的距离+1。</li>
+</ul>
+</li>
+</ul>
+<p>​    下面举个例子说明下Sunday算法。假定现在要在文本串&quot;substring searching algorithm&quot;中查找模式串&quot;search&quot;。</p>
+<p>下面举个例子说明下Sunday算法。假定现在要在文本串&quot;substring searching algorithm&quot;中查找模式串&quot;search&quot;。</p>
+<p>​    <em>1</em>. 刚开始时，把模式串与文本串左边对齐：</p>
+<p>substr<strong>i</strong>ng searching algorithm</p>
+<p>search</p>
+<p><em>2</em>. 结果发现在第2个字符处发现不匹配，不匹配时关注文本串中参加匹配的最末位字符的下一位字符，即标粗的字符 i，因为模式串search中并不存在i，所以模式串直接跳过一大片，向右移动位数 = 匹配串长度 + 1 = 6 + 1 = 7，从 i 之后的那个字符（即字符n）开始下一步的匹配，如下图：</p>
+<p>substring sea<strong>r</strong>ching algorithm</p>
+<p>search<br>
+　　　　^</p>
+<p><em>3</em>. 结果第一个字符就不匹配，再看文本串中参加匹配的最末位字符的下一位字符，是'r'，它出现在模式串中的倒数第3位，于是把模式串向右移动3位（r 到模式串末尾的距离 + 1 = 2 + 1 =3），使两个'r'对齐，如下：</p>
+<p>substring searching algorithm</p>
+<p>search</p>
+<p><em>4</em>. 匹配成功。 回顾整个过程，我们只移动了两次模式串就找到了匹配位置，缘于Sunday算法每一步的移动量都比较大，效率很高。完。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://kily-007.github.io/post/瓜子二手车面经-大数据岗/" class="post-title gt-a-link">
+                    瓜子二手车面经-大数据岗
+                </a>
+            </div>
+        
+
+        
+		
+		
+			<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'C9YP6zy0q66Y54y9XEILvC0C-gzGzoHsz',
+		appKey: 'J5I9bBm34OtqU0zFzl9KR4p3',
+		avatar: 'monsterid',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: 'Just Go Go'
+	});
+	if(window.location.hash){
+		var checkExist = setInterval(function() {
+		   if ($(window.location.hash).length) {
+			  $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+			  clearInterval(checkExist);
+		   }
+		}, 100);
+	}
+</script>
+		
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/kily-007" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        <div>
+	<a href="https://www.zyglz.com"> © 资源管理站</a>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span id="busuanzi_container_site_uv" style='display:none'>访客人数：<span id="busuanzi_value_site_uv"></span>人</span>
+	<span id="busuanzi_container_site_pv" style='display:none'>总访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+</div>
+    </div>
+	
+    <!--<div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://kily-007.github.io//atom.xml" target="_blank">RSS</a></a>
+    </div>
+	-->
+	<span id="sitetime"></span>
+	
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+<script language=javascript>
+    function siteTime(){
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth()+1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+        var diff = t2-t1;
+        var diffYears = Math.floor(diff/years);
+        var diffDays = Math.floor((diff/days)-diffYears*365);
+        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+    }
+    siteTime();
+</script>
+    </div>
+</div>
+</div>
+</body>
+</html>

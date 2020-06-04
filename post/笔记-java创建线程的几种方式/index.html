@@ -1,0 +1,429 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>笔记-java创建线程的几种方式 | kily007</title>
+<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591286512144">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3aca18fa9f3a7e31f0ce64c09c9e5165";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+<div class="main-content">
+    <nav class="navbar navbar-expand-lg" style="background:url('/images/background.png');background-repeat: no-repeat;height: 100%;width:100%;">
+
+<!--    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name" style="color: white;">
+            kily007
+        </div>
+    </div> -->
+
+	
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="position: absolute;top:4%;left:6%"> 
+			<div class="nav-item navbar-brand">
+			    <img class="user-avatar" src="/images/avatar.png" alt="头像">
+			    <div class="site-name" style="color: white;"> <!--gt-c-content-color-first-->
+			        kily007
+			    </div>
+			</div>
+            
+                <div class="nav-item" >
+                    
+                        <a href="/" class="menu gt-a-links">
+                            首页
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/post/about" class="menu gt-a-links">
+                            关于
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/archives" class="menu gt-a-links">
+                            归档
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/tags" class="menu gt-a-links">
+                            标签
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/neighbor" class="menu gt-a-links">
+                            邻居
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/life" class="menu gt-a-links">
+                            生活
+                        </a>
+                    
+                </div>
+				
+				
+            
+                <div class="nav-item" >
+                    
+                        <a href="/message" class="menu gt-a-links">
+                            留言
+                        </a>
+                    
+                </div>
+				
+				
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    笔记-java创建线程的几种方式
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-09-16 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>Java使用Thread类代表线程，所有的线程对象都必须是Thread类或其子类的实例。Java可以用四种方式来创建线程，如下：</p>
+<p>1）继承Thread类创建线程；</p>
+<p>2）实现Runnable接口创建线程；</p>
+<p>3）实现Callable接口通过FutureTask包装器来创建Thread线程；</p>
+<p>4）线程池</p>
+<!--more-->
+<h1 id="继承thread类">继承Thread类</h1>
+<p>通过继承Thread类来创建并启动多线程的一般步骤如下：</p>
+<p>1】定义Thread类的子类，并重写该类的run()方法，该方法的方法体就是线程需要完成的任务，run()方法也称为线程执行体；</p>
+<p>2】创建Thread子类的实例，也就是创建了线程对象；</p>
+<p>3】启动线程，即调用线程的start()方法。</p>
+<pre><code class="language-java">public class MyThread extends Thread{
+	public void run() {
+		for (int i = 0; i &lt; 10; i++) {
+			System.out.println(Thread.currentThread()+&quot;:&quot;+i);
+		}
+	}
+    
+	public static void main(String[] args) {
+		MyThread thread1=new MyThread();
+		MyThread thread2=new MyThread();
+		MyThread thread3=new MyThread();
+		thread1.start();
+		thread2.start();
+		thread3.start();
+	}
+}
+</code></pre>
+<h1 id="实现runnable接口">实现Runnable接口</h1>
+<p>通过实现Runnable接口创建并启动线程一般步骤如下：</p>
+<p>1】定义Runnable接口的实现类，一样要重写run()方法，这个run()方法和Thread中的run()方法一样是线程的执行体；</p>
+<p>2】创建Runnable实现类的实例，并用这个实例作为Thread的target来创建Thread对象，这个Thread对象才是真正的线程对象；</p>
+<p>3】第三步依然是通过调用线程对象的start()方法来启动线程。</p>
+<pre><code class="language-java">public class MyThread implements Runnable{
+	public void run() {
+		for (int i = 0; i &lt; 10; i++) {
+			System.out.println(Thread.currentThread().getName()+&quot;:&quot;+i);
+		}
+	}
+	
+    
+	public static void main(String[] args) {
+		MyThread myThread1=new MyThread();
+		MyThread myThread2=new MyThread();
+		MyThread myThread3=new MyThread();
+		Thread thread1=new Thread(myThread1);
+		Thread thread2=new Thread(myThread2);
+		Thread thread3=new Thread(myThread3);
+		thread1.start();
+		thread2.start();
+		thread3.start();
+	}
+
+}
+</code></pre>
+<h1 id="通过callble和future-task">通过Callble和future Task</h1>
+<p>和Runnable接口不一样，Callable接口提供了一个call() 方法作为线程执行体，call() 方法比run() 方法功能要强大：</p>
+<ul>
+<li>call() 方法可以有返回值；</li>
+<li>call() 方法可以声明抛出异常。</li>
+</ul>
+<p>Java5提供了Future接口来代表Callable接口里call() 方法的返回值，并且为Future接口提供了一个实现类FutureTask，这个实现类既实现了Future接口，还实现了Runnable接口，因此可以作为Thread类的target。在Future接口里定义了几个公共方法来控制它关联的Callable任务。</p>
+<ul>
+<li>boolean cancel(boolean mayInterruptIfRunning)：视图取消该Future里面关联的Callable任务；</li>
+<li>get()：返回Callable里call() 方法的返回值，调用这个方法会导致程序阻塞，必须等到子线程结束后才会得到返回值；</li>
+<li>get(long timeout,TimeUnit unit)：返回Callable里call() 方法的返回值，最多阻塞timeout时间，经过指定时间没有返回抛出TimeoutException；</li>
+<li>boolean isDone()：若Callable任务完成，返回True；</li>
+<li>boolean isCancelled()：如果在Callable任务正常完成前被取消，返回True。</li>
+</ul>
+<p>介绍了相关的概念之后，创建并启动有返回值的线程的步骤如下：<br>
+1】创建Callable接口的实现类，并实现call() 方法，然后创建该实现类的实例（从Java8开始可以直接使用Lambda表达式创建Callable对象）；<br>
+2】使用FutureTask类来包装Callable对象，该FutureTask对象封装了Callable对象的call() 方法的返回值；<br>
+3】使用FutureTask对象作为Thread对象的target创建并启动线程（因为FutureTask实现了Runnable接口）；<br>
+4】调用FutureTask对象的get() 方法来获得子线程执行结束后的返回值。</p>
+<pre><code class="language-java">import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
+public class MyThread implements Callable&lt;String&gt;{
+	private int count=20;
+
+	@Override
+	public String call() throws Exception {
+		for (int i = 20; i &gt;0; i--) {
+			System.out.println(Thread.currentThread().getName()+&quot;当前票数&quot;+i);
+		}
+		return &quot;sale out&quot;;
+	}
+    
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
+		Callable&lt;String&gt; callable  =new MyThread();
+		FutureTask &lt;String&gt;futureTask=new FutureTask&lt;&gt;(callable);
+		Thread thread1=new Thread(futureTask);
+		Thread thread2=new Thread(futureTask);
+		Thread thread3=new Thread(futureTask);
+		thread1.start();
+		thread2.start();
+		thread3.start();
+		System.out.println(futureTask.get());
+	}
+}
+</code></pre>
+<h1 id="使用线程池">使用线程池</h1>
+<h2 id="executor">Executor</h2>
+<p>Java通过Executors提供四种线程池，分别为：</p>
+<ul>
+<li>FixedThreadPool：返回固定线程数量的线程池。</li>
+<li>SingleThreadExecutor：返回一个只有一个线程的线程池。</li>
+<li>CachedThreadPool：该方法返回一个可根据实际情况调整线程数量的线程池。线程池的线程数量不确定，但 若有空闲线程可以复用，则会优先使用可复用的线程。若所有线程均在工作，又有新的任务提交，则会创建新 的线程处理任务。所有线程在当前任务执行完毕后，将返回线程池进行复用。</li>
+<li>ScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。</li>
+</ul>
+<h2 id="threadpoolexecutor">ThreadPoolExecutor</h2>
+<p>**Executors是JAVA并发包中提供的，用来快速创建不同类型的线程池。***但在一些大型项目中，这种做法一般是禁止的。因为用<code>Executors</code>创建的线程池存在性能隐患，我们看一下源码就知道，用<code>Executors</code>创建线程池时，使用的队列是<code>new LinkedBlockingQueue&lt;Runnable&gt;()</code>，这是一个无边界队列，如果不断的往里加任务时，最终会导致内存问题，也就是说在项目中由于使用了无边界队列，导致的内存占用的不可控性。故一般采用自己实现ThreadPoolExecutor的方式来自定义线程池。</p>
+<pre><code class="language-java">ThreadPoolExecutor(
+	int corePoolSize,//指定线程池中线程的数量
+	int maximumPoolSize,//最大线程数量
+	long keepAliveTime,//超过核心线程数的线程超过corePoolSize时，多余线程多久被销毁
+	TimeUnit unit,//KeepAliveTime的单位
+	BlockingQueue&lt;Runnable&gt; workQueue,//任务队列
+	ThreadFactory threadFactory,//线程工厂
+	RejectedExecutionHandler handler//拒绝策略
+)
+</code></pre>
+<p>设线程池中的线程数量为n，，当一个任务通过execute方法添加到线程池时：</p>
+<ul>
+<li>若n&lt;corePoolSize，创建新线程来处理；</li>
+<li>若n=corePoolSize，但缓冲队列workQueue未满，那么任务放进队列；</li>
+<li>若n&gt;corePoolSize，缓冲队列workQueue满，且n&lt;maximumPoolSize，新建线程处理任务；</li>
+<li>若n&gt;corePoolSize，缓冲队列workQueue满，且n=maximumPoolSize，通过handle指定的拒绝策略来处理任务。</li>
+</ul>
+<p>任务处理优先级为：核心线程corePoolSize、任务队列workQueue、最大线程maximumPoolSize，如果三者都满了，使用handler处理被拒绝的任务。</p>
+<h2 id="拒绝策略">拒绝策略</h2>
+<p>在分析ThreadPoolExecutor的构造参数时，有一个RejectedExecutionHandler参数。RejectedExecutionHandler是一个接口：</p>
+<pre><code class="language-java">public interface RejectedExecutionHandler {
+    void rejectedExecution(Runnable r, ThreadPoolExecutor executor);
+}
+</code></pre>
+<p>里面只有一个方法。当要创建的线程数量大于线程池的最大线程数的时候，新的任务就会被拒绝，就会调用这个接口里的这个方法。可以自己实现这个接口，实现对这些超出数量的任务的处理。</p>
+<p>ThreadPoolExecutor自己已经提供了四个拒绝策略，分别是<code>AbortPolicy</code>,<code>CallerRunsPolicy</code>,<code>DiscardPolicy</code>,<code>DiscardOldestPolicy</code></p>
+<ul>
+<li><code>AbortPolicy</code>：ThreadPoolExecutor中默认的拒绝策略就是AbortPolicy。直接抛出异常。</li>
+<li><code>CallerRunsPolicy</code>:在任务被拒绝添加后，会调用当前线程池的所在的线程去执行被拒绝的任务。</li>
+<li><code>DiscardPolicy</code>:采用这个拒绝策略，会让被线程池拒绝的任务直接抛弃，不会抛异常也不会执行。</li>
+<li><code>DiscardOldestPolicy</code>：当任务被拒绝添加时，会抛弃任务队列中最旧的任务也就是最先加入队列的，再把这个新任务添加进去。</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://kily-007.github.io/post/算法-求全排列/" class="post-title gt-a-link">
+                    算法-求全排列
+                </a>
+            </div>
+        
+
+        
+		
+		
+			<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'C9YP6zy0q66Y54y9XEILvC0C-gzGzoHsz',
+		appKey: 'J5I9bBm34OtqU0zFzl9KR4p3',
+		avatar: 'monsterid',
+		pageSize: 10,
+		recordIp: true,
+		placeholder: 'Just Go Go'
+	});
+	if(window.location.hash){
+		var checkExist = setInterval(function() {
+		   if ($(window.location.hash).length) {
+			  $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+			  clearInterval(checkExist);
+		   }
+		}, 100);
+	}
+</script>
+		
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/kily-007" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        <div>
+	<a href="https://www.zyglz.com"> © 资源管理站</a>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span id="busuanzi_container_site_uv" style='display:none'>访客人数：<span id="busuanzi_value_site_uv"></span>人</span>
+	<span id="busuanzi_container_site_pv" style='display:none'>总访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+</div>
+    </div>
+	
+    <!--<div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://kily-007.github.io//atom.xml" target="_blank">RSS</a></a>
+    </div>
+	-->
+	<span id="sitetime"></span>
+	
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+<script language=javascript>
+    function siteTime(){
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth()+1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+        var diff = t2-t1;
+        var diffYears = Math.floor(diff/years);
+        var diffDays = Math.floor((diff/days)-diffYears*365);
+        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+    }
+    siteTime();
+</script>
+    </div>
+</div>
+</div>
+</body>
+</html>
