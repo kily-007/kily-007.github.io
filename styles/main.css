@@ -370,9 +370,8 @@ ul li {
   flex-direction: column;
 }
 .gt-a-links {
-  color: white!important;
+  color: black!important;
   position: relative!important;
-  background: linear-gradient(180deg, transparent 92%, rgba(134, 142, 150, 0.4) 0) !important;
   font-size: 23px;
 }
 .gt-post-content {
@@ -501,15 +500,16 @@ ul li {
   font-family: "华文行楷";
   font-weight: bold;
   margin-left: 16px;
+  color: black;
 }
 .navbar .navbar-nav {
   width: 40%;
   justify-content: center;
 }
 .navbar .navbar-nav .nav-item {
-  padding: 0px 1%;
+  padding: 8px 10px;
   align-items: center;
-  height: 2.25rem;
+  height: 4.25rem;
   min-width: 70px;
 }
 .navbar .navbar-nav .nav-item a {
