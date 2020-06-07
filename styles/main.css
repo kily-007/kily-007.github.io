@@ -728,7 +728,7 @@ ul li {
   padding: 32px;
   display: flex;
   flex-direction: column;
-  margin-left: 42%;
+  margin: 0 auto;
 }
 .archives-container .year {
   font-size: 30px;
