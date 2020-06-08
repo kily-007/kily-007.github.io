@@ -1,153 +1,223 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8"/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>笔记-java基础 | kily007</title>
-<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591591158785">
-<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
-<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="utf-8" />
+<title>
+    kily007
+</title>
+<!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script><![endif]-->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<meta name="author" content="kily007">
+<meta name="description" content="我们虽然距离很远很远，非常非常的远，但是思念或许真的可以穿越时间和距离。">
+<meta name="keywords" content="java,sql,大数据,笔记,c/c++,嵌入式">
+<script async src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/css/style.min.css" />
+<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css" />
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/tocbot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/icon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@1.0.12/CDN/js/Card/prism.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@1.0.12/CDN/css/Card/prism.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js"></script>
 
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
-
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?3aca18fa9f3a7e31f0ce64c09c9e5165";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-</head>
-<body>
-<div class="main gt-bg-theme-color-first">
-<div class="main-content">
-    <nav class="navbar navbar-expand-lg" style="background:url('https://i.loli.net/2020/06/03/iefPOosqRFHKpWr.png');background-repeat: no-repeat;height: 100%;width:100%;">
-	
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="position: fixed;top:0px;left:0px;float:inherit;background-color:#F5F5F5;height:50px;width:100%;z-index:99;"> 
-			<div class="nav-item navbar-brand">
-			    <a href="/"><img class="user-avatar" src="/images/avatar.png" alt="头像"></a>
-			    <a href="/"><div class="site-name"> kily007</div></a>
-			</div>
+    <!--点击特效-->
+    <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@latest/CDN/js/love.min.js"></script>
+    
+            <!--CDN样式-->
+            <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@latest/CDN/js/hit-kounter-lc-0.3.0.js"></script>
+            <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
             
-                <div class="nav-item" >
+                <script>
+                    (function() {
+                        var bp = document.createElement('script');
+                        var curProtocol = window.location.protocol.split(':')[0];
+                        if (curProtocol === 'https') {
+                            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                        } else {
+                            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                        }
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(bp, s);
+                    })();
+                </script>
+                
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <a href="https://kily-007.github.io/">
+                    kily007
+                </a>
+            </div>
+
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/">
+                        首页
+                    </a>
                     
-                        <a href="/" class="menu gt-a-links">
+                    <a class="menu-item" href="/post/about">
+                        关于
+                    </a>
+                    
+                    <a class="menu-item" href="/archives">
+                        归档
+                    </a>
+                    
+                    <a class="menu-item" href="/tags">
+                        标签
+                    </a>
+                    
+                    <a class="menu-item" href="/friends">
+                        邻居
+                    </a>
+                    
+                    <a class="menu-item" href="/message">
+                        留言
+                    </a>
+                    
+                    <a class="menu-item" href="/life">
+                        生活
+                    </a>
+                    
+                    <a class="menu-item" href="/more">
+                        更多
+                    </a>
+                    
+                        <input id="switch_default" type="checkbox" class="switch_default">
+                        <label for="switch_default" class="toggleBtn"></label>
+            </div>
+            <form id="gridea-search-form" data-update="1591624085232" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
+            </form>
+        </div>
+    </nav>
+
+    
+        <nav class="navbar-mobile" id="nav-mobile">
+            <div class="container">
+                <div class="navbar-header">
+                    <div>
+                        <a href="https://kily-007.github.io/">
+                            kily007
+                        </a>
+                        <!--en-->
+                        <a id="mobile-toggle-theme-en" class="a en">&nbsp;Dark</a>
+                        <!--zh-->
+                        <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
+                    </div>
+                    <form id="gridea-search-form" data-update="1591624085232" action="/search/index.html">
+                        <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
+                    </form>
+                    <!--en-->
+                    <div class="menu-toggle" id="menu-toggle-en" onclick="mobileBtn()">&#9776; Menu</div>
+                    <!--zh-->
+                    <div class="menu-toggle" id="menu-toggle-zh" onclick="mobileBtn()">&#9776; &#x83DC;&#x5355;</div>
+
+                </div>
+                <div class="menu" id="mobile-menu">
+                    
+                        <a class="menu-item" href="/">
                             首页
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/post/about" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/post/about">
                             关于
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/archives" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/archives">
                             归档
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/tags" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/tags">
                             标签
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/neighbor" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/friends">
                             邻居
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/message" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/message">
                             留言
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/life" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/life">
                             生活
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/more" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/more">
                             更多
                         </a>
-                    
+                        
                 </div>
-            
-			<!--下拉菜单-->
-			<div class="nav-item">
-			    <a href="#" class="dropbtn">下拉菜单</a>
-				<div class="dropdown-content">
-					<a href="#">链接 1</a>
-					<a href="#">链接 2</a>
-					<a href="#">链接 3</a>
-				</div>
-			</div>
-        </div>
-    </div>
-</nav>
-    <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
-            <article class="gt-post-content">
-                <h2 class="post-title">
-                    笔记-java基础
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2019-08-07 ·
-                    </time>
-                    
-                </div>
-                <div class="post-content">
-                    <h2 id="1-java基础知识">1 java基础知识</h2>
+            </div>
+        </nav>
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementById("menu-toggle-en");
+        var toggleMenu_zh = document.getElementById("menu-toggle-zh");
+
+        var mobileMenu = document.getElementById("mobile-menu");
+        if (toggleMenu.display != "none") {
+            if (toggleMenu.classList.contains("active")) {
+                toggleMenu.classList.remove("active")
+                mobileMenu.classList.remove("active")
+            } else {
+                toggleMenu.classList.add("active")
+                mobileMenu.classList.add("active")
+            }
+        } else if (toggleMenu_zh.display != "none") {
+            if (toggleMenu_zh.classList.contains("active")) {
+                toggleMenu_zh.classList.remove("active")
+                mobileMenu.classList.remove("active")
+            } else {
+                toggleMenu_zh.classList.add("active")
+                mobileMenu.classList.add("active")
+            }
+        }
+
+    }
+</script>
+            <div class="main">
+                <div class="container">
+                    <article class="post-wrap">
+                        <header class="post-header">
+                            <h1 class="post-title">
+                                笔记-java基础
+                            </h1>
+                            
+                                    <!--zh-->
+                                    <div class="post-meta zh">
+                                        &#x4F5C;&#x8005;:
+                                        <a itemprop="author" rel="author" href="/">
+                                            kily007
+                                        </a>
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-08-07</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
+                                    href="#">79.4
+                                    &#x5206;&#x949F;</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">21185</a></span>
+                                        
+                                                阅读量:
+                                                <span data-hk-page="current"> - </span>
+                                                
+                                    </div>
+                                    
+                        </header>
+                        
+                        <div class="post-content">
+                            <h2 id="1-java基础知识">1 java基础知识</h2>
 <h3 id="12-重载和重写的区别">1.2 重载和重写的区别</h3>
 <ul>
 <li>重载：相同的函数名，参数类型不同<br/></li>
@@ -1608,29 +1678,250 @@ public class AbstractFactoryPatternDemo {
 <figure data-type="image" tabindex="16"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-java%E5%9F%BA%E7%A1%80/java%E9%9D%A2%E8%AF%95%E7%AA%81%E5%87%BB%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B011.png" alt="java面试突击阅读笔记11" loading="lazy"></figure>
 <h3 id="55-原型模式">5.5 原型模式</h3>
 
+                        </div>
+                        
+                            <div class="post-toc">
+                                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">1 java基础知识</a>
+<ul>
+<li><a href="#12-%E9%87%8D%E8%BD%BD%E5%92%8C%E9%87%8D%E5%86%99%E7%9A%84%E5%8C%BA%E5%88%AB">1.2 重载和重写的区别</a></li>
+<li><a href="#13-string%E4%B8%8Estringbuild%E4%B8%8Estringbuffer%E5%8C%BA%E5%88%AB">1.3 string与stringbuild与stringBuffer区别</a></li>
+<li><a href="#14-%E4%B8%8Eequals">1.4 ==与equals</a></li>
+<li><a href="#141-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99equals%E6%96%B9%E6%B3%95%E4%B8%80%E5%AE%9A%E8%A6%81%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95">1.41 为什么重写equals方法，一定要重写HashCode方法</a></li>
+<li><a href="#15-final%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%E6%96%B9%E6%B3%95%E7%B1%BB">1.5 final关键字的使用：变量，方法，类</a></li>
+<li><a href="#16-object%E7%B1%BB%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95">1.6 object类常见方法</a></li>
+<li><a href="#17-java%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8">1.7  java中常见异常</a></li>
+<li><a href="#18-java%E4%B8%AD%E7%9A%84%E4%BF%A9%E7%A7%8D%E8%BE%93%E5%85%A5%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95">1.8 java中的俩种输入常用方法</a></li>
+<li><a href="#19-%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB">1.9 接口和抽象类的区别</a></li>
+<li><a href="#110-bio-nio-aio">1.10  (B)IO、NIO、AIO</a></li>
+</ul>
+</li>
+<li><a href="#2-java%E5%AE%B9%E5%99%A8">2 java容器</a>
+<ul>
+<li><a href="#21-arraylist%E4%B8%8Elinklist%E7%9A%84%E5%BC%82%E5%90%8C">2.1 Arraylist与LinkList的异同</a></li>
+<li><a href="#22-vector%E7%B1%BB">2.2 Vector类</a></li>
+<li><a href="#23-hashmap">2.3 hashmap</a></li>
+<li><a href="#24-java%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93">2.4  java集合总结</a>
+<ul>
+<li><a href="#collection">Collection</a></li>
+<li><a href="#map">Map</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%85%B3%E9%94%AE%E5%AD%97">3 java 多线程关键字</a>
+<ul>
+<li><a href="#31-synchronized%E5%85%B3%E9%94%AE%E5%AD%97">3.1 synchronized关键字</a></li>
+<li><a href="#32-reentrantlock">3.2 ReenTrantLock</a></li>
+<li><a href="#33-volatile">3.3 volatile</a></li>
+<li><a href="#34-%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BC%98%E7%82%B9">3.4  使用线程池的优点</a></li>
+<li><a href="#35-%E5%AE%9E%E7%8E%B0runnable%E6%8E%A5%E5%8F%A3%E4%B8%8Ecallable%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB">3.5 实现Runnable接口与Callable接口的区别</a></li>
+<li><a href="#36-execute%E6%96%B9%E6%B3%95%E5%92%8Csubmit%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">3.6 execute()方法和submit()方法有什么区别</a></li>
+<li><a href="#37-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0">3.7 如何创建线程池</a></li>
+<li><a href="#38-atomic%E5%8E%9F%E5%AD%90%E7%B1%BB">3.8 Atomic原子类</a><br>
+*<br>
+*<br>
+* <a href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E4%BD%BF%E7%94%A8%E9%99%A2%E5%AD%90%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9B%B4%E6%96%B0%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B">基本类型：使用院子的方式更新基本类型</a><br>
+* <a href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E4%BD%BF%E7%94%A8%E9%99%A2%E5%AD%90%E6%96%B9%E5%BC%8F%E6%98%AF%E6%9B%B4%E6%96%B0%E6%95%B0%E6%95%B0%E7%BB%84%E9%87%8C%E7%9A%84%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0">数组类型：使用院子方式是更新数数组里的某个元素</a><br>
+* <a href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B">引用类型：</a><br>
+* <a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E6%94%B9%E7%B1%BB%E5%9E%8B">对象的属性修改类型：</a><br>
+* <a href="#atomicinter%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95">AtomicInter类常用方法</a></li>
+<li><a href="#39-aqs%E5%8E%9F%E7%90%86">3.9 AQS原理</a><br>
+*<br>
+*<br>
+* <a href="#%E7%AE%80%E4%BB%8Babstractqueuedsynchronizer">简介（AbstractQueuedSynchronizer）</a><br>
+* <a href="#%E5%8E%9F-%E7%90%86">原 理</a></li>
+<li><a href="#%E7%8B%AC%E5%8D%A0%E6%A8%A1%E5%BC%8F">独占模式</a>
+<ul>
+<li><a href="#acquire%E6%96%B9%E6%B3%95">acquire()方法</a></li>
+<li><a href="#tryacquire%E6%96%B9%E6%B3%95">tryAcquire()方法</a></li>
+<li><a href="#addwaiter%E6%96%B9%E6%B3%95">addWaiter()方法</a></li>
+<li><a href="#enq%E6%96%B9%E6%B3%95">enq()方法</a></li>
+<li><a href="#acquirequeued%E6%96%B9%E6%B3%95">acquireQueued()方法</a></li>
+<li><a href="#shouldparkafterfailedacquire%E6%96%B9%E6%B3%95">shouldParkAfterFailedAcquire()方法</a></li>
+<li><a href="#parkandcheckinterrupt%E6%96%B9%E6%B3%95">parkAndCheckInterrupt()方法</a></li>
+<li><a href="#release%E6%96%B9%E6%B3%95">release()方法</a></li>
+<li><a href="#tryrelease%E6%96%B9%E6%B3%95">tryRelease()方法</a></li>
+<li><a href="#unparksuccessor%E6%96%B9%E6%B3%95">unparkSuccessor()方法</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B">总结一下</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%BC%8F">共享模式</a>
+<ul>
+<li><a href="#acquireshared%E6%96%B9%E6%B3%95">acquireShared()方法</a></li>
+<li><a href="#tryacquireshared%E6%96%B9%E6%B3%95">tryAcquireShared()方法</a></li>
+<li><a href="#doacquireshared%E6%96%B9%E6%B3%95">doAcquireShared()方法</a></li>
+<li><a href="#setheadandpropagate%E6%96%B9%E6%B3%95">setHeadAndPropagate()方法</a></li>
+<li><a href="#doreleaseshared%E6%96%B9%E6%B3%95">doReleaseShared()方法</a></li>
+<li><a href="#releaseshared%E6%96%B9%E6%B3%95">releaseShared()方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4-java%E8%99%9A%E6%8B%9F%E6%9C%BA">4 java虚拟机</a>
+<ul>
+<li><a href="#41-%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8">4.1 程序计数器</a></li>
+<li><a href="#42-java-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88">4.2 java 虚拟机栈</a></li>
+<li><a href="#43-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88">4.3 本地方法栈</a></li>
+<li><a href="#44-java%E5%A0%86">4.4 java堆</a></li>
+<li><a href="#45-%E6%96%B9%E6%B3%95%E5%8C%BA">4.5 方法区</a></li>
+<li><a href="#46-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0">4.6 运行时常量池</a></li>
+<li><a href="#47-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6">4.7 垃圾回收机制</a>
+<ul>
+<li><a href="#471-%E5%AF%B9%E8%B1%A1%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95">4.7.1 对象回收算法</a>
+<ul>
+<li><a href="#1-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E7%AE%97%E6%B3%95">1. 引用计数算法。</a></li>
+<li><a href="#2-%E5%8F%AF%E8%BE%BE%E5%88%86%E6%9E%90%E6%B3%95">2. 可达分析法。</a></li>
+</ul>
+</li>
+<li><a href="#472-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95">4.7.2 垃圾回收算法</a>
+<ul>
+<li><a href="#1-%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95">1. 标记清除算法</a></li>
+<li><a href="#2-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95">2. 复制算法</a></li>
+<li><a href="#3-%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95">3. 标记-整理算法</a></li>
+<li><a href="#4-%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95">4. 分代收集算法</a></li>
+</ul>
+</li>
+<li><a href="#473-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8">4.7.3 垃圾收集器</a>
+<ul>
+<li><a href="#1-serial%E6%94%B6%E9%9B%86%E5%99%A8">1 Serial收集器</a></li>
+<li><a href="#2-parnew%E6%94%B6%E9%9B%86%E5%99%A8">2 ParNew收集器</a></li>
+<li><a href="#3-parallel-scavenge-%E6%94%B6%E9%9B%86%E5%99%A8">3 <strong>Parallel</strong> <strong>Scavenge</strong> <strong>收集器</strong></a></li>
+<li><a href="#4-cms%E6%94%B6%E9%9B%86%E5%99%A8">4 CMS收集器</a></li>
+<li><a href="#5-g1%E6%94%B6%E9%9B%86%E5%99%A8">5 G1收集器</a></li>
+</ul>
+</li>
+<li><a href="#474-%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5">4.7.4 内存分配与回收策略</a>
+<ul>
+<li><a href="#1-minor-gc%E4%B8%8Efull-gc">1. Minor GC与Full GC</a></li>
+<li><a href="#2%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5">2.内存分配策略</a></li>
+<li><a href="#3full-gc%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6">3.Full GC的触发条件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#5-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">5 设计模式</a>
+<ul>
+<li><a href="#51-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">5.1 单例模式</a><br>
+*
+<ul>
+<li><a href="#511-%E9%A5%BF%E6%B1%89%E5%BC%8F%E5%AE%9E%E7%8E%B0">5.1.1 饿汉式实现</a></li>
+<li><a href="#512-%E6%87%92%E6%B1%89%E5%AE%9E%E7%8E%B0">5.1.2 懒汉实现</a></li>
+<li><a href="#513%E6%87%92%E6%B1%89%E5%BC%8F%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%AE%9E%E7%8E%B0">5.1.3懒汉式线程安全实现</a></li>
+<li><a href="#514-%E5%8F%8C%E6%A3%80%E9%94%81%E5%8F%8C%E9%87%8D%E6%A0%A1%E9%AA%8C%E9%94%81dcl%E5%8D%B3double-checked-locking">5.1.4 双检锁/双重校验锁（DCL，即double-checked locking）</a></li>
+<li><a href="#515-%E7%99%BB%E8%AE%B0%E5%BC%8F%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB">5.1.5 登记式/静态内部类</a></li>
+</ul>
+</li>
+<li><a href="#52-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F">5.2 工厂模式</a></li>
+<li><a href="#53-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F">5.3 抽象工厂模式</a></li>
+<li><a href="#54-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F">5.4 建造者模式</a></li>
+<li><a href="#55-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F">5.5 原型模式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                            </div>
+                            
+                                
+                                    
+                                            <!--zh-->
+                                            <section class="post-copyright zh">
+                                                <p class="copyright-item ">
+                                                    <span>&#x4F5C;&#x8005;:</span>
+                                                    <span>kily007</span>
+                                                </p>
+
+                                                <p class="copyright-item">
+                                                    <span>&#x6C38;&#x4E45;&#x94FE;&#x63A5;:</span>
+                                                    <span><a href="https://kily-007.github.io/post/笔记-java基础/">https://kily-007.github.io/post/笔记-java基础/</a></span>
+                                                </p>
+
+                                                <p class="copyright-item">
+                                                    <span>&#x534F;&#x8BAE;:</span>
+                                                    <span>MIT License</span>
+                                                </p>
+                                            </section>
+                                            
+                                                
+                                                    
+                                                                    <!--Share-->
+                                                                    <span style="margin-right:15px">
+                        <i class="post-share"></i>
+                        <span>&#x5206;&#x4EAB;:</span>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/笔记-java基础/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/笔记-java基础/&sharesource=qzone&title=笔记-java基础&pics=https://kily-007.github.io//images/avatar.png?v=1591624085232&summary=&lt;h2 id=&#34;1-java基础知识&#34;&gt;1 java基础知识&lt;/h2&gt;
+&lt;h3 id=&#34;12-重载和重写的区别&#34;&gt;1.2 重载和重写的区别&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;重载：相同的函数名，参数类型不同&lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;重写：子类重写父类方法，private修饰的方法不能重写&lt;/li&gt;
+&lt;/ul&gt;
+"><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/笔记-java基础/&sharesource=weibo&title=笔记-java基础 + " - " + &lt;h2 id=&#34;1-java基础知识&#34;&gt;1 java基础知识&lt;/h2&gt;
+&lt;h3 id=&#34;12-重载和重写的区别&#34;&gt;1.2 重载和重写的区别&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;重载：相同的函数名，参数类型不同&lt;br/&gt;&lt;/li&gt;
+&lt;li&gt;重写：子类重写父类方法，private修饰的方法不能重写&lt;/li&gt;
+&lt;/ul&gt;
+&pic="https://kily-007.github.io//images/avatar.png?v=1591624085232 "><i class="fa fa-weibo "></i></a>
+
+                                                                    </span>
+                                                                    
+                                                                        <div class="reward ">
+                                                                            <div class="reward-button ">&yen;
+                                                                                <span class="reward-code "> 
+                        <span class="alipay-code "> <img class="alipay-img " alt = "support " src="https://blog.itjoker.cn/alipay.jpg"><b>支付宝</b> </span>
+                                                                                <span class="wechat-code "> <img alt ="support " class="wechat-img " src="https://blog.itjoker.cn/wechat.jpg"><b>微信</b> </span> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                            <!--zh-->
+                                                                            <section class="post-tags zh ">
+                                                                                <div>
+                                                                                    <span>&#x6807;&#x7B7E;:</span>
+                                                                                    <span class="tag ">
+                        
+                                </span>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <a href="javascript:window.history.back();">
+                        &#x8FD4;&#x56DE;</a>
+                                                                                    <span>&dot;</span>
+                                                                                    <a href="#">&#x4E3B;&#x9875;</a>
+                                                                                </div>
+                                                                            </section>
+
+                                                                            
+                                                                                <!---->
+                                                                                <section class="post-nav">
+                                                                                    
+                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/格力一面面经/">
+                                                                                            格力一面面经
+                                                                                        </a>
+                                                                                        
+                                                                                            
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/笔记-计算机网络/">
+                                                                                                    笔记-计算机网络
+                                                                                                </a>
+                                                                                                
+                                                                                </section>
+                    </article>
                 </div>
-            </article>
-        </div>
-
-        
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://kily-007.github.io/post/笔记-计算机网络/" class="post-title gt-a-link">
-                    笔记-计算机网络
-                </a>
-            </div>
-        
-
-        
-		
-		
-			<script src='https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js'></script>
+                
+                                            
+                                                <script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
 
 <style>
 	#vcomments{
-		width:100%;
-		max-width: 1000px;
-		padding: 2.5%
+		width: 100%;
+		max-width: 885px;
+		padding: 3.5%;
+		margin: 0 auto
 	}
 	#veditor {
 		background-image: url(https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp);
@@ -1666,17 +1957,18 @@ public class AbstractFactoryPatternDemo {
 </style>
 
 
-	<div id="vcomments"></div>
-
+<div id="vcomments"></div>
 <script>
-	new Valine({
-		el: '#vcomments',
-		appId: 'OVKyeagFOYYOdHhJ9o8IlG8F-MdYXbMMI',
-		appKey: 'di3dFnzxMfpcwn8BBlVzR6u7',
-		avatar: 'monsterid',
-		pageSize: 10,
-		recordIp: true,
-		placeholder: '来撒，留个言',
+    new Valine({
+        el: '#vcomments',
+        appId: 'OVKyeagFOYYOdHhJ9o8IlG8F-MdYXbMMI',
+        appKey: 'di3dFnzxMfpcwn8BBlVzR6u7',
+        pageSize: 10,
+        avatar: 'mp',
+        placeholder: '来都来了，不妨评论一下',
+        visitor: true,
+        highlight: true,
+        recordIP: true,
 		tagMeta: ["博主","大佬","访客"],
 		master: '7e3f9cfbe88820b9f4ae2e4857e69e26',
 		friends: ["48c8f1e79dd340e4b247820fee013082"],
@@ -1727,8 +2019,8 @@ public class AbstractFactoryPatternDemo {
 		                                "kt_150":"aru/150.png", "kt_151":"aru/151.png", "kt_152":"aru/152.png", "kt_153":"aru/153.png", "kt_154":"aru/154.png", "kt_155":"aru/155.png", "kt_156":"aru/156.png", "1kt_57":"aru/157.png", "kt_158":"aru/158.png",
 		                                "kt_159":"aru/159.png", "kt_160":"aru/160.png", "kt_161":"aru/161.png", "kt_162":"aru/162.png", "kt_163":"aru/163.png", "kt_164":"aru/164.png",
 		        
-		    } 
-	});
+		    }
+    });
 	if(window.location.hash){
 		var checkExist = setInterval(function() {
 		   if ($(window.location.hash).length) {
@@ -1738,82 +2030,108 @@ public class AbstractFactoryPatternDemo {
 		}, 100);
 	}
 </script>
-		
-
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
-    <div class="social-container">
-        
-            
-                <a href="https://github.com/kily-007" target="_blank">
-                    <i class="fab fa-github gt-c-content-color-first"></i>
-                </a>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
+                                                    
+            </div>
     </div>
-    <div class="footer-info">
-        <div>
-	<a href="https://www.zyglz.com"> © 资源管理站</a>
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_site_uv" style='display:none'>访客人数：<span id="busuanzi_value_site_uv"></span>人</span>
-	<span id="busuanzi_container_site_pv" style='display:none'>总访问量：<span id="busuanzi_value_site_pv"></span>次</span>
-</div>
     </div>
-	
-    <!--<div>
-        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://kily-007.github.io//atom.xml" target="_blank">RSS</a></a>
     </div>
-	-->
-	<span id="sitetime"></span>
-	
-</div>
-
-<script>
-    hljs.initHighlightingOnLoad()
-</script>
-<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-
-
-<script language=javascript>
-    function siteTime(){
-        window.setTimeout("siteTime()", 1000);
-        var seconds = 1000;
-        var minutes = seconds * 60;
-        var hours = minutes * 60;
-        var days = hours * 24;
-        var years = days * 365;
-        var today = new Date();
-        var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth()+1;
-        var todayDate = today.getDate();
-        var todayHour = today.getHours();
-        var todayMinute = today.getMinutes();
-        var todaySecond = today.getSeconds();
-        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
-        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
-        var diff = t2-t1;
-        var diffYears = Math.floor(diff/years);
-        var diffDays = Math.floor((diff/days)-diffYears*365);
-        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
-        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
-        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
-    }
-    siteTime();
-</script>
-    </div>
-</div>
-</div>
+    
+        <footer id="footer" class="footer">
+            <div class="copyright">
+                
+                        
+                            
+                                <b id="hitokoto"></b><br>
+                                
+                                        <svg viewBox="0 0 1024 1024" style="margin-left: 5px;margin-right: 5px;" version="1.0" width="8" height="8" class="my-face">
+            <path
+                d="M863.597631 513.574282l-271.33965-140.213484L729.783667 81.926656c3.583731-7.87141 7.167462-15.742819 7.167462-25.214109C736.887134 25.226908 708.345275 0.012799 672.635953 0.012799a63.611229 63.611229 0 0 0-39.293053 12.607055c-1.791866 1.59988-3.519736 3.19976-5.311602 3.19976L147.87531 418.925381a55.547834 55.547834 0 0 0-19.646527 47.356448c1.791866 17.278704 14.27093 33.021523 32.125591 42.492813l271.33965 141.749369L292.504463 945.221908c-12.479064 25.214109-1.791866 53.563983 23.166262 69.306802 10.751194 6.335525 23.230258 9.47129 35.709322 9.47129 16.062795 0 32.125591-4.735645 44.604655-15.742819l480.091993-403.297753a55.547834 55.547834 0 0 0 19.646526-47.228458 61.243407 61.243407 0 0 0-32.12559-44.156688z"
+                fill="#93b5cf"></path>
+        </svg>
+										<a href="https://kily-007.github.io/">
+										    kily007
+										</a>
+										  &copy;Copyright
+                                            <script>
+                                                var date = new Date();
+                                                document.write("" + date.getFullYear());
+                                            </script>
+                                            | Powered by
+                                            <a href="https://gridea.dev/" target="_blank">
+                                                Gridea
+                                            </a>
+											 Themme by
+											<a href="https://github.com/ITJoker233/Gridea-theme-Chic">
+											    Chic
+											</a>
+											<br/>
+											<span id="sitetime"></span>
+											<script>
+											    function siteTime(){
+											        window.setTimeout("siteTime()", 1000);
+											        var seconds = 1000;
+											        var minutes = seconds * 60;
+											        var hours = minutes * 60;
+											        var days = hours * 24;
+											        var years = days * 365;
+											        var today = new Date();
+											        var todayYear = today.getFullYear();
+											        var todayMonth = today.getMonth()+1;
+											        var todayDate = today.getDate();
+											        var todayHour = today.getHours();
+											        var todayMinute = today.getMinutes();
+											        var todaySecond = today.getSeconds();
+											        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+											        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+											        var diff = t2-t1;
+											        var diffYears = Math.floor(diff/years);
+											        var diffDays = Math.floor((diff/days)-diffYears*365);
+											        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+											        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+											        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+											        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+											    }
+											    siteTime();
+											</script>
+            </div>
+			
+            <div id="update" style="display:none;">
+                off
+            </div>
+			
+			
+            
+                    <script>
+                        var pat = '';
+                        
+                        document.write('<div id="home_path" style="display:none;">' + document.location.protocol + '//' + window.document.location.hostname + pat + '</div>')
+                    </script>
+        </footer>
+        
+            <script src='https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js'></script>
+            
+                <script>
+                    
+                    
+                    loadlive2d();
+                    
+                    
+                    hitokoto();
+                    
+                    getStar();
+                    hljs.initHighlighting();
+                    console.clear();
+                    
+                    var newDate = new Date();
+                    newDate.setTime(1591624085232);
+                    console.log(" Blog Update Time: " + newDate.toLocaleDateString());
+                    console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
+                </script>
+                
+        </div>
 </body>
+<script>
+    scroll();
+</script>
+
 </html>

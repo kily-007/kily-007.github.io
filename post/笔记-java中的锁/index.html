@@ -1,157 +1,229 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8"/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>笔记-java中的锁 | kily007</title>
-<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591591158785">
-<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
-<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="utf-8" />
+<title>
+    kily007
+</title>
+<!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script><![endif]-->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<meta name="author" content="kily007">
+<meta name="description" content="我们虽然距离很远很远，非常非常的远，但是思念或许真的可以穿越时间和距离。">
+<meta name="keywords" content="java,sql,大数据,笔记,c/c++,嵌入式">
+<script async src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/css/style.min.css" />
+<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css" />
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/tocbot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/icon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@1.0.12/CDN/js/Card/prism.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@1.0.12/CDN/css/Card/prism.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js"></script>
 
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
-
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?3aca18fa9f3a7e31f0ce64c09c9e5165";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-</head>
-<body>
-<div class="main gt-bg-theme-color-first">
-<div class="main-content">
-    <nav class="navbar navbar-expand-lg" style="background:url('https://i.loli.net/2020/06/03/iefPOosqRFHKpWr.png');background-repeat: no-repeat;height: 100%;width:100%;">
-	
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="position: fixed;top:0px;left:0px;float:inherit;background-color:#F5F5F5;height:50px;width:100%;z-index:99;"> 
-			<div class="nav-item navbar-brand">
-			    <a href="/"><img class="user-avatar" src="/images/avatar.png" alt="头像"></a>
-			    <a href="/"><div class="site-name"> kily007</div></a>
-			</div>
+    <!--点击特效-->
+    <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@latest/CDN/js/love.min.js"></script>
+    
+            <!--CDN样式-->
+            <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@latest/CDN/js/hit-kounter-lc-0.3.0.js"></script>
+            <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
             
-                <div class="nav-item" >
+                <script>
+                    (function() {
+                        var bp = document.createElement('script');
+                        var curProtocol = window.location.protocol.split(':')[0];
+                        if (curProtocol === 'https') {
+                            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                        } else {
+                            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                        }
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(bp, s);
+                    })();
+                </script>
+                
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <a href="https://kily-007.github.io/">
+                    kily007
+                </a>
+            </div>
+
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/">
+                        首页
+                    </a>
                     
-                        <a href="/" class="menu gt-a-links">
+                    <a class="menu-item" href="/post/about">
+                        关于
+                    </a>
+                    
+                    <a class="menu-item" href="/archives">
+                        归档
+                    </a>
+                    
+                    <a class="menu-item" href="/tags">
+                        标签
+                    </a>
+                    
+                    <a class="menu-item" href="/friends">
+                        邻居
+                    </a>
+                    
+                    <a class="menu-item" href="/message">
+                        留言
+                    </a>
+                    
+                    <a class="menu-item" href="/life">
+                        生活
+                    </a>
+                    
+                    <a class="menu-item" href="/more">
+                        更多
+                    </a>
+                    
+                        <input id="switch_default" type="checkbox" class="switch_default">
+                        <label for="switch_default" class="toggleBtn"></label>
+            </div>
+            <form id="gridea-search-form" data-update="1591624085232" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
+            </form>
+        </div>
+    </nav>
+
+    
+        <nav class="navbar-mobile" id="nav-mobile">
+            <div class="container">
+                <div class="navbar-header">
+                    <div>
+                        <a href="https://kily-007.github.io/">
+                            kily007
+                        </a>
+                        <!--en-->
+                        <a id="mobile-toggle-theme-en" class="a en">&nbsp;Dark</a>
+                        <!--zh-->
+                        <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
+                    </div>
+                    <form id="gridea-search-form" data-update="1591624085232" action="/search/index.html">
+                        <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
+                    </form>
+                    <!--en-->
+                    <div class="menu-toggle" id="menu-toggle-en" onclick="mobileBtn()">&#9776; Menu</div>
+                    <!--zh-->
+                    <div class="menu-toggle" id="menu-toggle-zh" onclick="mobileBtn()">&#9776; &#x83DC;&#x5355;</div>
+
+                </div>
+                <div class="menu" id="mobile-menu">
+                    
+                        <a class="menu-item" href="/">
                             首页
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/post/about" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/post/about">
                             关于
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/archives" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/archives">
                             归档
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/tags" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/tags">
                             标签
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/neighbor" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/friends">
                             邻居
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/message" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/message">
                             留言
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/life" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/life">
                             生活
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/more" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/more">
                             更多
                         </a>
-                    
+                        
                 </div>
-            
-			<!--下拉菜单-->
-			<div class="nav-item">
-			    <a href="#" class="dropbtn">下拉菜单</a>
-				<div class="dropdown-content">
-					<a href="#">链接 1</a>
-					<a href="#">链接 2</a>
-					<a href="#">链接 3</a>
-				</div>
-			</div>
-        </div>
-    </div>
-</nav>
-    <div class="post-container">
-        <div class="post-detail gt-bg-theme-color-second">
-            <article class="gt-post-content">
-                <h2 class="post-title">
-                    笔记-java中的锁
-                </h2>
-                <div class="post-info">
-                    <time class="post-time gt-c-content-color-first">
-                        · 2019-08-22 ·
-                    </time>
-                    
-                        <a href="https://kily-007.github.io/tag/X9csAdBxte/" class="post-tags">
-                            # java
-                        </a>
-                    
-                </div>
-                <div class="post-content">
-                    <h1 id="笔记-java中的锁">笔记-java中的锁</h1>
+            </div>
+        </nav>
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementById("menu-toggle-en");
+        var toggleMenu_zh = document.getElementById("menu-toggle-zh");
+
+        var mobileMenu = document.getElementById("mobile-menu");
+        if (toggleMenu.display != "none") {
+            if (toggleMenu.classList.contains("active")) {
+                toggleMenu.classList.remove("active")
+                mobileMenu.classList.remove("active")
+            } else {
+                toggleMenu.classList.add("active")
+                mobileMenu.classList.add("active")
+            }
+        } else if (toggleMenu_zh.display != "none") {
+            if (toggleMenu_zh.classList.contains("active")) {
+                toggleMenu_zh.classList.remove("active")
+                mobileMenu.classList.remove("active")
+            } else {
+                toggleMenu_zh.classList.add("active")
+                mobileMenu.classList.add("active")
+            }
+        }
+
+    }
+</script>
+            <div class="main">
+                <div class="container">
+                    <article class="post-wrap">
+                        <header class="post-header">
+                            <h1 class="post-title">
+                                笔记-java中的锁
+                            </h1>
+                            
+                                    <!--zh-->
+                                    <div class="post-meta zh">
+                                        &#x4F5C;&#x8005;:
+                                        <a itemprop="author" rel="author" href="/">
+                                            kily007
+                                        </a>
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-08-22</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
+                                    href="#">6.2
+                                    &#x5206;&#x949F;</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">1786</a></span>
+                                        
+                                            <span class="post-category">&#x5206;&#x7C7B;:
+                                
+                                <a href="https://kily-007.github.io/tag/X9csAdBxte/">java</a>
+                                
+                            </span>
+                                            
+                                                阅读量:
+                                                <span data-hk-page="current"> - </span>
+                                                
+                                    </div>
+                                    
+                        </header>
+                        
+                        <div class="post-content">
+                            <h1 id="笔记-java中的锁">笔记-java中的锁</h1>
 <h2 id="java对象">java对象</h2>
 <p>java对象=对象头+实例数据+对其填充</p>
 <!--more-->
@@ -231,29 +303,129 @@ var _hmt = _hmt || [];
 <h2 id="重量级锁">重量级锁</h2>
 <p><strong>重量级锁</strong>是指当锁为轻量级锁时，另一个线程虽是自旋，自旋一定的次数任然未获得锁就会进入阻塞，该锁膨胀为重量级锁。重量级锁会让其它线程阻塞，降低性能。</p>
 
+                        </div>
+                        
+                            <div class="post-toc">
+                                <ul class="markdownIt-TOC">
+<li><a href="#%E7%AC%94%E8%AE%B0-java%E4%B8%AD%E7%9A%84%E9%94%81">笔记-java中的锁</a>
+<ul>
+<li><a href="#java%E5%AF%B9%E8%B1%A1">java对象</a>
+<ul>
+<li><a href="#java%E5%AF%B9%E8%B1%A1%E5%A4%B4">java对象头</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E5%A4%B4%E7%9A%84%E7%BB%84%E6%88%90">对象头的组成</a>
+<ul>
+<li><a href="#mark-word">Mark Word</a></li>
+<li><a href="#class-pointer">class pointer</a></li>
+<li><a href="#array-length">array length</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</li>
+<li><a href="#%E8%87%AA%E6%97%8B%E9%94%81">自旋锁</a></li>
+<li><a href="#%E5%81%8F%E5%90%91%E9%94%81">偏向锁</a></li>
+<li><a href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81">轻量级锁</a></li>
+<li><a href="#%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81">重量级锁</a></li>
+</ul>
+</li>
+</ul>
+
+                            </div>
+                            
+                                
+                                    
+                                            <!--zh-->
+                                            <section class="post-copyright zh">
+                                                <p class="copyright-item ">
+                                                    <span>&#x4F5C;&#x8005;:</span>
+                                                    <span>kily007</span>
+                                                </p>
+
+                                                <p class="copyright-item">
+                                                    <span>&#x6C38;&#x4E45;&#x94FE;&#x63A5;:</span>
+                                                    <span><a href="https://kily-007.github.io/post/笔记-java中的锁/">https://kily-007.github.io/post/笔记-java中的锁/</a></span>
+                                                </p>
+
+                                                <p class="copyright-item">
+                                                    <span>&#x534F;&#x8BAE;:</span>
+                                                    <span>MIT License</span>
+                                                </p>
+                                            </section>
+                                            
+                                                
+                                                    
+                                                                    <!--Share-->
+                                                                    <span style="margin-right:15px">
+                        <i class="post-share"></i>
+                        <span>&#x5206;&#x4EAB;:</span>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/笔记-java中的锁/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/笔记-java中的锁/&sharesource=qzone&title=笔记-java中的锁&pics=https://kily-007.github.io//images/avatar.png?v=1591624085232&summary=&lt;h1 id=&#34;笔记-java中的锁&#34;&gt;笔记-java中的锁&lt;/h1&gt;
+&lt;h2 id=&#34;java对象&#34;&gt;java对象&lt;/h2&gt;
+&lt;p&gt;java对象=对象头+实例数据+对其填充&lt;/p&gt;
+"><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/笔记-java中的锁/&sharesource=weibo&title=笔记-java中的锁 + " - " + &lt;h1 id=&#34;笔记-java中的锁&#34;&gt;笔记-java中的锁&lt;/h1&gt;
+&lt;h2 id=&#34;java对象&#34;&gt;java对象&lt;/h2&gt;
+&lt;p&gt;java对象=对象头+实例数据+对其填充&lt;/p&gt;
+&pic="https://kily-007.github.io//images/avatar.png?v=1591624085232 "><i class="fa fa-weibo "></i></a>
+
+                                                                    </span>
+                                                                    
+                                                                        <div class="reward ">
+                                                                            <div class="reward-button ">&yen;
+                                                                                <span class="reward-code "> 
+                        <span class="alipay-code "> <img class="alipay-img " alt = "support " src="https://blog.itjoker.cn/alipay.jpg"><b>支付宝</b> </span>
+                                                                                <span class="wechat-code "> <img alt ="support " class="wechat-img " src="https://blog.itjoker.cn/wechat.jpg"><b>微信</b> </span> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                            <!--zh-->
+                                                                            <section class="post-tags zh ">
+                                                                                <div>
+                                                                                    <span>&#x6807;&#x7B7E;:</span>
+                                                                                    <span class="tag ">
+                        
+                        
+                        <a href="https://kily-007.github.io/tag/X9csAdBxte/">#
+                    java
+                        </a>
+                        
+                            
+                                </span>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <a href="javascript:window.history.back();">
+                        &#x8FD4;&#x56DE;</a>
+                                                                                    <span>&dot;</span>
+                                                                                    <a href="#">&#x4E3B;&#x9875;</a>
+                                                                                </div>
+                                                                            </section>
+
+                                                                            
+                                                                                <!---->
+                                                                                <section class="post-nav">
+                                                                                    
+                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/笔记-集群搭建记录/">
+                                                                                            集群搭建记录
+                                                                                        </a>
+                                                                                        
+                                                                                            
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/拼多多二面/">
+                                                                                                    拼多多二面
+                                                                                                </a>
+                                                                                                
+                                                                                </section>
+                    </article>
                 </div>
-            </article>
-        </div>
-
-        
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://kily-007.github.io/post/拼多多二面/" class="post-title gt-a-link">
-                    拼多多二面
-                </a>
-            </div>
-        
-
-        
-		
-		
-			<script src='https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js'></script>
+                
+                                            
+                                                <script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
 
 <style>
 	#vcomments{
-		width:100%;
-		max-width: 1000px;
-		padding: 2.5%
+		width: 100%;
+		max-width: 885px;
+		padding: 3.5%;
+		margin: 0 auto
 	}
 	#veditor {
 		background-image: url(https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp);
@@ -289,17 +461,18 @@ var _hmt = _hmt || [];
 </style>
 
 
-	<div id="vcomments"></div>
-
+<div id="vcomments"></div>
 <script>
-	new Valine({
-		el: '#vcomments',
-		appId: 'OVKyeagFOYYOdHhJ9o8IlG8F-MdYXbMMI',
-		appKey: 'di3dFnzxMfpcwn8BBlVzR6u7',
-		avatar: 'monsterid',
-		pageSize: 10,
-		recordIp: true,
-		placeholder: '来撒，留个言',
+    new Valine({
+        el: '#vcomments',
+        appId: 'OVKyeagFOYYOdHhJ9o8IlG8F-MdYXbMMI',
+        appKey: 'di3dFnzxMfpcwn8BBlVzR6u7',
+        pageSize: 10,
+        avatar: 'mp',
+        placeholder: '来都来了，不妨评论一下',
+        visitor: true,
+        highlight: true,
+        recordIP: true,
 		tagMeta: ["博主","大佬","访客"],
 		master: '7e3f9cfbe88820b9f4ae2e4857e69e26',
 		friends: ["48c8f1e79dd340e4b247820fee013082"],
@@ -350,8 +523,8 @@ var _hmt = _hmt || [];
 		                                "kt_150":"aru/150.png", "kt_151":"aru/151.png", "kt_152":"aru/152.png", "kt_153":"aru/153.png", "kt_154":"aru/154.png", "kt_155":"aru/155.png", "kt_156":"aru/156.png", "1kt_57":"aru/157.png", "kt_158":"aru/158.png",
 		                                "kt_159":"aru/159.png", "kt_160":"aru/160.png", "kt_161":"aru/161.png", "kt_162":"aru/162.png", "kt_163":"aru/163.png", "kt_164":"aru/164.png",
 		        
-		    } 
-	});
+		    }
+    });
 	if(window.location.hash){
 		var checkExist = setInterval(function() {
 		   if ($(window.location.hash).length) {
@@ -361,82 +534,108 @@ var _hmt = _hmt || [];
 		}, 100);
 	}
 </script>
-		
-
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
-    <div class="social-container">
-        
-            
-                <a href="https://github.com/kily-007" target="_blank">
-                    <i class="fab fa-github gt-c-content-color-first"></i>
-                </a>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
+                                                    
+            </div>
     </div>
-    <div class="footer-info">
-        <div>
-	<a href="https://www.zyglz.com"> © 资源管理站</a>
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_site_uv" style='display:none'>访客人数：<span id="busuanzi_value_site_uv"></span>人</span>
-	<span id="busuanzi_container_site_pv" style='display:none'>总访问量：<span id="busuanzi_value_site_pv"></span>次</span>
-</div>
     </div>
-	
-    <!--<div>
-        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://kily-007.github.io//atom.xml" target="_blank">RSS</a></a>
     </div>
-	-->
-	<span id="sitetime"></span>
-	
-</div>
-
-<script>
-    hljs.initHighlightingOnLoad()
-</script>
-<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-
-
-<script language=javascript>
-    function siteTime(){
-        window.setTimeout("siteTime()", 1000);
-        var seconds = 1000;
-        var minutes = seconds * 60;
-        var hours = minutes * 60;
-        var days = hours * 24;
-        var years = days * 365;
-        var today = new Date();
-        var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth()+1;
-        var todayDate = today.getDate();
-        var todayHour = today.getHours();
-        var todayMinute = today.getMinutes();
-        var todaySecond = today.getSeconds();
-        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
-        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
-        var diff = t2-t1;
-        var diffYears = Math.floor(diff/years);
-        var diffDays = Math.floor((diff/days)-diffYears*365);
-        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
-        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
-        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
-    }
-    siteTime();
-</script>
-    </div>
-</div>
-</div>
+    
+        <footer id="footer" class="footer">
+            <div class="copyright">
+                
+                        
+                            
+                                <b id="hitokoto"></b><br>
+                                
+                                        <svg viewBox="0 0 1024 1024" style="margin-left: 5px;margin-right: 5px;" version="1.0" width="8" height="8" class="my-face">
+            <path
+                d="M863.597631 513.574282l-271.33965-140.213484L729.783667 81.926656c3.583731-7.87141 7.167462-15.742819 7.167462-25.214109C736.887134 25.226908 708.345275 0.012799 672.635953 0.012799a63.611229 63.611229 0 0 0-39.293053 12.607055c-1.791866 1.59988-3.519736 3.19976-5.311602 3.19976L147.87531 418.925381a55.547834 55.547834 0 0 0-19.646527 47.356448c1.791866 17.278704 14.27093 33.021523 32.125591 42.492813l271.33965 141.749369L292.504463 945.221908c-12.479064 25.214109-1.791866 53.563983 23.166262 69.306802 10.751194 6.335525 23.230258 9.47129 35.709322 9.47129 16.062795 0 32.125591-4.735645 44.604655-15.742819l480.091993-403.297753a55.547834 55.547834 0 0 0 19.646526-47.228458 61.243407 61.243407 0 0 0-32.12559-44.156688z"
+                fill="#93b5cf"></path>
+        </svg>
+										<a href="https://kily-007.github.io/">
+										    kily007
+										</a>
+										  &copy;Copyright
+                                            <script>
+                                                var date = new Date();
+                                                document.write("" + date.getFullYear());
+                                            </script>
+                                            | Powered by
+                                            <a href="https://gridea.dev/" target="_blank">
+                                                Gridea
+                                            </a>
+											 Themme by
+											<a href="https://github.com/ITJoker233/Gridea-theme-Chic">
+											    Chic
+											</a>
+											<br/>
+											<span id="sitetime"></span>
+											<script>
+											    function siteTime(){
+											        window.setTimeout("siteTime()", 1000);
+											        var seconds = 1000;
+											        var minutes = seconds * 60;
+											        var hours = minutes * 60;
+											        var days = hours * 24;
+											        var years = days * 365;
+											        var today = new Date();
+											        var todayYear = today.getFullYear();
+											        var todayMonth = today.getMonth()+1;
+											        var todayDate = today.getDate();
+											        var todayHour = today.getHours();
+											        var todayMinute = today.getMinutes();
+											        var todaySecond = today.getSeconds();
+											        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+											        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+											        var diff = t2-t1;
+											        var diffYears = Math.floor(diff/years);
+											        var diffDays = Math.floor((diff/days)-diffYears*365);
+											        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+											        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+											        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+											        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+											    }
+											    siteTime();
+											</script>
+            </div>
+			
+            <div id="update" style="display:none;">
+                off
+            </div>
+			
+			
+            
+                    <script>
+                        var pat = '';
+                        
+                        document.write('<div id="home_path" style="display:none;">' + document.location.protocol + '//' + window.document.location.hostname + pat + '</div>')
+                    </script>
+        </footer>
+        
+            <script src='https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js'></script>
+            
+                <script>
+                    
+                    
+                    loadlive2d();
+                    
+                    
+                    hitokoto();
+                    
+                    getStar();
+                    hljs.initHighlighting();
+                    console.clear();
+                    
+                    var newDate = new Date();
+                    newDate.setTime(1591624085232);
+                    console.log(" Blog Update Time: " + newDate.toLocaleDateString());
+                    console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
+                </script>
+                
+        </div>
 </body>
+<script>
+    scroll();
+</script>
+
 </html>

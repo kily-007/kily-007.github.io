@@ -1,347 +1,348 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8"/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>springboot | kily007</title>
-<link rel="shortcut icon" href="https://kily-007.github.io//favicon.ico?v=1591591158785">
-<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
-<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="utf-8" />
+<title>
+    kily007
+</title>
+<!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script><![endif]-->
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<meta name="author" content="kily007">
+<meta name="description" content="我们虽然距离很远很远，非常非常的远，但是思念或许真的可以穿越时间和距离。">
+<meta name="keywords" content="java,sql,大数据,笔记,c/c++,嵌入式">
+<script async src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/css/style.min.css" />
+<link rel="stylesheet" href="https://kily-007.github.io//styles/main.css" />
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/tocbot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/script.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/icon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@1.0.12/CDN/js/Card/prism.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@1.0.12/CDN/css/Card/prism.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js"></script>
 
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
-
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?3aca18fa9f3a7e31f0ce64c09c9e5165";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-</head>
-<body>
-<div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg" style="background:url('https://i.loli.net/2020/06/03/iefPOosqRFHKpWr.png');background-repeat: no-repeat;height: 100%;width:100%;">
-	
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="position: fixed;top:0px;left:0px;float:inherit;background-color:#F5F5F5;height:50px;width:100%;z-index:99;"> 
-			<div class="nav-item navbar-brand">
-			    <a href="/"><img class="user-avatar" src="/images/avatar.png" alt="头像"></a>
-			    <a href="/"><div class="site-name"> kily007</div></a>
-			</div>
+    <!--点击特效-->
+    <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@latest/CDN/js/love.min.js"></script>
+    
+            <!--CDN样式-->
+            <script src="https://cdn.jsdelivr.net/gh/ITJoker233/ITJoker233.github.io@latest/CDN/js/hit-kounter-lc-0.3.0.js"></script>
+            <script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
             
-                <div class="nav-item" >
+                <script>
+                    (function() {
+                        var bp = document.createElement('script');
+                        var curProtocol = window.location.protocol.split(':')[0];
+                        if (curProtocol === 'https') {
+                            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                        } else {
+                            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                        }
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(bp, s);
+                    })();
+                </script>
+                
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <a href="https://kily-007.github.io/">
+                    kily007
+                </a>
+            </div>
+
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/">
+                        首页
+                    </a>
                     
-                        <a href="/" class="menu gt-a-links">
+                    <a class="menu-item" href="/post/about">
+                        关于
+                    </a>
+                    
+                    <a class="menu-item" href="/archives">
+                        归档
+                    </a>
+                    
+                    <a class="menu-item" href="/tags">
+                        标签
+                    </a>
+                    
+                    <a class="menu-item" href="/friends">
+                        邻居
+                    </a>
+                    
+                    <a class="menu-item" href="/message">
+                        留言
+                    </a>
+                    
+                    <a class="menu-item" href="/life">
+                        生活
+                    </a>
+                    
+                    <a class="menu-item" href="/more">
+                        更多
+                    </a>
+                    
+                        <input id="switch_default" type="checkbox" class="switch_default">
+                        <label for="switch_default" class="toggleBtn"></label>
+            </div>
+            <form id="gridea-search-form" data-update="1591624085232" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
+            </form>
+        </div>
+    </nav>
+
+    
+        <nav class="navbar-mobile" id="nav-mobile">
+            <div class="container">
+                <div class="navbar-header">
+                    <div>
+                        <a href="https://kily-007.github.io/">
+                            kily007
+                        </a>
+                        <!--en-->
+                        <a id="mobile-toggle-theme-en" class="a en">&nbsp;Dark</a>
+                        <!--zh-->
+                        <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
+                    </div>
+                    <form id="gridea-search-form" data-update="1591624085232" action="/search/index.html">
+                        <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
+                    </form>
+                    <!--en-->
+                    <div class="menu-toggle" id="menu-toggle-en" onclick="mobileBtn()">&#9776; Menu</div>
+                    <!--zh-->
+                    <div class="menu-toggle" id="menu-toggle-zh" onclick="mobileBtn()">&#9776; &#x83DC;&#x5355;</div>
+
+                </div>
+                <div class="menu" id="mobile-menu">
+                    
+                        <a class="menu-item" href="/">
                             首页
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/post/about" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/post/about">
                             关于
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/archives" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/archives">
                             归档
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/tags" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/tags">
                             标签
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/neighbor" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/friends">
                             邻居
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/message" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/message">
                             留言
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/life" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/life">
                             生活
                         </a>
-                    
-                </div>
-            
-                <div class="nav-item" >
-                    
-                        <a href="/more" class="menu gt-a-links">
+                        
+                        <a class="menu-item" href="/more">
                             更多
                         </a>
-                    
+                        
                 </div>
-            
-			<!--下拉菜单-->
-			<div class="nav-item">
-			    <a href="#" class="dropbtn">下拉菜单</a>
-				<div class="dropdown-content">
-					<a href="#">链接 1</a>
-					<a href="#">链接 2</a>
-					<a href="#">链接 3</a>
-				</div>
-			</div>
-        </div>
-    </div>
-</nav>
-        <div class="current-tag-container">
-            <h2 class="title gt-c-content-color-first" style="margin-top: 24px;font-size: 30px;">
-                #springboot
-            </h2>
-        </div>
-        <div class="post-list-container">
-    <div class="post-inner">
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://kily-007.github.io/post/springboot数据库访问/">
-                            <span class="post-title gt-c-content-color-first">springboot数据库访问</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        <p>使用jpa(JpaRepository)方式连接访问数据库</p>
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2019-12-03 ·
-                        </time>
-                        
-                            <a href="https://kily-007.github.io/tag/mG8__WuXj/" class="post-tag">
-                                # springboot
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://kily-007.github.io/post/springboot数据库访问/" class="post-feature-image"
-                       style="background-image: url('https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/springboot%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5.png')">
-                    </a>
-                
             </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://kily-007.github.io/post/springboot之JpaRepository查询列名错误/">
-                            <span class="post-title gt-c-content-color-first">springboot之JpaRepository查询列名错误</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        <p>记录一次报错。<br>
-java.sql.SQLSyntaxErrorException: Unknown column 'subwaycoun0_.pass_num1' in 'field list'<br>
-at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.18.jar:8.0.18]<br>
-at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.18.jar:8.0.18]</p>
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2019-11-25 ·
-                        </time>
-                        
-                            <a href="https://kily-007.github.io/tag/mG8__WuXj/" class="post-tag">
-                                # springboot
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://kily-007.github.io/post/springboot之JpaRepository查询列名错误/" class="post-feature-image"
-                       style="background-image: url('https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95%E6%8A%A5%E9%94%99.png')">
-                    </a>
-                
-            </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://kily-007.github.io/post/前端框架layui/">
-                            <span class="post-title gt-c-content-color-first">前端框架layui</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        <figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui1.png" alt="" loading="lazy"></figure>
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2019-11-10 ·
-                        </time>
-                        
-                            <a href="https://kily-007.github.io/tag/mG8__WuXj/" class="post-tag">
-                                # springboot
-                            </a>
-                        
-                    </div>
-                </div>
-                
-            </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://kily-007.github.io/post/springboot/">
-                            <span class="post-title gt-c-content-color-first">springboot</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        <h1 id="springboot项目结构">springboot项目结构：</h1>
-<pre><code>controller:控制器层，导入service层，调用service方法；通过接受前端传过来的参数进行业务操作，再返回一个指定的路径或数据表
-bean/entity/model:实体类，映射数据库中的字段
-mapper/dao:放的是对数据库的操作，如CRUD
-service:业务层，存放业务逻辑处理；不直接对数据库进行操作，有接口和接口实现类；提供controller层调用的方法
-</code></pre>
-
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2019-11-02 ·
-                        </time>
-                        
-                            <a href="https://kily-007.github.io/tag/mG8__WuXj/" class="post-tag">
-                                # springboot
-                            </a>
-                        
-                    </div>
-                </div>
-                
-            </div>
-        
-    </div>
-	
-</div>
-        <div class="pagination-container">
-    
-    
-</div>
-
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">啦啦啦，我是卖报的小行家...</div>
-    <div class="social-container">
-        
-            
-                <a href="https://github.com/kily-007" target="_blank">
-                    <i class="fab fa-github gt-c-content-color-first"></i>
-                </a>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    </div>
-    <div class="footer-info">
-        <div>
-	<a href="https://www.zyglz.com"> © 资源管理站</a>
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<span id="busuanzi_container_site_uv" style='display:none'>访客人数：<span id="busuanzi_value_site_uv"></span>人</span>
-	<span id="busuanzi_container_site_pv" style='display:none'>总访问量：<span id="busuanzi_value_site_pv"></span>次</span>
-</div>
-    </div>
-	
-    <!--<div>
-        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://kily-007.github.io//atom.xml" target="_blank">RSS</a></a>
-    </div>
-	-->
-	<span id="sitetime"></span>
-	
-</div>
-
+        </nav>
+</header>
 <script>
-    hljs.initHighlightingOnLoad()
-</script>
-<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementById("menu-toggle-en");
+        var toggleMenu_zh = document.getElementById("menu-toggle-zh");
 
+        var mobileMenu = document.getElementById("mobile-menu");
+        if (toggleMenu.display != "none") {
+            if (toggleMenu.classList.contains("active")) {
+                toggleMenu.classList.remove("active")
+                mobileMenu.classList.remove("active")
+            } else {
+                toggleMenu.classList.add("active")
+                mobileMenu.classList.add("active")
+            }
+        } else if (toggleMenu_zh.display != "none") {
+            if (toggleMenu_zh.classList.contains("active")) {
+                toggleMenu_zh.classList.remove("active")
+                mobileMenu.classList.remove("active")
+            } else {
+                toggleMenu_zh.classList.add("active")
+                mobileMenu.classList.add("active")
+            }
+        }
 
-<script language=javascript>
-    function siteTime(){
-        window.setTimeout("siteTime()", 1000);
-        var seconds = 1000;
-        var minutes = seconds * 60;
-        var hours = minutes * 60;
-        var days = hours * 24;
-        var years = days * 365;
-        var today = new Date();
-        var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth()+1;
-        var todayDate = today.getDate();
-        var todayHour = today.getHours();
-        var todayMinute = today.getMinutes();
-        var todaySecond = today.getSeconds();
-        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
-        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
-        var diff = t2-t1;
-        var diffYears = Math.floor(diff/years);
-        var diffDays = Math.floor((diff/days)-diffYears*365);
-        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
-        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
-        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
     }
-    siteTime();
 </script>
+            <div class="main">
+                <div class="container">
+                    <div class="post-wrap archive">
+                        
+                            
+                                <h3>
+                                    2019
+                                </h3>
+                                
+                                    
+
+                                        <article class="archive-item">
+                                            <a class="archive-item-link" href="https://kily-007.github.io/post/springboot数据库访问/">
+                                                springboot数据库访问
+                                            </a>
+                                            <span class="archive-item-date">2019-12-03 </span>
+                                        </article>
+                                        
+                                            
+                                    
+
+                                        <article class="archive-item">
+                                            <a class="archive-item-link" href="https://kily-007.github.io/post/springboot之JpaRepository查询列名错误/">
+                                                springboot之JpaRepository查询列名错误
+                                            </a>
+                                            <span class="archive-item-date">2019-11-25 </span>
+                                        </article>
+                                        
+                                            
+                                    
+
+                                        <article class="archive-item">
+                                            <a class="archive-item-link" href="https://kily-007.github.io/post/前端框架layui/">
+                                                前端框架layui
+                                            </a>
+                                            <span class="archive-item-date">2019-11-10 </span>
+                                        </article>
+                                        
+                                            
+                                    
+
+                                        <article class="archive-item">
+                                            <a class="archive-item-link" href="https://kily-007.github.io/post/springboot/">
+                                                springboot
+                                            </a>
+                                            <span class="archive-item-date">2019-11-02 </span>
+                                        </article>
+                                        
+                                            
+                                                
+                    </div>
+                    <div class="pagination-container">
+                        
+                            
+                                    
+                                            
+                    </div>
+                </div>
+            </div>
     </div>
-</div>
+    
+        <footer id="footer" class="footer">
+            <div class="copyright">
+                
+                        
+                            
+                                <b id="hitokoto"></b><br>
+                                
+                                        <svg viewBox="0 0 1024 1024" style="margin-left: 5px;margin-right: 5px;" version="1.0" width="8" height="8" class="my-face">
+            <path
+                d="M863.597631 513.574282l-271.33965-140.213484L729.783667 81.926656c3.583731-7.87141 7.167462-15.742819 7.167462-25.214109C736.887134 25.226908 708.345275 0.012799 672.635953 0.012799a63.611229 63.611229 0 0 0-39.293053 12.607055c-1.791866 1.59988-3.519736 3.19976-5.311602 3.19976L147.87531 418.925381a55.547834 55.547834 0 0 0-19.646527 47.356448c1.791866 17.278704 14.27093 33.021523 32.125591 42.492813l271.33965 141.749369L292.504463 945.221908c-12.479064 25.214109-1.791866 53.563983 23.166262 69.306802 10.751194 6.335525 23.230258 9.47129 35.709322 9.47129 16.062795 0 32.125591-4.735645 44.604655-15.742819l480.091993-403.297753a55.547834 55.547834 0 0 0 19.646526-47.228458 61.243407 61.243407 0 0 0-32.12559-44.156688z"
+                fill="#93b5cf"></path>
+        </svg>
+										<a href="https://kily-007.github.io/">
+										    kily007
+										</a>
+										  &copy;Copyright
+                                            <script>
+                                                var date = new Date();
+                                                document.write("" + date.getFullYear());
+                                            </script>
+                                            | Powered by
+                                            <a href="https://gridea.dev/" target="_blank">
+                                                Gridea
+                                            </a>
+											 Themme by
+											<a href="https://github.com/ITJoker233/Gridea-theme-Chic">
+											    Chic
+											</a>
+											<br/>
+											<span id="sitetime"></span>
+											<script>
+											    function siteTime(){
+											        window.setTimeout("siteTime()", 1000);
+											        var seconds = 1000;
+											        var minutes = seconds * 60;
+											        var hours = minutes * 60;
+											        var days = hours * 24;
+											        var years = days * 365;
+											        var today = new Date();
+											        var todayYear = today.getFullYear();
+											        var todayMonth = today.getMonth()+1;
+											        var todayDate = today.getDate();
+											        var todayHour = today.getHours();
+											        var todayMinute = today.getMinutes();
+											        var todaySecond = today.getSeconds();
+											        var t1 = Date.UTC(2019,09,02,21,26,00);  //此处填写建站时间 依次为 年,月,日,时,分,秒注意格式 半角,
+											        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+											        var diff = t2-t1;
+											        var diffYears = Math.floor(diff/years);
+											        var diffDays = Math.floor((diff/days)-diffYears*365);
+											        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+											        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+											        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+											        document.getElementById("sitetime").innerHTML="kily007's blog已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+											    }
+											    siteTime();
+											</script>
+            </div>
+			
+            <div id="update" style="display:none;">
+                off
+            </div>
+			
+			
+            
+                    <script>
+                        var pat = '';
+                        
+                        document.write('<div id="home_path" style="display:none;">' + document.location.protocol + '//' + window.document.location.hostname + pat + '</div>')
+                    </script>
+        </footer>
+        
+            <script src='https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js'></script>
+            
+                <script>
+                    
+                    
+                    loadlive2d();
+                    
+                    
+                    hitokoto();
+                    
+                    getStar();
+                    hljs.initHighlighting();
+                    console.clear();
+                    
+                    var newDate = new Date();
+                    newDate.setTime(1591624085232);
+                    console.log(" Blog Update Time: " + newDate.toLocaleDateString());
+                    console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
+                </script>
+                
+        </div>
 </body>
+
 </html>
