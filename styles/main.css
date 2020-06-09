@@ -1,4 +1,42 @@
 @charset "UTF-8";
+/*header*/
+.navbar .menu {
+  margin: auto;
+}
+.navbar .menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  /* 隐藏默认列表符号*/
+}
+.navbar .menu ul li {
+  height: 26px;
+  line-height: 26px;
+  /*行距*/
+  text-align: center;
+  position: relative;
+  width: 60px;
+  float: left;
+}
+.navbar .menu ul li ul {
+  display: none;
+  /*默认隐藏*/
+  top: 26px;
+  width: 60px;
+  height: 26px;
+}
+.navbar .menu ul li ul li {
+  width: 60px;
+  height: 26px;
+  z-index: 1000;
+}
+.navbar .menu ul li:hover ul {
+  display: block;
+}
+.navbar .menu ul li ul li:hover {
+  display: block;
+  background-color: lightgrey;
+}
 /*Reward*/
 .reward {
   padding: 5px 0;
