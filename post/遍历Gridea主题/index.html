@@ -184,7 +184,7 @@
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title" >
-                                前端框架layui
+                                遍历Gridea主题
                             </h1>
                             
                                     <!--zh-->
@@ -193,15 +193,15 @@
                                         <a itemprop="author" rel="author" href="/">
                                             kily007
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-11-10</a></span>
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-06-09</a></span>
                                         <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
-                                    href="#">3.2
+                                    href="#">0.3
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">658</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">106</a></span>
                                         
                                             <span class="post-category">&#x5206;&#x7C7B;:
                                 
-                                <a href="https://kily-007.github.io/tag/mG8__WuXj/">springboot</a>
+                                <a href="https://kily-007.github.io/tag/MmWls1YQj/">Gridea</a>
                                 
                             </span>
                                             
@@ -213,133 +213,20 @@
                         </header>
                         
                         <div class="post-content">
-                            <figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui1.png" alt="" loading="lazy"></figure>
-<!--more-->
-<p>第一次发现它是同学推荐给我的，发现真的非常方便，layui网址：https://www.layui.com/，下面简单介绍和记录一下。</p>
-<h1 id="准备工作">准备工作</h1>
-<ul>
-<li>将layui下载下来，其中包含css/font/images/lay和layui.js四个文件夹和一个js文件。</li>
-<li>参考官方文档和示例，找你需要的模块。</li>
-</ul>
-<p>下面记录一下几个用过的模块。</p>
-<h1 id="layui后台布局">layui后台布局</h1>
-<figure data-type="image" tabindex="2"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui2.png" alt="" loading="lazy"></figure>
-<p>后台布局的效果如图所示，直接点击获取布局代码幅值过去改下路径就能用。</p>
-<h1 id="layui数据表格">layui数据表格</h1>
-<figure data-type="image" tabindex="3"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui3.png" alt="" loading="lazy"></figure>
-<h1 id="记录一个bug">记录一个bug</h1>
-<p>数据表对应的js代码为：</p>
-<pre><code class="language-js">layui.use('table', function(){
-  var table = layui.table;
-  
-  table.render({
-    elem: '#test'
-    ,url:'/demo/table/user/'
-    ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-    ,cols: [[
-      {field:'id', width:80, title: 'ID', sort: true}
-      ,{field:'username', width:80, title: '用户名'}
-      ,{field:'sex', width:80, title: '性别', sort: true}
-      ,{field:'city', width:80, title: '城市'}
-      ,{field:'sign', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-      ,{field:'experience', title: '积分', sort: true}
-      ,{field:'score', title: '评分', sort: true}
-      ,{field:'classify', title: '职业'}
-      ,{field:'wealth', width:137, title: '财富', sort: true}
-    ]]
-    ,page: true
-    ,response: {
-      statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
-    }
-    ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据
-      return {
-        &quot;code&quot;: res.status, //解析接口状态
-        &quot;msg&quot;: res.message, //解析提示文本
-        &quot;count&quot;: res.total, //解析数据长度
-        &quot;data&quot;: res.data.content //解析数据列表
-      };
-    }
-  });
-});
-</code></pre>
-<p>在controller中返回数据结构类为：</p>
-<pre><code class="language-java">package com.example.springboot.utils;
-
-public class LayuiTableResultUtil&lt;T&gt; {
-    private T data;
-    private String msg;
-    private int code;
-    private Long count;
-
-    public LayuiTableResultUtil(int code,String msg, Long count, T data) {
-        this.msg = msg;
-        this.data = data;
-        this.code = code;
-        this.count = count;
-    }
-
-    @Override
-    public String toString() {
-        return &quot;LayuiTableResult [msg=&quot; + msg + &quot;, data=&quot; + data + &quot;, code=&quot; + code + &quot;, count=&quot; + count + &quot;]&quot;;
-
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public Long getCount() {
-        return count;
-    }
-
-    public void setCount(Long count) {
-        this.count = count;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-}
-
-</code></pre>
-<p>项目启动，返回页面上显示json字符串，无法解析数据；调了三天也没解决，然后换Thymeleaf显示了。</p>
-<pre><code>{
-&quot;code&quot;:0,
-&quot;msg&quot;:&quot;&quot;,
-&quot;count&quot;:100,
-&quot;data&quot;:{&quot;content&quot;:[
-{&quot;id&quot;: 1, &quot;username&quot;: &quot;user1&quot;, &quot;sex&quot;: &quot;女&quot;, &quot;city&quot;: &quot;城市-0&quot;, &quot;sign&quot;: &quot;签名-0&quot;, ...}
-{&quot;id&quot;: 1, &quot;username&quot;: &quot;user1&quot;, &quot;sex&quot;: &quot;女&quot;, &quot;city&quot;: &quot;城市-0&quot;, &quot;sign&quot;: &quot;签名-0&quot;, ...}
-{&quot;id&quot;: 1, &quot;username&quot;: &quot;user1&quot;, &quot;sex&quot;: &quot;女&quot;, &quot;city&quot;: &quot;城市-0&quot;, &quot;sign&quot;: &quot;签名-0&quot;, ...}
-...
-]}
-}
-</code></pre>
+                            <h2 id="说明">说明</h2>
+<p>Gridea官网的<a href="https://gridea.dev/themes/">主题市场</a>中现在共有27个主题，其中包含3个付费主题和24个免费主题，但是面对猿儿们广大的审美需求，显然是不够用的，经过一波简单的走访，找到了一些其它的开源主题，在这里和大家分享一下，后续遇到好看的主题会在这里持续更新。</p>
+<h2 id="github上的">Github上的</h2>
 
                         </div>
                         
                             <div class="post-toc">
                                 <ul class="markdownIt-TOC">
-<li><a href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a></li>
-<li><a href="#layui%E5%90%8E%E5%8F%B0%E5%B8%83%E5%B1%80">layui后台布局</a></li>
-<li><a href="#layui%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%A0%BC">layui数据表格</a></li>
-<li><a href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAbug">记录一个bug</a></li>
+<li>
+<ul>
+<li><a href="#%E8%AF%B4%E6%98%8E">说明</a></li>
+<li><a href="#github%E4%B8%8A%E7%9A%84">Github上的</a></li>
+</ul>
+</li>
 </ul>
 
                             </div>
@@ -355,7 +242,7 @@ public class LayuiTableResultUtil&lt;T&gt; {
 
                                                 <p class="copyright-item">
                                                     <span>&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://kily-007.github.io/post/前端框架layui/">https://kily-007.github.io/post/前端框架layui/</a></span>
+                                                    <span><a href="https://kily-007.github.io/post/遍历Gridea主题/">https://kily-007.github.io/post/遍历Gridea主题/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -370,11 +257,9 @@ public class LayuiTableResultUtil&lt;T&gt; {
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/前端框架layui/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/前端框架layui/&sharesource=qzone&title=前端框架layui&pics=https://kily-007.github.io//images/avatar.png?v=1591760503970&summary=&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-"><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/前端框架layui/&sharesource=weibo&title=前端框架layui + " - " + &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui1.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&pic="https://kily-007.github.io//images/avatar.png?v=1591760503970 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/遍历Gridea主题/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/遍历Gridea主题/&sharesource=qzone&title=遍历Gridea主题&pics=https://kily-007.github.io//images/avatar.png?v=1591760503970&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/遍历Gridea主题/&sharesource=weibo&title=遍历Gridea主题 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1591760503970 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -393,8 +278,8 @@ public class LayuiTableResultUtil&lt;T&gt; {
                                                                                     <span class="tag ">
                         
                         
-                        <a href="https://kily-007.github.io/tag/mG8__WuXj/">#
-                    springboot
+                        <a href="https://kily-007.github.io/tag/MmWls1YQj/">#
+                    Gridea
                         </a>
                         
                             
@@ -412,13 +297,9 @@ public class LayuiTableResultUtil&lt;T&gt; {
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/springboot之JpaRepository查询列名错误/">
-                                                                                            springboot之JpaRepository查询列名错误
-                                                                                        </a>
-                                                                                        
                                                                                             
-                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/springboot/">
-                                                                                                    springboot
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/笔记-2020-06-08/">
+                                                                                                    笔记-2020-06-08
                                                                                                 </a>
                                                                                                 
                                                                                 </section>
