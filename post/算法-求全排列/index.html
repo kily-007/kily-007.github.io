@@ -90,11 +90,53 @@
 				</ul>
             </div>
 			
-            <form id="gridea-search-form" data-update="1591886818878" action="/search/index.html">
+            <form id="gridea-search-form" data-update="1591886846727" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
             </form>
         </div>
     </nav>
+
+
+<style>
+.box{
+    position:fixed;
+    left:5px;
+    height:712px;
+    width: 60px;    
+    text-align:center;
+    overflow: hidden;
+	background:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/scroll.png) no-repeat;
+	background-size:contain;
+	display:none;
+}
+.box:hover{
+    cursor:pointer;
+}
+</style>
+
+<div id="box" class="box"></div> 
+
+<script>
+var timer  = null;
+box.onclick = function(){
+    cancelAnimationFrame(timer);
+    timer = requestAnimationFrame(function fn(){
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if(oTop > 0){
+            document.body.scrollTop = document.documentElement.scrollTop = oTop - 80;
+            timer = requestAnimationFrame(fn);
+        }else{
+            cancelAnimationFrame(timer);
+        }
+    });
+}
+ $(window).scroll(function(){
+	if($(window).scrollTop()>500){
+		$('#box').fadeIn(500);
+	}
+	 else{$('#box').fadeOut(500);}
+	})
+</script>
 
     
         <nav class="navbar-mobile" id="nav-mobile">
@@ -109,7 +151,7 @@
                         <!--zh-->
                         <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
                     </div>
-                    <form id="gridea-search-form" data-update="1591886818878" action="/search/index.html">
+                    <form id="gridea-search-form" data-update="1591886846727" action="/search/index.html">
                         <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
                     </form>
                     <!--en-->
@@ -173,48 +215,6 @@
         }
 
     }
-</script>
-
-
-<style>
-.box{
-    position:fixed;
-    left:5px;
-    height:712px;
-    width: 60px;    
-    text-align:center;
-    overflow: hidden;
-	background:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/scroll.png) no-repeat;
-	background-size:contain;
-	display:none;
-}
-.box:hover{
-    cursor:pointer;
-}
-</style>
-
-<div id="box" class="box"></div> 
-
-<script>
-var timer  = null;
-box.onclick = function(){
-    cancelAnimationFrame(timer);
-    timer = requestAnimationFrame(function fn(){
-        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
-        if(oTop > 0){
-            document.body.scrollTop = document.documentElement.scrollTop = oTop - 80;
-            timer = requestAnimationFrame(fn);
-        }else{
-            cancelAnimationFrame(timer);
-        }
-    });
-}
- $(window).scroll(function(){
-	if($(window).scrollTop()>500){
-		$('#box').fadeIn(500);
-	}
-	 else{$('#box').fadeOut(500);}
-	})
 </script>
 
             <div class="main">
@@ -349,8 +349,8 @@ box.onclick = function(){
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
                                                                     <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/算法-求全排列/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/算法-求全排列/&sharesource=qzone&title=算法-求全排列&pics=https://kily-007.github.io//images/avatar.png?v=1591886818878&summary="><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/算法-求全排列/&sharesource=weibo&title=算法-求全排列 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1591886818878 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/算法-求全排列/&sharesource=qzone&title=算法-求全排列&pics=https://kily-007.github.io//images/avatar.png?v=1591886846727&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/算法-求全排列/&sharesource=weibo&title=算法-求全排列 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1591886846727 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -611,7 +611,7 @@ box.onclick = function(){
                     console.clear();
                     
                     var newDate = new Date();
-                    newDate.setTime(1591886818878);
+                    newDate.setTime(1591886846727);
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
