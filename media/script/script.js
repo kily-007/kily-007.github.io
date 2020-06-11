@@ -241,6 +241,7 @@ document.ready(
         var mobile_toggle_theme_en = document.getElementById("mobile-toggle-theme-en");
         var mobile_toggle_theme_en_display = getStyle(mobile_toggle_theme_en, 'display');
         var switch_default = document.getElementById("switch_default");
+		
         if (isDark) {
             switch_default.checked = false;
             // mobile

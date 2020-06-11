@@ -84,13 +84,13 @@
 						</ul>
 					</li>
 				<li>
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
+					<input id="switch_default" type="checkbox" class="switch_default">
+					<label for="switch_default" class="toggleBtn"></label>
 				</li>
 				</ul>
             </div>
 			
-            <form id="gridea-search-form" data-update="1591879773190" action="/search/index.html">
+            <form id="gridea-search-form" data-update="1591886598379" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
             </form>
         </div>
@@ -109,7 +109,7 @@
                         <!--zh-->
                         <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
                     </div>
-                    <form id="gridea-search-form" data-update="1591879773190" action="/search/index.html">
+                    <form id="gridea-search-form" data-update="1591886598379" action="/search/index.html">
                         <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
                     </form>
                     <!--en-->
@@ -216,6 +216,7 @@ box.onclick = function(){
 	 else{$('#box').fadeOut(500);}
 	})
 </script>
+
             <div class="main">
                 <div class="container">
                     <article class="post-wrap">
@@ -232,9 +233,9 @@ box.onclick = function(){
                                         </a>
                                         <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-08-07</a></span>
                                         <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
-                                    href="#">79.4
+                                    href="#">79.5
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">21185</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">21198</a></span>
                                         
                                             <span class="post-category">&#x5206;&#x7C7B;:
                                 
@@ -583,41 +584,31 @@ public interface RandomAccess{
 </ul>
 <h3 id="38-atomic原子类">3.8 Atomic原子类</h3>
 <p>并发包java.util.concurrent的原子类都放在java.util.concurrent.atomic下，JUC包中的原子类包含四类：</p>
-<ol>
-<li>
-<h6 id="基本类型使用院子的方式更新基本类型">基本类型：使用院子的方式更新基本类型</h6>
+<h4 id="1-基本类型使用院子的方式更新基本类型">1.  基本类型：使用院子的方式更新基本类型</h4>
 <ul>
 <li>AtomicInteger：整形原子类</li>
 <li>AtomicLong：长整型原子类</li>
 <li>AtomicBoolean：布尔型原子类</li>
 </ul>
-</li>
-<li>
-<h6 id="数组类型使用院子方式是更新数数组里的某个元素">数组类型：使用院子方式是更新数数组里的某个元素</h6>
+<h4 id="2-数组类型使用院子方式是更新数数组里的某个元素">2.  数组类型：使用院子方式是更新数数组里的某个元素</h4>
 <ul>
 <li>AtomicIntegerArray：整形数组原子类</li>
 <li>AtomicLongArray：长整型数组原子类</li>
 <li>AtomicReferenceArray：引用类型数组原子类</li>
 </ul>
-</li>
-<li>
-<h6 id="引用类型">引用类型：</h6>
+<h4 id="3-引用类型">3. 引用类型：</h4>
 <ul>
 <li>AtomicReference：引用类型院子类</li>
 <li>AtomicStampedRerence：原子更新引用类型例的字段原子类</li>
 <li>AtomICMarkableReference：原子更新带有标记的引用类型，例：AtomicReferenceArray<Integer></li>
 </ul>
-</li>
-<li>
-<h6 id="对象的属性修改类型">对象的属性修改类型：</h6>
+<h4 id="4-对象的属性修改类型">4. 对象的属性修改类型：</h4>
 <ul>
 <li>AtomicIntegerFieldUpdater:原子更新整形字段的更新器</li>
 <li>AtomicLongFieldUpdater：原子更新长整形字段的更新器</li>
 <li>AtomicStampedReference ：原子更新带有版本号的引用类型。该类将整数值与引用关联起来，可用于解决原 子的更新数据和数据的版本号，可以解决使用 CAS 进行原子更新时可能出现的 ABA 问题。</li>
 </ul>
-</li>
-<li>
-<h6 id="atomicinter类常用方法">AtomicInter类常用方法</h6>
+<h4 id="5-atomicinter类常用方法">5. AtomicInter类常用方法</h4>
 <pre><code class="language-java">常用方法：
 public final int get() //获取当前的值 
 public final int getAndSet(int newValue)//获取当前的值，并设置新的
@@ -638,16 +629,10 @@ class AtomicIntegerTest {
 	}
 }
 </code></pre>
-</li>
-</ol>
 <h3 id="39-aqs原理">3.9 AQS原理</h3>
-<ol>
-<li>
-<h6 id="简介abstractqueuedsynchronizer">简介（AbstractQueuedSynchronizer）</h6>
+<h4 id="1-简介abstractqueuedsynchronizer">1. 简介（AbstractQueuedSynchronizer）</h4>
 <p>AQS是一个用来构建锁和同步器的框架，使用AQS能简单且高效的构建出应用广泛的大量的同步器，例如ReentrantLock，Semaphore，其他的注入ReentrantReadWriteLock，SynchronousQueue，FutureTask等皆是基于AQS的，利用AQS我们能轻松的构建出符合需求的同步器。</p>
-</li>
-<li>
-<h6 id="原-理">原 理</h6>
+<p>####2. 原 理</p>
 <ul>
 <li>
 <p>AQS的核心思想是，如果被请求的共享资源空闲，则将当前请求资源的线程设置为有效工作线程，并且将共享资源设置为锁定状态。如果被请求的共享资源被占用，那么就需要一套线程阻塞等待以及被唤醒时锁分配的机制，这个机制AQS是用CLH队列锁实现的，即将暂时获取不到锁的线程加入到队列中。</p>
@@ -656,10 +641,6 @@ class AtomicIntegerTest {
 <p>CLH(Craig,Landin,and Hagersten）队列是一个虚拟的双向队列（虚拟的双向队列即不存在队列实例，仅 存在结点这几件的关联关系）。AQS是将每条请求共享资源的线程封装成一个CLH锁队列的一个结点（node）来实现锁的分配。）</p>
 <figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-java%E5%9F%BA%E7%A1%80/java%E9%9D%A2%E8%AF%95%E7%AA%81%E5%87%BB%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B002.png" alt="" loading="lazy"></figure>
 </li>
-</ul>
-</li>
-</ol>
-<ul>
 <li>
 <p>AQS使用一个int成员变量来表示同步状态，通过内置的FIFO队列来完成获取资源线程的排队工作。AQS使用CAS对该同步状态进行原子操作实现对其值得修改。</p>
 <pre><code class="language-java">//volatile修饰的队列头节点
@@ -707,7 +688,7 @@ private volatile int state;
 <li>CountDownLatch（倒计时器）：是一个同步工具类，用来协调多个线程之间的同步。通常用来控制线程等待，它可以让某一个线程等待直到倒计时结束，再开始执行。</li>
 <li>CyclicBarrier（循环栅栏）：CyclicBarrier 和 CountDownLatch 非常类似，它也可以实现线程间的技术等待， 但是它的功能比 CountDownLatch 更加复杂和强大。主要应用场景和 CountDownLatch 类似。CyclicBarrier 的字面意思是可循环使用（Cyclic）的屏障（Barrier）。它要做的事情是，让一组线程到达一个屏障（也可以叫 同步点）时被阻塞，直到后一个线程到达屏障时，屏障才会开门，所有被屏障拦截的线程才会继续干活。 CyclicBarrier默认的构造方法是 CyclicBarrier(int parties)，其参数表示屏障拦截的线程数量，每个线程调用 await方法告诉 CyclicBarrier 我已经到达了屏障，然后当前线程被阻塞</li>
 </ul>
-<ol start="3">
+<ol>
 <li>
 <p><strong>实现</strong></p>
 <p>了解了上面的核心结构，我们就可以继续来研究一下 AQS 内部具体是怎么实现的。</p>
@@ -794,9 +775,9 @@ protected boolean isHeldExclusively() {
 <li>Share（共享，多个线程可同时执行，如Semaphore/CountDownLatch）</li>
 </ul>
 <p>下面我们对这两种方式一一探讨。</p>
-<h3 id="独占模式">独占模式</h3>
+<h4 id="391-独占模式">3.9.1 独占模式</h4>
 <p>独占模式就相当于使用了排他锁，每次只有一个线程能够执行，其他线程需要在 CLH 队列中排队。下面分析一下 AQS 源码中的独占模式方法。</p>
-<h4 id="acquire方法">acquire()方法</h4>
+<p><strong>acquire()方法</strong></p>
 <p>该方法以独占模式获取共享资源。如果获取到资源，线程直接返回，否则进入等待队列，直到获取到资源为止，且整个过程忽略中断的影响。<code>ReentrantLock</code>的<code>lock</code>方法就是调用的该方法来获取锁。</p>
 <p>方法的执行流程如下：</p>
 <ol>
@@ -814,10 +795,10 @@ public final void acquire(int arg) {
         selfInterrupt();
 }
 </code></pre>
-<h4 id="tryacquire方法">tryAcquire()方法</h4>
+<p><strong>tryAcquire()方法</strong></p>
 <p>源码 doc 翻译：尝试以独占模式获取。 如果对象的状态允许以独占模式获取它，则此方法应查询，如果是，则获取它。</p>
 <p>执行 acquire 的线程始终调用此方法。 如果此方法报告失败，则获取方法可以对线程进行排队（如果它尚未排队），直到它通过某个其他线程的释放来发出信号。 这可用于<code>Lock</code>类中实现<code>tryLock()方法</code>。</p>
-<h4 id="addwaiter方法">addWaiter()方法</h4>
+<p><strong>addWaiter()方法</strong></p>
 <p>源码 doc 翻译：为当前线程和给定模式创建节点并进行排队。</p>
 <pre><code class="language-java">/**
  * 将当前线程加入到等待队列的队尾，并返回当前线程所在的结点
@@ -839,7 +820,7 @@ private Node addWaiter(Node mode) {
     return node;
 }
 </code></pre>
-<h4 id="enq方法">enq()方法</h4>
+<p><strong>enq()方法</strong></p>
 <p>源码 doc 翻译：将节点插入队列，必要时进行初始化 。</p>
 <p>通过自旋锁的方式来保证节点可以正确添加，只有成功添加后，当前线程才会从该方法返回，否则会一直执行下去 。</p>
 <pre><code>/**
@@ -864,7 +845,7 @@ private Node enq(final Node node) {
     }
 }
 </code></pre>
-<h4 id="acquirequeued方法">acquireQueued()方法</h4>
+<p><strong>acquireQueued()方法</strong></p>
 <p>源码doc翻译：对于已经在队列中的线程，以独占不间断模式获取。 由条件等待方法使用以及获取。</p>
 <p>通过<code>tryAcquire()</code>和<code>addWaiter()</code>，该线程获取资源失败，已经被放入等待队列尾部了。下一步需要处理的是：进入等待状态休息，直到其他线程彻底释放资源后唤醒自己，自己再拿到资源，然后就可以去干自己想干的事了。其实就是个排队拿号，在等待队列中排队拿号，直到拿到号后再返回 。</p>
 <pre><code class="language-java">final boolean acquireQueued(final Node node, int arg) {
@@ -893,7 +874,7 @@ private Node enq(final Node node) {
     }
 }
 </code></pre>
-<h4 id="shouldparkafterfailedacquire方法">shouldParkAfterFailedAcquire()方法</h4>
+<p><strong>shouldParkAfterFailedAcquire()方法</strong></p>
 <p>源码 doc 翻译：检查并更新无法获取的节点的状态。 如果线程应该阻塞，则返回 true。 这是所有获取循环中的主要信号控制。 需要<code>pred == node.prev</code>。</p>
 <p>此方法主要用于检查状态，看看自己是否真的可以去休息了</p>
 <ol>
@@ -922,7 +903,7 @@ private Node enq(final Node node) {
     return false;
 }
 </code></pre>
-<h4 id="parkandcheckinterrupt方法">parkAndCheckInterrupt()方法</h4>
+<p><strong>parkAndCheckInterrupt()方法</strong></p>
 <pre><code class="language-java">/**
  * 让线程去休息，真正进入等待状态
  */
@@ -939,7 +920,7 @@ private final boolean parkAndCheckInterrupt() {
 </ul>
 <p>流程图如下：</p>
 <figure data-type="image" tabindex="3"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-java%E5%9F%BA%E7%A1%80/java%E9%9D%A2%E8%AF%95%E7%AA%81%E5%87%BB%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B017.png" alt="java面试突击阅读笔记17" loading="lazy"></figure>
-<h4 id="release方法">release()方法</h4>
+<p><strong>release()方法</strong></p>
 <p>此方法是独占模式下线程释放资源的顶层入口。它会释放指定量的资源，如果彻底释放了（即 state=0）,它会唤醒等待队列里的其他线程来获取资源 。</p>
 <pre><code class="language-java">/**
  * 释放资源
@@ -954,9 +935,9 @@ public final boolean release(int arg) {
     return false;
 }
 </code></pre>
-<h4 id="tryrelease方法">tryRelease()方法</h4>
+<p><strong>tryRelease()方法</strong></p>
 <p>跟<code>tryAcquire()</code>一样，这个方法是需要独占模式的自定义同步器去实现的。正常来说，<code>tryRelease()</code>都会成功的，因为这是独占模式，该线程来释放资源，那么它肯定已经拿到独占资源了，直接减掉相应量的资源即可（state-=arg），也不需要考虑线程安全的问题。但要注意它的返回值，上面已经提到了，<code>release()</code>是根据<code>tryRelease()</code>的返回值来判断该线程是否已经完成释放掉资源了！所以自义定同步器在实现时，如果已经彻底释放资源（state=0），要返回 true，否则返回 false。</p>
-<h4 id="unparksuccessor方法">unparkSuccessor()方法</h4>
+<p><strong>unparkSuccessor()方法</strong></p>
 <pre><code class="language-java">private void unparkSuccessor(Node node) {
     // 这里，node一般为当前线程所在的结点。
     int ws = node.waitStatus;
@@ -975,10 +956,10 @@ public final boolean release(int arg) {
         LockSupport.unpark(s.thread);    // 唤醒
 }
 </code></pre>
-<h4 id="总结一下">总结一下</h4>
+<p><strong>总结一下</strong></p>
 <p>在 AQS 中维护着一个 FIFO 的同步队列，当线程获取同步状态失败后，则会加入到这个 CLH 同步队列的对尾并一直保持着自旋。在 CLH 同步队列中的线程在自旋时会判断其前驱节点是否为首节点，如果为首节点则不断尝试获取同步状态，获取成功则退出 CLH 同步队列。当线程执行完逻辑后，会释放同步状态，释放后会唤醒其后继节点。</p>
-<h3 id="共享模式">共享模式</h3>
-<h4 id="acquireshared方法">acquireShared()方法</h4>
+<h5 id="392共享模式">3.9.2共享模式</h5>
+<p><strong>acquireShared()方法</strong></p>
 <p>源码 doc 翻译:以共享模式获取，忽略中断。 通过首先调用{<a href="https://my.oschina.net/u/393">@link</a> #tryAcquireShared}来实现，成功返回。 否则线程排队，可能反复阻塞和解除阻塞，调用{<a href="https://my.oschina.net/u/393">@link</a> #tryAcquireShared}直到成功。</p>
 <p>简单点说就是这个方法会获取指定量的资源，获取成功则直接返回，获取失败则进入等待队列，直到获取到资源为止，整个过程忽略中断。</p>
 <pre><code class="language-java">public final void acquireShared(int arg) {
@@ -986,14 +967,14 @@ public final boolean release(int arg) {
             doAcquireShared(arg);
 }
 </code></pre>
-<h4 id="tryacquireshared方法">tryAcquireShared()方法</h4>
+<p><strong>tryAcquireShared()方法</strong></p>
 <p><code>tryAcquireShared()</code>依然需要自定义实现类去实现。但是 AQS 已经把其返回值的语义定义好了：负值代表获取失败；0 代表获取成功，但没有剩余资源；正数表示获取成功，还有剩余资源，其他线程还可以去获取。</p>
 <pre><code class="language-java">//共享式获取同步状态
 protected int tryAcquireShared(int arg) {
         throw new UnsupportedOperationException();
 }
 </code></pre>
-<h4 id="doacquireshared方法">doAcquireShared()方法</h4>
+<p><strong>doAcquireShared()方法</strong></p>
 <p>源码 doc 翻译：以共享不间断模式获取</p>
 <p>此方法用于将当前线程加入等待队列尾部休息，直到其他线程释放资源唤醒自己，自己成功拿到相应量的资源后才返回。</p>
 <pre><code class="language-java">private void doAcquireShared(int arg) {
@@ -1026,7 +1007,7 @@ protected int tryAcquireShared(int arg) {
         }
     }
 </code></pre>
-<h4 id="setheadandpropagate方法">setHeadAndPropagate()方法</h4>
+<p><strong>setHeadAndPropagate()方法</strong></p>
 <p>设置队列头，并检查后继者是否在共享模式下等待，如果是传播，如果传播<code>&gt; 0</code>或<code>PROPAGATE</code>状态已设置。</p>
 <p>这个方法除了重新标记 head 指向的节点外，还有一个重要的作用，那就是 propagate（传递）。</p>
 <pre><code class="language-java">private void setHeadAndPropagate(Node node, int propagate) {
@@ -1056,7 +1037,7 @@ protected int tryAcquireShared(int arg) {
         }
     }
 </code></pre>
-<h4 id="doreleaseshared方法">doReleaseShared()方法</h4>
+<p><strong>doReleaseShared()方法</strong></p>
 <p>共享模式的释放操作 ，发出后续信号并确保传播。 （注意：对于独占模式，如果需要信号，只需调用数量来调用 head 的 unparkSuccessor）</p>
 <pre><code class="language-java">private void doReleaseShared() {
         /*
@@ -1093,7 +1074,7 @@ protected int tryAcquireShared(int arg) {
 <li><code>tryAcquireShared()</code>尝试获取资源，成功则直接返回。</li>
 <li><code>doAcquireShared()</code>会将当前线程加入等待队列尾部休息，直到其他线程释放资源唤醒自己。它还会尝试着让唤醒传递到后面的节点。</li>
 </ul>
-<h4 id="releaseshared方法">releaseShared()方法</h4>
+<p><strong>releaseShared()方法</strong></p>
 <p>以共享模式发布。, 如果{<a href="https://my.oschina.net/u/393">@link</a> #tryReleaseShared}返回 true，则通过解除阻塞一个或多个线程来实现。</p>
 <pre><code class="language-java">public final boolean releaseShared(int arg) {
         if (tryReleaseShared(arg)) {
@@ -1755,42 +1736,23 @@ public class AbstractFactoryPatternDemo {
 <li><a href="#35-%E5%AE%9E%E7%8E%B0runnable%E6%8E%A5%E5%8F%A3%E4%B8%8Ecallable%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB">3.5 实现Runnable接口与Callable接口的区别</a></li>
 <li><a href="#36-execute%E6%96%B9%E6%B3%95%E5%92%8Csubmit%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">3.6 execute()方法和submit()方法有什么区别</a></li>
 <li><a href="#37-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0">3.7 如何创建线程池</a></li>
-<li><a href="#38-atomic%E5%8E%9F%E5%AD%90%E7%B1%BB">3.8 Atomic原子类</a><br>
-*<br>
-*<br>
-* <a href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E4%BD%BF%E7%94%A8%E9%99%A2%E5%AD%90%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9B%B4%E6%96%B0%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B">基本类型：使用院子的方式更新基本类型</a><br>
-* <a href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E4%BD%BF%E7%94%A8%E9%99%A2%E5%AD%90%E6%96%B9%E5%BC%8F%E6%98%AF%E6%9B%B4%E6%96%B0%E6%95%B0%E6%95%B0%E7%BB%84%E9%87%8C%E7%9A%84%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0">数组类型：使用院子方式是更新数数组里的某个元素</a><br>
-* <a href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B">引用类型：</a><br>
-* <a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E6%94%B9%E7%B1%BB%E5%9E%8B">对象的属性修改类型：</a><br>
-* <a href="#atomicinter%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95">AtomicInter类常用方法</a></li>
-<li><a href="#39-aqs%E5%8E%9F%E7%90%86">3.9 AQS原理</a><br>
-*<br>
-*<br>
-* <a href="#%E7%AE%80%E4%BB%8Babstractqueuedsynchronizer">简介（AbstractQueuedSynchronizer）</a><br>
-* <a href="#%E5%8E%9F-%E7%90%86">原 理</a></li>
-<li><a href="#%E7%8B%AC%E5%8D%A0%E6%A8%A1%E5%BC%8F">独占模式</a>
+<li><a href="#38-atomic%E5%8E%9F%E5%AD%90%E7%B1%BB">3.8 Atomic原子类</a>
 <ul>
-<li><a href="#acquire%E6%96%B9%E6%B3%95">acquire()方法</a></li>
-<li><a href="#tryacquire%E6%96%B9%E6%B3%95">tryAcquire()方法</a></li>
-<li><a href="#addwaiter%E6%96%B9%E6%B3%95">addWaiter()方法</a></li>
-<li><a href="#enq%E6%96%B9%E6%B3%95">enq()方法</a></li>
-<li><a href="#acquirequeued%E6%96%B9%E6%B3%95">acquireQueued()方法</a></li>
-<li><a href="#shouldparkafterfailedacquire%E6%96%B9%E6%B3%95">shouldParkAfterFailedAcquire()方法</a></li>
-<li><a href="#parkandcheckinterrupt%E6%96%B9%E6%B3%95">parkAndCheckInterrupt()方法</a></li>
-<li><a href="#release%E6%96%B9%E6%B3%95">release()方法</a></li>
-<li><a href="#tryrelease%E6%96%B9%E6%B3%95">tryRelease()方法</a></li>
-<li><a href="#unparksuccessor%E6%96%B9%E6%B3%95">unparkSuccessor()方法</a></li>
-<li><a href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B">总结一下</a></li>
+<li><a href="#1-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E4%BD%BF%E7%94%A8%E9%99%A2%E5%AD%90%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9B%B4%E6%96%B0%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B">1.  基本类型：使用院子的方式更新基本类型</a></li>
+<li><a href="#2-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E4%BD%BF%E7%94%A8%E9%99%A2%E5%AD%90%E6%96%B9%E5%BC%8F%E6%98%AF%E6%9B%B4%E6%96%B0%E6%95%B0%E6%95%B0%E7%BB%84%E9%87%8C%E7%9A%84%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0">2.  数组类型：使用院子方式是更新数数组里的某个元素</a></li>
+<li><a href="#3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B">3. 引用类型：</a></li>
+<li><a href="#4-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BF%AE%E6%94%B9%E7%B1%BB%E5%9E%8B">4. 对象的属性修改类型：</a></li>
+<li><a href="#5-atomicinter%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95">5. AtomicInter类常用方法</a></li>
 </ul>
 </li>
-<li><a href="#%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%BC%8F">共享模式</a>
+<li><a href="#39-aqs%E5%8E%9F%E7%90%86">3.9 AQS原理</a>
 <ul>
-<li><a href="#acquireshared%E6%96%B9%E6%B3%95">acquireShared()方法</a></li>
-<li><a href="#tryacquireshared%E6%96%B9%E6%B3%95">tryAcquireShared()方法</a></li>
-<li><a href="#doacquireshared%E6%96%B9%E6%B3%95">doAcquireShared()方法</a></li>
-<li><a href="#setheadandpropagate%E6%96%B9%E6%B3%95">setHeadAndPropagate()方法</a></li>
-<li><a href="#doreleaseshared%E6%96%B9%E6%B3%95">doReleaseShared()方法</a></li>
-<li><a href="#releaseshared%E6%96%B9%E6%B3%95">releaseShared()方法</a></li>
+<li><a href="#1-%E7%AE%80%E4%BB%8Babstractqueuedsynchronizer">1. 简介（AbstractQueuedSynchronizer）</a></li>
+<li><a href="#391-%E7%8B%AC%E5%8D%A0%E6%A8%A1%E5%BC%8F">3.9.1 独占模式</a>
+<ul>
+<li><a href="#392%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%BC%8F">3.9.2共享模式</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1890,7 +1852,7 @@ public class AbstractFactoryPatternDemo {
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
                                                                     <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/笔记-java基础/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/笔记-java基础/&sharesource=qzone&title=笔记-java基础&pics=https://kily-007.github.io//images/avatar.png?v=1591879773190&summary=&lt;h2 id=&#34;1-java基础知识&#34;&gt;1 java基础知识&lt;/h2&gt;
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/笔记-java基础/&sharesource=qzone&title=笔记-java基础&pics=https://kily-007.github.io//images/avatar.png?v=1591886598379&summary=&lt;h2 id=&#34;1-java基础知识&#34;&gt;1 java基础知识&lt;/h2&gt;
 &lt;h3 id=&#34;12-重载和重写的区别&#34;&gt;1.2 重载和重写的区别&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;重载：相同的函数名，参数类型不同&lt;br/&gt;&lt;/li&gt;
@@ -1903,7 +1865,7 @@ public class AbstractFactoryPatternDemo {
 &lt;li&gt;重载：相同的函数名，参数类型不同&lt;br/&gt;&lt;/li&gt;
 &lt;li&gt;重写：子类重写父类方法，private修饰的方法不能重写&lt;/li&gt;
 &lt;/ul&gt;
-&pic="https://kily-007.github.io//images/avatar.png?v=1591879773190 "><i class="fa fa-weibo "></i></a>
+&pic="https://kily-007.github.io//images/avatar.png?v=1591886598379 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -2168,7 +2130,7 @@ public class AbstractFactoryPatternDemo {
                     console.clear();
                     
                     var newDate = new Date();
-                    newDate.setTime(1591879773190);
+                    newDate.setTime(1591886598379);
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>

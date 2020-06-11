@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kily-007.github.io/</id>
     <title>kily007</title>
-    <updated>2020-06-11T13:06:35.446Z</updated>
+    <updated>2020-06-11T14:43:43.762Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kily-007.github.io/"/>
     <link rel="self" href="https://kily-007.github.io/atom.xml"/>
@@ -96,16 +96,6 @@
         <link href="https://kily-007.github.io/post/springboot-之JpaRepository查询列名错误/">
         </link>
         <updated>2019-11-25T11:38:02.000Z</updated>
-        <summary type="html"><![CDATA[<p>记录一次报错。<br>
-java.sql.SQLSyntaxErrorException: Unknown column 'subwaycoun0_.pass_num1' in 'field list'<br>
-at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.18.jar:8.0.18]<br>
-at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.18.jar:8.0.18]</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>记录一次报错。<br>
-java.sql.SQLSyntaxErrorException: Unknown column 'subwaycoun0_.pass_num1' in 'field list'<br>
-at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.18.jar:8.0.18]<br>
-at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.18.jar:8.0.18]</p>
-]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[前端框架layui]]></title>
