@@ -77,13 +77,12 @@
                     
 						<li><a class="menu-item" href="/message">留言</a></li>
                     
-						<li><a class="menu-item" href="/life">生活</a></li>
-                    
+					<li><a href="/tag/life">生活</a></li>
 					<li><a class="menu-item" >更多</a>
 						<ul class="dropdown-list">
-							<li><a href="/album">相册</a></li>
-							<li><a href="/utils">工具</a></li>
-							<li><a href="/source">资源</a></li>
+							<li><a href="/tag/album">相册</a></li>
+							<li><a href="/post/utils">工具</a></li>
+							<li><a href="/post/source">资源</a></li>
 						</ul>
 					</li>
 				<li>
@@ -93,7 +92,7 @@
 				</ul>
             </div>
 			
-            <form id="gridea-search-form" data-update="1591760503970" action="/search/index.html">
+            <form id="gridea-search-form" data-update="1591864260236" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
             </form>
         </div>
@@ -112,7 +111,7 @@
                         <!--zh-->
                         <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
                     </div>
-                    <form id="gridea-search-form" data-update="1591760503970" action="/search/index.html">
+                    <form id="gridea-search-form" data-update="1591864260236" action="/search/index.html">
                         <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
                     </form>
                     <!--en-->
@@ -147,10 +146,6 @@
                             留言
                         </a>
                         
-                        <a class="menu-item" href="/life">
-                            生活
-                        </a>
-                        
                 </div>
             </div>
         </nav>
@@ -181,6 +176,48 @@
 
     }
 </script>
+
+
+<style>
+.box{
+    position:fixed;
+    left:5px;
+    height:712px;
+    width: 60px;    
+    text-align:center;
+    overflow: hidden;
+	background:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/scroll.png) no-repeat;
+	background-size:contain;
+	display:none;
+}
+.box:hover{
+    cursor:pointer;
+}
+</style>
+
+<div id="box" class="box"></div> 
+
+<script>
+var timer  = null;
+box.onclick = function(){
+    cancelAnimationFrame(timer);
+    timer = requestAnimationFrame(function fn(){
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if(oTop > 0){
+            document.body.scrollTop = document.documentElement.scrollTop = oTop - 80;
+            timer = requestAnimationFrame(fn);
+        }else{
+            cancelAnimationFrame(timer);
+        }
+    });
+}
+ $(window).scroll(function(){
+	if($(window).scrollTop()>500){
+		$('#box').fadeIn(500);
+	}
+	 else{$('#box').fadeOut(500);}
+	})
+</script>
             <div class="main">
                 <div class="container">
                     <article class="post-wrap">
@@ -202,7 +239,7 @@
                                                 Sanarous
                                             </a>
                                             <br />
-                                            Dream it possible, make it possible
+                                            Dream it possible, make it possible.
                                         </div>
                                     </div>
                                     
@@ -213,15 +250,52 @@
                                                 ITJoker
                                             </a>
                                             <br />
-                                            Available for hire
+                                            Available for hire.
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="friend-box">
+                                        <img class="friend-avatar" src="https://hwz-1253305320.cos.ap-guangzhou.myqcloud.com/tx.png">
+                                        <div class="flink-info">
+                                            <a href="https://www.5icfs.com" target="_blank">
+                                                告白小站
+                                            </a>
+                                            <br />
+                                            只会看书会变成虫的，人们不都说书虫书虫嘛。
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="friend-box">
+                                        <img class="friend-avatar" src="https://VincentZ007.github.io//images/avatar.png?v=1591582860063">
+                                        <div class="flink-info">
+                                            <a href="https://vincentz007.github.io/" target="_blank">
+                                                Vincent&#39;s
+                                            </a>
+                                            <br />
+                                            一个16岁的少年
                                         </div>
                                     </div>
                                     
                                         
                         </div>
+						<br/><br/>
+						<div>
+							<header class="post-header" style="margin-top: 25%;">
+							    <h2 class="post-title zh">
+							        来都来了，加个友链吧！
+							    </h2>
+							</header>
+							<div style="margin-left:30px;">
+								<p>名称：<a href="https://kily-007.github.io/">kily007</a></p>
+								<p>描述：写代码，爱撸猫</p>
+								<p>网址：<a href="https://kily-007.github.io/">https://kily-007.github.io/</a></p>
+								<p>头像：<a href="https://i.loli.net/2020/06/03/5wsNTPWznpHjYKo.jpg">https://i.loli.net/2020/06/03/5wsNTPWznpHjYKo.jpg</a></p>
+							</div>
+						</div>
                     </article>
                 </div>
             </div>
+			
             
                                         
                                             <script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
@@ -430,11 +504,12 @@
                     console.clear();
                     
                     var newDate = new Date();
-                    newDate.setTime(1591760503970);
+                    newDate.setTime(1591864260236);
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
                 
+
 </body>
 
 </html>

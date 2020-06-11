@@ -2,32 +2,46 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kily-007.github.io/</id>
     <title>kily007</title>
-    <updated>2020-06-10T04:01:04.597Z</updated>
+    <updated>2020-06-11T08:31:25.053Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kily-007.github.io/"/>
     <link rel="self" href="https://kily-007.github.io/atom.xml"/>
-    <subtitle>爱代码，爱猫，爱瞎折腾</subtitle>
+    <subtitle>写代码，爱撸猫</subtitle>
     <logo>https://kily-007.github.io/images/avatar.png</logo>
     <icon>https://kily-007.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, kily007</rights>
     <entry>
+        <title type="html"><![CDATA[教学-2020-06-10]]></title>
+        <id>https://kily-007.github.io/post/教学-2020-06-10/</id>
+        <link href="https://kily-007.github.io/post/教学-2020-06-10/">
+        </link>
+        <updated>2020-06-10T08:50:26.000Z</updated>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[遍历Gridea主题]]></title>
-        <id>https://kily-007.github.io/post/遍历Gridea主题/</id>
-        <link href="https://kily-007.github.io/post/遍历Gridea主题/">
+        <id>https://kily-007.github.io/post/Gridea-遍历Gridea主题/</id>
+        <link href="https://kily-007.github.io/post/Gridea-遍历Gridea主题/">
         </link>
         <updated>2020-06-09T06:08:13.000Z</updated>
     </entry>
     <entry>
-        <title type="html"><![CDATA[笔记-2020-06-08]]></title>
-        <id>https://kily-007.github.io/post/笔记-2020-06-08/</id>
-        <link href="https://kily-007.github.io/post/笔记-2020-06-08/">
+        <title type="html"><![CDATA[教学-2020-06-08]]></title>
+        <id>https://kily-007.github.io/post/教学-2020-06-08/</id>
+        <link href="https://kily-007.github.io/post/教学-2020-06-08/">
         </link>
         <updated>2020-06-08T02:11:26.000Z</updated>
     </entry>
     <entry>
+        <title type="html"><![CDATA[一款禁止Windows10升级的工具]]></title>
+        <id>https://kily-007.github.io/post/工具-一款禁止Windows10升级的工具/</id>
+        <link href="https://kily-007.github.io/post/工具-一款禁止Windows10升级的工具/">
+        </link>
+        <updated>2020-06-01T14:24:37.000Z</updated>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Gridea添加百度统计]]></title>
-        <id>https://kily-007.github.io/post/Gridea添加百度统计/</id>
-        <link href="https://kily-007.github.io/post/Gridea添加百度统计/">
+        <id>https://kily-007.github.io/post/Gridea-添加百度统计/</id>
+        <link href="https://kily-007.github.io/post/Gridea-添加百度统计/">
         </link>
         <updated>2020-05-31T05:56:16.000Z</updated>
         <summary type="html"><![CDATA[<p>Gridea默认仅支持谷歌统计，而国内访问谷歌网站受限，在此根据github上的资源，整合了添加百度统计的功能。</p>
@@ -37,8 +51,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[序贯相似性检测算法(SSDA)]]></title>
-        <id>https://kily-007.github.io/post/序贯相似性检测算法-SSDA/</id>
-        <link href="https://kily-007.github.io/post/序贯相似性检测算法-SSDA/">
+        <id>https://kily-007.github.io/post/算法-序贯相似性检测算法-SSDA/</id>
+        <link href="https://kily-007.github.io/post/算法-序贯相似性检测算法-SSDA/">
         </link>
         <updated>2019-12-16T07:46:00.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="序贯相似性检测算法ssda">序贯相似性检测算法（SSDA）</h2>
@@ -50,8 +64,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[kafka自定义序列化类]]></title>
-        <id>https://kily-007.github.io/post/kafka自定义序列化类/</id>
-        <link href="https://kily-007.github.io/post/kafka自定义序列化类/">
+        <id>https://kily-007.github.io/post/kafka-自定义序列化类/</id>
+        <link href="https://kily-007.github.io/post/kafka-自定义序列化类/">
         </link>
         <updated>2019-12-05T01:36:20.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="kafka版本">kafka版本</h2>
@@ -67,8 +81,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[springboot数据库访问]]></title>
-        <id>https://kily-007.github.io/post/springboot数据库访问/</id>
-        <link href="https://kily-007.github.io/post/springboot数据库访问/">
+        <id>https://kily-007.github.io/post/springboot-数据库访问/</id>
+        <link href="https://kily-007.github.io/post/springboot-数据库访问/">
         </link>
         <updated>2019-12-03T09:11:39.000Z</updated>
         <summary type="html"><![CDATA[<p>使用jpa(JpaRepository)方式连接访问数据库</p>
@@ -78,8 +92,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[springboot之JpaRepository查询列名错误]]></title>
-        <id>https://kily-007.github.io/post/springboot之JpaRepository查询列名错误/</id>
-        <link href="https://kily-007.github.io/post/springboot之JpaRepository查询列名错误/">
+        <id>https://kily-007.github.io/post/springboot-之JpaRepository查询列名错误/</id>
+        <link href="https://kily-007.github.io/post/springboot-之JpaRepository查询列名错误/">
         </link>
         <updated>2019-11-25T11:38:02.000Z</updated>
         <summary type="html"><![CDATA[<p>记录一次报错。<br>
@@ -95,49 +109,13 @@ at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[
     </entry>
     <entry>
         <title type="html"><![CDATA[前端框架layui]]></title>
-        <id>https://kily-007.github.io/post/前端框架layui/</id>
-        <link href="https://kily-007.github.io/post/前端框架layui/">
+        <id>https://kily-007.github.io/post/前端-前端框架layui/</id>
+        <link href="https://kily-007.github.io/post/前端-前端框架layui/">
         </link>
         <updated>2019-11-10T10:57:54.000Z</updated>
         <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui1.png" alt="" loading="lazy"></figure>
 ]]></summary>
         <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui1.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[springboot]]></title>
-        <id>https://kily-007.github.io/post/springboot/</id>
-        <link href="https://kily-007.github.io/post/springboot/">
-        </link>
-        <updated>2019-11-02T07:28:30.000Z</updated>
-        <summary type="html"><![CDATA[<h1 id="springboot项目结构">springboot项目结构：</h1>
-<pre><code>controller:控制器层，导入service层，调用service方法；通过接受前端传过来的参数进行业务操作，再返回一个指定的路径或数据表
-bean/entity/model:实体类，映射数据库中的字段
-mapper/dao:放的是对数据库的操作，如CRUD
-service:业务层，存放业务逻辑处理；不直接对数据库进行操作，有接口和接口实现类；提供controller层调用的方法
-</code></pre>
-]]></summary>
-        <content type="html"><![CDATA[<h1 id="springboot项目结构">springboot项目结构：</h1>
-<pre><code>controller:控制器层，导入service层，调用service方法；通过接受前端传过来的参数进行业务操作，再返回一个指定的路径或数据表
-bean/entity/model:实体类，映射数据库中的字段
-mapper/dao:放的是对数据库的操作，如CRUD
-service:业务层，存放业务逻辑处理；不直接对数据库进行操作，有接口和接口实现类；提供controller层调用的方法
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[windows远程连接桌面linux]]></title>
-        <id>https://kily-007.github.io/post/windows远程连接桌面linux/</id>
-        <link href="https://kily-007.github.io/post/windows远程连接桌面linux/">
-        </link>
-        <updated>2019-10-16T07:15:25.000Z</updated>
-        <summary type="html"><![CDATA[<h1 id="准备工作">准备工作</h1>
-<p>1）centos桌面已安装</p>
-<p>2）windows系统</p>
-]]></summary>
-        <content type="html"><![CDATA[<h1 id="准备工作">准备工作</h1>
-<p>1）centos桌面已安装</p>
-<p>2）windows系统</p>
 ]]></content>
     </entry>
 </feed>
