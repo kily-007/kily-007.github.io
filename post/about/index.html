@@ -233,13 +233,14 @@ box.onclick = function(){
                                             kily007
                                         </a>
                                         <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-01-25</a></span>
-                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
-                                    href="#">1.5
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">1.5
                                     &#x5206;&#x949F;</a></span>
                                         <span class="post-words">&#x5B57;&#x6570;:<a href="#">409</a></span>
                                         
-                                                阅读量:
-                                                <span data-hk-page="current"> - </span>
+                                                <span id="/post/about/" data-hk-page="current" class="leancloud-visitors view">
+													 阅读量:
+												     <a class="leancloud-visitors-count">-</a>
+												 </span>
                                                 
                                     </div>
                                     
@@ -410,7 +411,7 @@ box.onclick = function(){
         pageSize: 10,
         avatar: 'mp',
         placeholder: '来都来了，不妨评论一下',
-        visitor: 'true',
+        visitor: true,
         highlight: true,
         recordIP: true,
 		tagMeta: ["博主","大佬","访客"],
