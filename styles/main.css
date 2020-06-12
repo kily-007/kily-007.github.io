@@ -529,6 +529,11 @@
   border-radius: 50% !important;
   float: left;
   margin: 0 15px 0 0 !important;
+  border: 1px solid #000000;
+}
+.friend-box .friend-avatar:hover {
+  -webkit-transition: all ease 1s;
+  -webkit-transform: rotate(360deg);
 }
 .friend-box .flink-info {
   height: 70px;
