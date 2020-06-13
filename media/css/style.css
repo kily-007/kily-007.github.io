@@ -576,6 +576,7 @@ header label {
 .archive-item-link:hover {
     color: #2d96bd;
     background-color: transparent;
+	
 }
 
 .dark-theme .archive-item-link {
