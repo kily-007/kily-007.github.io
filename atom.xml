@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kily-007.github.io/</id>
     <title>kily007</title>
-    <updated>2020-06-13T05:27:24.121Z</updated>
+    <updated>2020-06-14T07:10:31.492Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kily-007.github.io/"/>
     <link rel="self" href="https://kily-007.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://kily-007.github.io/images/avatar.png</logo>
     <icon>https://kily-007.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, kily007</rights>
+    <entry>
+        <title type="html"><![CDATA[教学-2020-06-14]]></title>
+        <id>https://kily-007.github.io/post/教学-2020-06-14/</id>
+        <link href="https://kily-007.github.io/post/教学-2020-06-14/">
+        </link>
+        <updated>2020-06-14T05:45:45.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[教学-2020-06-10]]></title>
         <id>https://kily-007.github.io/post/教学-2020-06-10/</id>
@@ -99,27 +106,6 @@
         <summary type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui1.png" alt="" loading="lazy"></figure>
 ]]></summary>
         <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/img/layui1.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[springboot项目结构简介]]></title>
-        <id>https://kily-007.github.io/post/springboot-项目结构简介/</id>
-        <link href="https://kily-007.github.io/post/springboot-项目结构简介/">
-        </link>
-        <updated>2019-11-02T07:28:30.000Z</updated>
-        <summary type="html"><![CDATA[<h1 id="springboot项目结构">springboot项目结构：</h1>
-<pre><code>controller:控制器层，导入service层，调用service方法；通过接受前端传过来的参数进行业务操作，再返回一个指定的路径或数据表
-bean/entity/model:实体类，映射数据库中的字段
-mapper/dao:放的是对数据库的操作，如CRUD
-service:业务层，存放业务逻辑处理；不直接对数据库进行操作，有接口和接口实现类；提供controller层调用的方法
-</code></pre>
-]]></summary>
-        <content type="html"><![CDATA[<h1 id="springboot项目结构">springboot项目结构：</h1>
-<pre><code>controller:控制器层，导入service层，调用service方法；通过接受前端传过来的参数进行业务操作，再返回一个指定的路径或数据表
-bean/entity/model:实体类，映射数据库中的字段
-mapper/dao:放的是对数据库的操作，如CRUD
-service:业务层，存放业务逻辑处理；不直接对数据库进行操作，有接口和接口实现类；提供controller层调用的方法
-</code></pre>
 ]]></content>
     </entry>
 </feed>
