@@ -223,7 +223,7 @@ box.onclick = function(){
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title" >
-                                Gridea主题推荐
+                                教学-2020-06-17
                             </h1>
                             
                                     <!--zh-->
@@ -232,18 +232,12 @@ box.onclick = function(){
                                         <a itemprop="author" rel="author" href="/">
                                             kily007
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-06-09</a></span>
-                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">0.5
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-06-17</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">1.2
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">143</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">261</a></span>
                                         
-                                            <span class="post-category">&#x5206;&#x7C7B;:
-                                
-                                <a href="https://kily-007.github.io/tag/MmWls1YQj/">Gridea</a>
-                                
-                            </span>
-                                            
-                                                <span id="/post/Gridea-遍历Gridea主题/" data-hk-page="current" class="leancloud-visitors view">
+                                                <span id="/post/F-Uk-HL0m/" data-hk-page="current" class="leancloud-visitors view">
 													 阅读量:
 												     <a class="leancloud-visitors-count">-</a>
 												 </span>
@@ -253,25 +247,75 @@ box.onclick = function(){
                         </header>
                         
                         <div class="post-content">
-                            <h2 id="说明">说明</h2>
-<p>Gridea官网的<a href="https://gridea.dev/themes/" target="_blank">主题市场</a>中现在共有27个主题，其中包含3个付费主题和24个免费主题，但是面对猿儿们广大的审美需求，显然是不够用的，经过一波简单的走访，找到了一些其它的开源主题，在这里和大家分享一下，后续遇到好看的主题会在这里持续更新。</p>
-<h2 id="github上的">Github上的</h2>
-<blockquote>
-<p>主题：<a href="https://github.com/Alanrk/gridea-theme-zero" target="_blank">zero</a><br>
-示例网站：<a href="https://kveln.cn/" target="_blank">https://kveln.cn/</a><br>
-描述：一款简洁专注于写作的Gridea博客主题<br>
-特色：包含摄影、电影<br>
-截图：<img src="https://i.loli.net/2020/06/12/OQBhLAW7j9KxPiG.png" alt="" loading="lazy"></p>
-</blockquote>
+                            <h1 id="一-顺序表">一、顺序表</h1>
+<p>##顺序表的实现</p>
+<pre><code class="language-java">//顺序表
+class SequenceList{
+	int data[];
+	int len;
+}
+</code></pre>
+<h2 id="1-插入操作">1. 插入操作</h2>
+<pre><code class="language-java">	//插入
+	public boolean insert(int p,int k) {
+		if(p&gt;len&amp;&amp;p&lt;0)
+			return false;
+		if(len&gt;data.length)
+			return false;
+		for (int i = len; i &gt; p; i--) {
+			data[i]=data[i-1];
+		}
+		data[p]=k;
+		len++;
+		return true;
+	}
+</code></pre>
+<h2 id="2-删除操作">2. 删除操作</h2>
+<pre><code class="language-java">	//删除
+	public boolean delete(int p) {
+		if(p&lt;0&amp;&amp;p&gt;len) {
+			return false;
+		}
+		if(len&gt;data.length) {
+			return false;
+		}
+		for(int i=p;i&lt;len;i++) {
+			data[i]=data[i+1];
+		}
+		len--;
+		return true;
+	}
+</code></pre>
+<h2 id="3-按值查找操作">3. 按值查找操作</h2>
+<pre><code class="language-java">	//查找
+	public int findElem(int k) {
+		for (int i = 0; i &lt; len; i++) {
+			if(data[i]==k)
+				return i;
+		}
+		return 0;
+	}
+</code></pre>
+<h2 id="4-时间复杂度">4. 时间复杂度</h2>
+<figure data-type="image" tabindex="1"><img src="https://kily-007.github.io//post-images/1592379914573.png" alt="" loading="lazy"></figure>
+<h2 id="题目巩固">题目巩固：</h2>
+<p>①在一个长度为n的顺序表中删除第i个元素时，需要向前移动（）个元素。<br>
+②找到顺序表中最小值，并打印；<br>
+③将顺序表中所有元素逆置；<br>
+④删除<strong>有序</strong>顺序表中所有重复的值，使得表中所有元素的值均不相同。<br>
+⑤删除顺序表中所有重复的值，使得表中所有元素的值均不相同。</p>
 
                         </div>
                         
                             <div class="post-toc">
                                 <ul class="markdownIt-TOC">
-<li>
+<li><a href="#%E4%B8%80-%E9%A1%BA%E5%BA%8F%E8%A1%A8">一、顺序表</a>
 <ul>
-<li><a href="#%E8%AF%B4%E6%98%8E">说明</a></li>
-<li><a href="#github%E4%B8%8A%E7%9A%84">Github上的</a></li>
+<li><a href="#1-%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C">1. 插入操作</a></li>
+<li><a href="#2-%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C">2. 删除操作</a></li>
+<li><a href="#3-%E6%8C%89%E5%80%BC%E6%9F%A5%E6%89%BE%E6%93%8D%E4%BD%9C">3. 按值查找操作</a></li>
+<li><a href="#4-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6">4. 时间复杂度</a></li>
+<li><a href="#%E9%A2%98%E7%9B%AE%E5%B7%A9%E5%9B%BA">题目巩固：</a></li>
 </ul>
 </li>
 </ul>
@@ -289,7 +333,7 @@ box.onclick = function(){
 
                                                 <p class="copyright-item">
                                                     <span>&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://kily-007.github.io/post/Gridea-遍历Gridea主题/">https://kily-007.github.io/post/Gridea-遍历Gridea主题/</a></span>
+                                                    <span><a href="https://kily-007.github.io/post/F-Uk-HL0m/">https://kily-007.github.io/post/F-Uk-HL0m/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -304,9 +348,9 @@ box.onclick = function(){
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/Gridea-遍历Gridea主题/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/Gridea-遍历Gridea主题/&sharesource=qzone&title=Gridea主题推荐&pics=https://kily-007.github.io//images/avatar.png?v=1592380369198&summary="><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/Gridea-遍历Gridea主题/&sharesource=weibo&title=Gridea主题推荐 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1592380369198 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/F-Uk-HL0m/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/F-Uk-HL0m/&sharesource=qzone&title=教学-2020-06-17&pics=https://kily-007.github.io//images/avatar.png?v=1592380369198&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/F-Uk-HL0m/&sharesource=weibo&title=教学-2020-06-17 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1592380369198 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -324,12 +368,6 @@ box.onclick = function(){
                                                                                     <span>&#x6807;&#x7B7E;:</span>
                                                                                     <span class="tag ">
                         
-                        
-                        <a href="https://kily-007.github.io/tag/MmWls1YQj/">#
-                    Gridea
-                        </a>
-                        
-                            
                                 </span>
                                                                                 </div>
                                                                                 <div>
@@ -344,13 +382,9 @@ box.onclick = function(){
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/教学-2020-06-10/">
-                                                                                            教学-2020-06-10
-                                                                                        </a>
-                                                                                        
                                                                                             
-                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/教学-2020-06-08/">
-                                                                                                    教学-2020-06-08
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/教学-2020-06-15/">
+                                                                                                    教学-2020-06-15
                                                                                                 </a>
                                                                                                 
                                                                                 </section>

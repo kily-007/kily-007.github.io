@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kily-007.github.io/</id>
     <title>kily007</title>
-    <updated>2020-06-15T09:38:22.766Z</updated>
+    <updated>2020-06-17T08:06:05.808Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kily-007.github.io/"/>
     <link rel="self" href="https://kily-007.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://kily-007.github.io/images/avatar.png</logo>
     <icon>https://kily-007.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, kily007</rights>
+    <entry>
+        <title type="html"><![CDATA[教学-2020-06-17]]></title>
+        <id>https://kily-007.github.io/post/F-Uk-HL0m/</id>
+        <link href="https://kily-007.github.io/post/F-Uk-HL0m/">
+        </link>
+        <updated>2020-06-17T07:41:38.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[教学-2020-06-15]]></title>
         <id>https://kily-007.github.io/post/教学-2020-06-15/</id>
@@ -96,12 +103,5 @@
 ]]></summary>
         <content type="html"><![CDATA[<p>使用jpa(JpaRepository)方式连接访问数据库</p>
 ]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[springboot之JpaRepository查询列名错误]]></title>
-        <id>https://kily-007.github.io/post/springboot-之JpaRepository查询列名错误/</id>
-        <link href="https://kily-007.github.io/post/springboot-之JpaRepository查询列名错误/">
-        </link>
-        <updated>2019-11-25T11:38:02.000Z</updated>
     </entry>
 </feed>
