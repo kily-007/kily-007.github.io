@@ -90,7 +90,7 @@
 				</ul>
             </div>
 			
-            <form id="gridea-search-form" data-update="1592382504884" action="/search/index.html">
+            <form id="gridea-search-form" data-update="1592620345883" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
             </form>
         </div>
@@ -152,7 +152,7 @@ box.onclick = function(){
                         <!--zh-->
                         <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
                     </div>
-                    <form id="gridea-search-form" data-update="1592382504884" action="/search/index.html">
+                    <form id="gridea-search-form" data-update="1592620345883" action="/search/index.html">
                         <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
                     </form>
                     <!--en-->
@@ -233,9 +233,9 @@ box.onclick = function(){
                                             kily007
                                         </a>
                                         <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-06-17</a></span>
-                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">1.2
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">1.7
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">261</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">348</a></span>
                                         
                                                 <span id="/post/F-Uk-HL0m/" data-hk-page="current" class="leancloud-visitors view">
 													 阅读量:
@@ -302,8 +302,34 @@ class SequenceList{
 <p>①在一个长度为n的顺序表中删除第i个元素时，需要向前移动（）个元素。<br>
 ②找到顺序表中最小值，并打印；<br>
 ③将顺序表中所有元素逆置；<br>
-④删除<strong>有序</strong>顺序表中所有重复的值，使得表中所有元素的值均不相同。<br>
-⑤删除顺序表中所有重复的值，使得表中所有元素的值均不相同。</p>
+④删除<strong>有序</strong>顺序表中所有重复的值，使得表中所有元素的值均不相同。</p>
+<pre><code>	//删除有序顺序表中的重复元素
+	public void deleteSame() {
+		for (int i = 0; i &lt; len-1; i++) {
+			if(data[i]==data[i+1]) {
+				delete(i+1);
+				i--;
+			}
+		}
+	}
+</code></pre>
+<p>⑤删除顺序表中所有重复的值，使得表中所有元素的值均不相同。</p>
+<pre><code>	//删除顺序表中的重复元素
+	public void deleteSame2() {
+		
+		int[] arr=new int[23];
+		for (int i = 0; i &lt; len; i++) {
+			arr[data[i]]++;
+		}
+		
+		System.out.println();
+		for (int i = 0; i &lt; arr.length; i++) {
+			if(arr[i]!=0)
+				System.out.print(i+&quot; &quot;);
+		}
+		
+	}
+</code></pre>
 
                         </div>
                         
@@ -349,8 +375,8 @@ class SequenceList{
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
                                                                     <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/F-Uk-HL0m/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/F-Uk-HL0m/&sharesource=qzone&title=教学-2020-06-17&pics=https://kily-007.github.io//images/avatar.png?v=1592382504884&summary="><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/F-Uk-HL0m/&sharesource=weibo&title=教学-2020-06-17 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1592382504884 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/F-Uk-HL0m/&sharesource=qzone&title=教学-2020-06-17&pics=https://kily-007.github.io//images/avatar.png?v=1592620345883&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/F-Uk-HL0m/&sharesource=weibo&title=教学-2020-06-17 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1592620345883 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -382,6 +408,10 @@ class SequenceList{
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
+                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/教学-2020-06-20/">
+                                                                                            教学-2020-06-20
+                                                                                        </a>
+                                                                                        
                                                                                             
                                                                                                 <a class="next" rel="next" href="https://kily-007.github.io/post/教学-2020-06-15/">
                                                                                                     教学-2020-06-15
@@ -628,7 +658,7 @@ class SequenceList{
                     console.clear();
                     
                     var newDate = new Date();
-                    newDate.setTime(1592382504884);
+                    newDate.setTime(1592620345883);
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>

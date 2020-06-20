@@ -223,7 +223,7 @@ box.onclick = function(){
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title" >
-                                剑指offer-字符串转整数
+                                教学-2020-06-20
                             </h1>
                             
                                     <!--zh-->
@@ -232,18 +232,18 @@ box.onclick = function(){
                                         <a itemprop="author" rel="author" href="/">
                                             kily007
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-08-07</a></span>
-                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">1.2
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-06-20</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">1.0
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">235</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">245</a></span>
                                         
                                             <span class="post-category">&#x5206;&#x7C7B;:
                                 
-                                <a href="https://kily-007.github.io/tag/eKKBckPZ7/">算法</a>
+                                <a href="https://kily-007.github.io/tag/U4d_RZqLq/">教学</a>
                                 
                             </span>
                                             
-                                                <span id="/post/算法-剑指offer-字符串转整数/" data-hk-page="current" class="leancloud-visitors view">
+                                                <span id="/post/教学-2020-06-20/" data-hk-page="current" class="leancloud-visitors view">
 													 阅读量:
 												     <a class="leancloud-visitors-count">-</a>
 												 </span>
@@ -253,50 +253,47 @@ box.onclick = function(){
                         </header>
                         
                         <div class="post-content">
-                            <ol>
-<li>
-<p>将一个字符串转换成一个整数(实现Integer.valueOf(string)的功能，但是string不符合数字要求时返回0)，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0。</p>
-<!--more-->
-</li>
-</ol>
-<pre><code>public int StrToInt(String str) {
-    	if(str.equals(&quot;&quot;))
-    		return 0;
-    	if(str==&quot;-2147483648&quot;)
-    		return -2147483648;
-    	if(str.charAt(0)=='+'||str.charAt(0)=='-') {
-    		for (int i = 1; i &lt; str.length(); i++) {
-    			if(str.charAt(i)&gt;'9'||str.charAt(i)&lt;'0')
-    				return 0;
-    		}
-    		int rs=0;
-    		for (int i = 0; i &lt; str.length()-1; i++) {
-				rs+=(str.charAt(i+1)-48)*(Math.pow(10, str.length()-(i+2)));
+                            <h1 id="顺序表题解">顺序表题解</h1>
+<p>④删除<strong>有序</strong>顺序表中所有重复的值，使得表中所有元素的值均不相同。</p>
+<pre><code>	//删除有序顺序表中的重复元素
+	public void deleteSame() {
+		for (int i = 0; i &lt; len-1; i++) {
+			if(data[i]==data[i+1]) {
+				delete(i+1);
+				i--;
 			}
-    		if(str.charAt(0)=='-') {
-    			return -rs;
-    		}
-    		return rs;
-    	}else if(str.charAt(0)&lt;='9'&amp;&amp;str.charAt(0)&gt;='0'){//第一个字符为数字
-    		for (int i = 1; i &lt; str.length(); i++) {
-    			if(str.charAt(i)&gt;'9'||str.charAt(i)&lt;'0')
-    				return 0;
-    		}
-    		int rs=0;
-    		for (int i = 0; i &lt; str.length(); i++) {
-    			rs+=(str.charAt(i)-48)*(Math.pow(10, str.length()-(i+1)));
-			}
-    		return rs;
-    	}else {//第一个字符为其他
-			return 0;
 		}
-    }
+	}
 </code></pre>
+<p>⑤删除顺序表中所有重复的值，使得表中所有元素的值均不相同。</p>
+<pre><code>	//删除顺序表中的重复元素
+	public void deleteSame2() {
+		
+		int[] arr=new int[23];
+		for (int i = 0; i &lt; len; i++) {
+			arr[data[i]]++;
+		}
+		
+		System.out.println();
+		for (int i = 0; i &lt; arr.length; i++) {
+			if(arr[i]!=0)
+				System.out.print(i+&quot; &quot;);
+		}
+		
+	}
+</code></pre>
+<h1 id="单链表">单链表</h1>
+<p>定义：线性表的链式存储又称单链表。它是指通过一组<strong>任意</strong>的存储单元来存储线性表中的数据元素。</p>
+<p>弱点：由于单链表的元素离散的分布在存储空间中，所以单链表是一种非随机存取得存储结构。即不能直接找到表中某个特定的结点。</p>
 
                         </div>
                         
                             <div class="post-toc">
-                                
+                                <ul class="markdownIt-TOC">
+<li><a href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E9%A2%98%E8%A7%A3">顺序表题解</a></li>
+<li><a href="#%E5%8D%95%E9%93%BE%E8%A1%A8">单链表</a></li>
+</ul>
+
                             </div>
                             
                                 
@@ -310,7 +307,7 @@ box.onclick = function(){
 
                                                 <p class="copyright-item">
                                                     <span>&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://kily-007.github.io/post/算法-剑指offer-字符串转整数/">https://kily-007.github.io/post/算法-剑指offer-字符串转整数/</a></span>
+                                                    <span><a href="https://kily-007.github.io/post/教学-2020-06-20/">https://kily-007.github.io/post/教学-2020-06-20/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -325,15 +322,9 @@ box.onclick = function(){
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/算法-剑指offer-字符串转整数/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/算法-剑指offer-字符串转整数/&sharesource=qzone&title=剑指offer-字符串转整数&pics=https://kily-007.github.io//images/avatar.png?v=1592620345883&summary=&lt;ol&gt;
-&lt;li&gt;将一个字符串转换成一个整数(实现Integer.valueOf(string)的功能，但是string不符合数字要求时返回0)，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0。&lt;/li&gt;
-&lt;/ol&gt;
-"><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/算法-剑指offer-字符串转整数/&sharesource=weibo&title=剑指offer-字符串转整数 + " - " + &lt;ol&gt;
-&lt;li&gt;将一个字符串转换成一个整数(实现Integer.valueOf(string)的功能，但是string不符合数字要求时返回0)，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0。&lt;/li&gt;
-&lt;/ol&gt;
-&pic="https://kily-007.github.io//images/avatar.png?v=1592620345883 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/教学-2020-06-20/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/教学-2020-06-20/&sharesource=qzone&title=教学-2020-06-20&pics=https://kily-007.github.io//images/avatar.png?v=1592620345883&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/教学-2020-06-20/&sharesource=weibo&title=教学-2020-06-20 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1592620345883 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -352,8 +343,8 @@ box.onclick = function(){
                                                                                     <span class="tag ">
                         
                         
-                        <a href="https://kily-007.github.io/tag/eKKBckPZ7/">#
-                    算法
+                        <a href="https://kily-007.github.io/tag/U4d_RZqLq/">#
+                    教学
                         </a>
                         
                             
@@ -371,13 +362,9 @@ box.onclick = function(){
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/笔记-计算机网络/">
-                                                                                            笔记-计算机网络
-                                                                                        </a>
-                                                                                        
                                                                                             
-                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/算法-剑指offer-除法运算/">
-                                                                                                    剑指offer-除法运算
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/F-Uk-HL0m/">
+                                                                                                    教学-2020-06-17
                                                                                                 </a>
                                                                                                 
                                                                                 </section>
