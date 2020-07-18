@@ -223,7 +223,7 @@ box.onclick = function(){
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title" >
-                                剑指offer-除法运算
+                                教学-2020-07-18
                             </h1>
                             
                                     <!--zh-->
@@ -232,18 +232,12 @@ box.onclick = function(){
                                         <a itemprop="author" rel="author" href="/">
                                             kily007
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-08-06</a></span>
-                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">0.6
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-07-18</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">1.0
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">108</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">299</a></span>
                                         
-                                            <span class="post-category">&#x5206;&#x7C7B;:
-                                
-                                <a href="https://kily-007.github.io/tag/eKKBckPZ7/">算法</a>
-                                
-                            </span>
-                                            
-                                                <span id="/post/算法-剑指offer-除法运算/" data-hk-page="current" class="leancloud-visitors view">
+                                                <span id="/post/教学-2020-07-18/" data-hk-page="current" class="leancloud-visitors view">
 													 阅读量:
 												     <a class="leancloud-visitors-count">-</a>
 												 </span>
@@ -253,31 +247,46 @@ box.onclick = function(){
                         </header>
                         
                         <div class="post-content">
-                            <p>给定一个数组A[0,1,...,n-1],请构建一个数组B[0,1,...,n-1],其中B中的元素B[i]=A[0]<em>A[1]</em>...*A[i-1]<em>A[i+1]</em>...*A[n-1]。不能使用除法。</p>
-<!--more-->
-<pre><code>public int[] multiply(int[] A) {
-    if (A.length != 0) {
-        int[] B = new int[A.length];
-        for (int i = 0; i &lt; B.length; i++) {
-            B[i]=1;
-        }
-        for (int i = 0; i &lt; B.length; i++) {
-            for (int j = 0; j &lt; A.length; j++) {
-                if(j!=i)
-                    B[i]*=A[j];
-            }
-        }
-        return B;
-    }else {
-        return new int [] {};
-    }
-}
-</code></pre>
+                            <h2 id="顺序表和链表的比较">顺序表和链表的比较</h2>
+<ol>
+<li>存取方式<br>
+顺序表可以顺序存取，也可以随机存取，链表只能从表头顺序存取元素。</li>
+<li>逻辑结构与物理结构<br>
+采用顺序存储时，逻辑上相邻的元素，对应的物理存储位置也相邻。<br>
+采用链式存储时，逻辑上相邻的元素，物理存储位置不一定相邻，对应的逻辑关系是通过<em>指针</em>来表示的。</li>
+<li>查找、插入和删除<br>
+|  null    | 顺序表  | 链表 |<br>
+| 查找     | O(n)     | O(n) |<br>
+| 插入     | O(n)     | O(1) |<br>
+| 删除     | O(n)     | O(1) |</li>
+<li>空间分配<br>
+顺序表是静态空间分配，链表是动态空间分配。</li>
+</ol>
+<h2 id="实际应用中表的选取">实际应用中表的选取</h2>
+<ol>
+<li>基于存储考虑<br>
+顺序表：可以估计线性表的长度或存储规模时采用；<br>
+链表：不用事先知道存储规模，但链表的存储密度低。</li>
+<li>基于运算考虑<br>
+顺序表：经常访问链表中的元素时使用；<br>
+链表：经常插入或者删除时使用；</li>
+<li>基于环境考虑、<br>
+顺序表：直接采用数组，容易实现。<br>
+链表：基于指针实现，相对较为繁琐。</li>
+</ol>
 
                         </div>
                         
                             <div class="post-toc">
-                                
+                                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%92%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E6%AF%94%E8%BE%83">顺序表和链表的比较</a></li>
+<li><a href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E4%B8%AD%E8%A1%A8%E7%9A%84%E9%80%89%E5%8F%96">实际应用中表的选取</a></li>
+</ul>
+</li>
+</ul>
+
                             </div>
                             
                                 
@@ -291,7 +300,7 @@ box.onclick = function(){
 
                                                 <p class="copyright-item">
                                                     <span>&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://kily-007.github.io/post/算法-剑指offer-除法运算/">https://kily-007.github.io/post/算法-剑指offer-除法运算/</a></span>
+                                                    <span><a href="https://kily-007.github.io/post/教学-2020-07-18/">https://kily-007.github.io/post/教学-2020-07-18/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -306,11 +315,9 @@ box.onclick = function(){
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/算法-剑指offer-除法运算/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/算法-剑指offer-除法运算/&sharesource=qzone&title=剑指offer-除法运算&pics=https://kily-007.github.io//images/avatar.png?v=1595053014210&summary=&lt;p&gt;给定一个数组A[0,1,...,n-1],请构建一个数组B[0,1,...,n-1],其中B中的元素B[i]=A[0]&lt;em&gt;A[1]&lt;/em&gt;...*A[i-1]&lt;em&gt;A[i+1]&lt;/em&gt;...*A[n-1]。不能使用除法。&lt;/p&gt;
-"><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/算法-剑指offer-除法运算/&sharesource=weibo&title=剑指offer-除法运算 + " - " + &lt;p&gt;给定一个数组A[0,1,...,n-1],请构建一个数组B[0,1,...,n-1],其中B中的元素B[i]=A[0]&lt;em&gt;A[1]&lt;/em&gt;...*A[i-1]&lt;em&gt;A[i+1]&lt;/em&gt;...*A[n-1]。不能使用除法。&lt;/p&gt;
-&pic="https://kily-007.github.io//images/avatar.png?v=1595053014210 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/教学-2020-07-18/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/教学-2020-07-18/&sharesource=qzone&title=教学-2020-07-18&pics=https://kily-007.github.io//images/avatar.png?v=1595053014210&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/教学-2020-07-18/&sharesource=weibo&title=教学-2020-07-18 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1595053014210 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -328,12 +335,6 @@ box.onclick = function(){
                                                                                     <span>&#x6807;&#x7B7E;:</span>
                                                                                     <span class="tag ">
                         
-                        
-                        <a href="https://kily-007.github.io/tag/eKKBckPZ7/">#
-                    算法
-                        </a>
-                        
-                            
                                 </span>
                                                                                 </div>
                                                                                 <div>
@@ -348,13 +349,9 @@ box.onclick = function(){
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/算法-剑指offer-字符串转整数/">
-                                                                                            剑指offer-字符串转整数
-                                                                                        </a>
-                                                                                        
                                                                                             
-                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/gridea-hello gridea/">
-                                                                                                    Hello Gridea
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/教学-2020-07-09/">
+                                                                                                    教学-2020-07-09
                                                                                                 </a>
                                                                                                 
                                                                                 </section>

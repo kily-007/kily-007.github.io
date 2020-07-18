@@ -223,7 +223,7 @@ box.onclick = function(){
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title" >
-                                剑指offer-除法运算
+                                教学-2020-07-08
                             </h1>
                             
                                     <!--zh-->
@@ -232,18 +232,18 @@ box.onclick = function(){
                                         <a itemprop="author" rel="author" href="/">
                                             kily007
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-08-06</a></span>
-                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">0.6
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-07-08</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">1.2
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">108</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">246</a></span>
                                         
                                             <span class="post-category">&#x5206;&#x7C7B;:
                                 
-                                <a href="https://kily-007.github.io/tag/eKKBckPZ7/">算法</a>
+                                <a href="https://kily-007.github.io/tag/U4d_RZqLq/">教学</a>
                                 
                             </span>
                                             
-                                                <span id="/post/算法-剑指offer-除法运算/" data-hk-page="current" class="leancloud-visitors view">
+                                                <span id="/post/教学-2020-07-08/" data-hk-page="current" class="leancloud-visitors view">
 													 阅读量:
 												     <a class="leancloud-visitors-count">-</a>
 												 </span>
@@ -253,31 +253,86 @@ box.onclick = function(){
                         </header>
                         
                         <div class="post-content">
-                            <p>给定一个数组A[0,1,...,n-1],请构建一个数组B[0,1,...,n-1],其中B中的元素B[i]=A[0]<em>A[1]</em>...*A[i-1]<em>A[i+1]</em>...*A[n-1]。不能使用除法。</p>
-<!--more-->
-<pre><code>public int[] multiply(int[] A) {
-    if (A.length != 0) {
-        int[] B = new int[A.length];
-        for (int i = 0; i &lt; B.length; i++) {
-            B[i]=1;
-        }
-        for (int i = 0; i &lt; B.length; i++) {
-            for (int j = 0; j &lt; A.length; j++) {
-                if(j!=i)
-                    B[i]*=A[j];
-            }
-        }
-        return B;
-    }else {
-        return new int [] {};
-    }
-}
+                            <h1 id="双链表">双链表</h1>
+<p>说明：单链表结点中只有一个指向其后继的指针，使得单链表只能从头结点依次顺序地向后访问。为了克服单链表只能从前往后的访问的缺陷，引入prior指针，使得链表可以向前访问。<br>
+结构示意图：<br>
+<img src="https://kily-007.github.io//post-images/1594178454508.png" alt="" loading="lazy"></p>
+<h1 id="建表">建表</h1>
+<pre><code>//尾插法建表
+public DLinkList buildDLinkList(int[] arr) {
+		DLinkList head = new DLinkList();
+		head.next = null;
+		head.prior = null;
+		head.data = 0;
+		DLinkList r = head;
+		int count = 0;
+		while (count &lt; arr.length) {
+			DLinkList p = new DLinkList();
+			p.data = arr[count++];
+			p.next = r.next;
+			p.prior = r;
+			r.next = p;
+			r = p;
+		}
+		return head;
+	}
 </code></pre>
+<h1 id="插入删除">插入删除</h1>
+<figure data-type="image" tabindex="1"><img src="https://kily-007.github.io//post-images/1594185637440.png" alt="" loading="lazy"></figure>
+<pre><code>    //插入
+	public DLinkList insert(DLinkList head,int posi,int value) {
+		DLinkList p=head.next;
+		int count=0;
+		while (count&lt;posi) {
+			p=p.next;
+			count++;
+		}
+		DLinkList q=new DLinkList();
+		q.data=value;
+		q.next=p.next;
+		q.prior=p;
+		p.next.prior=q;
+		p.next=q;
+		return head;
+	}
+
+    //删除
+    	public DLinkList delete(DLinkList head,int posi) {
+		DLinkList p=head;
+		int count=0;
+		while (count&lt;posi) {
+			p=p.next;
+			count++;
+		}
+		p.next.next.prior=p;
+		p.next=p.next.next;
+		return head;
+	}
+</code></pre>
+<h1 id="循环链表">循环链表</h1>
+<h2 id="循环单链表">循环单链表</h2>
+<figure data-type="image" tabindex="2"><img src="https://kily-007.github.io//post-images/1594186826197.png" alt="" loading="lazy"></figure>
+<h2 id="循环双链表">循环双链表</h2>
+<figure data-type="image" tabindex="3"><img src="https://kily-007.github.io//post-images/1594186883467.png" alt="" loading="lazy"></figure>
+<h2 id="静态链表">静态链表</h2>
+<figure data-type="image" tabindex="4"><img src="https://kily-007.github.io//post-images/1594188217515.png" alt="" loading="lazy"></figure>
 
                         </div>
                         
                             <div class="post-toc">
-                                
+                                <ul class="markdownIt-TOC">
+<li><a href="#%E5%8F%8C%E9%93%BE%E8%A1%A8">双链表</a></li>
+<li><a href="#%E5%BB%BA%E8%A1%A8">建表</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E5%88%A0%E9%99%A4">插入删除</a></li>
+<li><a href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8">循环链表</a>
+<ul>
+<li><a href="#%E5%BE%AA%E7%8E%AF%E5%8D%95%E9%93%BE%E8%A1%A8">循环单链表</a></li>
+<li><a href="#%E5%BE%AA%E7%8E%AF%E5%8F%8C%E9%93%BE%E8%A1%A8">循环双链表</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8">静态链表</a></li>
+</ul>
+</li>
+</ul>
+
                             </div>
                             
                                 
@@ -291,7 +346,7 @@ box.onclick = function(){
 
                                                 <p class="copyright-item">
                                                     <span>&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://kily-007.github.io/post/算法-剑指offer-除法运算/">https://kily-007.github.io/post/算法-剑指offer-除法运算/</a></span>
+                                                    <span><a href="https://kily-007.github.io/post/教学-2020-07-08/">https://kily-007.github.io/post/教学-2020-07-08/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -306,11 +361,9 @@ box.onclick = function(){
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/算法-剑指offer-除法运算/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/算法-剑指offer-除法运算/&sharesource=qzone&title=剑指offer-除法运算&pics=https://kily-007.github.io//images/avatar.png?v=1595053014210&summary=&lt;p&gt;给定一个数组A[0,1,...,n-1],请构建一个数组B[0,1,...,n-1],其中B中的元素B[i]=A[0]&lt;em&gt;A[1]&lt;/em&gt;...*A[i-1]&lt;em&gt;A[i+1]&lt;/em&gt;...*A[n-1]。不能使用除法。&lt;/p&gt;
-"><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/算法-剑指offer-除法运算/&sharesource=weibo&title=剑指offer-除法运算 + " - " + &lt;p&gt;给定一个数组A[0,1,...,n-1],请构建一个数组B[0,1,...,n-1],其中B中的元素B[i]=A[0]&lt;em&gt;A[1]&lt;/em&gt;...*A[i-1]&lt;em&gt;A[i+1]&lt;/em&gt;...*A[n-1]。不能使用除法。&lt;/p&gt;
-&pic="https://kily-007.github.io//images/avatar.png?v=1595053014210 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/教学-2020-07-08/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/教学-2020-07-08/&sharesource=qzone&title=教学-2020-07-08&pics=https://kily-007.github.io//images/avatar.png?v=1595053014210&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/教学-2020-07-08/&sharesource=weibo&title=教学-2020-07-08 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1595053014210 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -329,8 +382,8 @@ box.onclick = function(){
                                                                                     <span class="tag ">
                         
                         
-                        <a href="https://kily-007.github.io/tag/eKKBckPZ7/">#
-                    算法
+                        <a href="https://kily-007.github.io/tag/U4d_RZqLq/">#
+                    教学
                         </a>
                         
                             
@@ -348,13 +401,13 @@ box.onclick = function(){
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/算法-剑指offer-字符串转整数/">
-                                                                                            剑指offer-字符串转整数
+                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/如何将本地项目同步到GitHub/">
+                                                                                            如何将本地项目同步到GitHub
                                                                                         </a>
                                                                                         
                                                                                             
-                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/gridea-hello gridea/">
-                                                                                                    Hello Gridea
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/教学-2020-06-22/">
+                                                                                                    教学-2020-06-22
                                                                                                 </a>
                                                                                                 
                                                                                 </section>
