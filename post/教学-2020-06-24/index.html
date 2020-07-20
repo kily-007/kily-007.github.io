@@ -218,9 +218,219 @@ box.onclick = function(){
     }
 </script>
 
-	
-	     
-	        <script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+            <div class="main">
+                <div class="container">
+                    <article class="post-wrap">
+                        <header class="post-header">
+                            <h1 class="post-title" >
+                                教学-2020-06-24
+                            </h1>
+                            
+                                    <!--zh-->
+                                    <div class="post-meta zh" style="margin:14px">
+                                        &#x4F5C;&#x8005;:
+                                        <a itemprop="author" rel="author" href="/">
+                                            kily007
+                                        </a>
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-06-24</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">1.4
+                                    &#x5206;&#x949F;</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">265</a></span>
+                                        
+                                            <span class="post-category">&#x5206;&#x7C7B;:
+                                
+                                <a href="https://kily-007.github.io/tag/U4d_RZqLq/">教学</a>
+                                
+                            </span>
+                                            
+                                                <span id="/post/教学-2020-06-24/" data-hk-page="current" class="leancloud-visitors view">
+													 阅读量:
+												     <a class="leancloud-visitors-count">-</a>
+												 </span>
+                                                
+                                    </div>
+                                    
+                        </header>
+                        
+                        <div class="post-content">
+                            <h1 id="单链表相关方法">单链表相关方法</h1>
+<h2 id="1-获取单链表长度">1. 获取单链表长度</h2>
+<pre><code>public int findLength(LinkList list) {
+		int count=0;
+		while(true){
+			count++;
+			if(list.next==null)return count;
+			list=list.next;
+		}
+	}
+
+</code></pre>
+<h2 id="2-查找链表中第一个值为e的结点">2. 查找链表中第一个值为e的结点</h2>
+<pre><code>public LinkList findEByValue(LinkList list,int e) {
+		while(list!=null) {
+			if(list.data==e) {
+				return list;
+			}
+			list=list.next;
+		}
+		return null;
+	}
+</code></pre>
+<h2 id="3-查找链表中第k个结点的值">3. 查找链表中第k个结点的值</h2>
+<pre><code>public LinkList findEByNum(LinkList list,int k) {
+		if(getLength(list)&lt;k)
+			return null;
+		int count=0;
+		while (count&lt;k) {
+			list=list.next;
+			count++;
+		}
+		return list;
+	}
+</code></pre>
+<h2 id="4-颠倒单链表并输出">4. 颠倒单链表并输出</h2>
+<pre><code>public void printReverseLinkList(LinkList list) {
+		LinkList head=list;
+		LinkList p=list.next;
+		LinkList q;
+		list.next=null;
+		while(p!=null) {
+			q=p.next;
+			p.next=head.next;
+			head.next=p;
+			p=q;
+		}
+		printLinkList(head);
+	}
+</code></pre>
+<h2 id="5-去掉单链表中重复的值并返回一个删去重复值的单链表">5. 去掉单链表中重复的值，并返回一个删去重复值的单链表</h2>
+<pre><code>public LinkList deleteSame(LinkList list) {
+		list=list.next;
+		LinkList haha=new LinkList();
+		int j=0;
+		int len=getLength(list);
+		int lenxixi=0;
+		int[] arr=new int[100];
+		for (int i = 0; i &lt; len; i++) {
+			arr[list.data]++;
+			list=list.next;
+		}
+		System.out.println();
+		for (int i = 0; i &lt; arr.length; i++) {
+			if(arr[i]!=0) {
+				lenxixi++;
+			}
+		}
+		int[] xixi=new int[lenxixi];
+		for (int i = 0; i &lt; arr.length; i++) {
+			if(arr[i]!=0) {
+				xixi[j]=i;
+				j++;
+			}
+		}
+		haha = haha.TailBuildList(xixi);
+		return haha;
+	}
+</code></pre>
+
+                        </div>
+                        
+                            <div class="post-toc">
+                                <ul class="markdownIt-TOC">
+<li><a href="#%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95">单链表相关方法</a>
+<ul>
+<li><a href="#1-%E8%8E%B7%E5%8F%96%E5%8D%95%E9%93%BE%E8%A1%A8%E9%95%BF%E5%BA%A6">1. 获取单链表长度</a></li>
+<li><a href="#2-%E6%9F%A5%E6%89%BE%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%80%BC%E4%B8%BAe%E7%9A%84%E7%BB%93%E7%82%B9">2. 查找链表中第一个值为e的结点</a></li>
+<li><a href="#3-%E6%9F%A5%E6%89%BE%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%AC%ACk%E4%B8%AA%E7%BB%93%E7%82%B9%E7%9A%84%E5%80%BC">3. 查找链表中第k个结点的值</a></li>
+<li><a href="#4-%E9%A2%A0%E5%80%92%E5%8D%95%E9%93%BE%E8%A1%A8%E5%B9%B6%E8%BE%93%E5%87%BA">4. 颠倒单链表并输出</a></li>
+<li><a href="#5-%E5%8E%BB%E6%8E%89%E5%8D%95%E9%93%BE%E8%A1%A8%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E5%80%BC%E5%B9%B6%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AA%E5%88%A0%E5%8E%BB%E9%87%8D%E5%A4%8D%E5%80%BC%E7%9A%84%E5%8D%95%E9%93%BE%E8%A1%A8">5. 去掉单链表中重复的值，并返回一个删去重复值的单链表</a></li>
+</ul>
+</li>
+</ul>
+
+                            </div>
+                            
+                                
+                                    
+                                            <!--zh-->
+                                            <section class="post-copyright zh">
+                                                <p class="copyright-item ">
+                                                    <span>&#x4F5C;&#x8005;:</span>
+                                                    <span>kily007</span>
+                                                </p>
+
+                                                <p class="copyright-item">
+                                                    <span>&#x94FE;&#x63A5;:</span>
+                                                    <span><a href="https://kily-007.github.io/post/教学-2020-06-24/">https://kily-007.github.io/post/教学-2020-06-24/</a></span>
+                                                </p>
+
+                                                <p class="copyright-item">
+                                                    <span>&#x534F;&#x8BAE;:</span>
+                                                    <span>MIT License</span>
+                                                </p>
+                                            </section>
+                                            
+                                                
+                                                    
+                                                                    <!--Share-->
+                                                                    <span style="margin-right:15px">
+                        <i class="post-share"></i>
+                        <span>&#x5206;&#x4EAB;:</span>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/教学-2020-06-24/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/教学-2020-06-24/&sharesource=qzone&title=教学-2020-06-24&pics=https://kily-007.github.io//images/avatar.png?v=1595214706651&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/教学-2020-06-24/&sharesource=weibo&title=教学-2020-06-24 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1595214706651 "><i class="fa fa-weibo "></i></a>
+
+                                                                    </span>
+                                                                    
+                                                                        <div class="reward ">
+                                                                            <div class="reward-button ">&yen;
+                                                                                <span class="reward-code "> 
+                        <span class="alipay-code "> <img class="alipay-img " alt = "support " src="https://i.loli.net/2020/06/08/xmUPJGuqCsaQgAc.jpg"><b>支付宝</b> </span>
+                                                                                <span class="wechat-code "> <img alt ="support " class="wechat-img " src="https://i.loli.net/2020/06/08/VJIWfRMPDpwKGlo.jpg"><b>微信</b> </span> </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                            <!--zh-->
+                                                                            <section class="post-tags zh ">
+                                                                                <div>
+                                                                                    <span>&#x6807;&#x7B7E;:</span>
+                                                                                    <span class="tag ">
+                        
+                        
+                        <a href="https://kily-007.github.io/tag/U4d_RZqLq/">#
+                    教学
+                        </a>
+                        
+                            
+                                </span>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <a href="javascript:window.history.back();">
+                        &#x8FD4;&#x56DE;</a>
+                                                                                    <span>&dot;</span>
+                                                                                    <a href="#">&#x4E3B;&#x9875;</a>
+                                                                                </div>
+                                                                            </section>
+
+                                                                            
+                                                                                <!---->
+                                                                                <section class="post-nav">
+                                                                                    
+                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/教学-2020-07-08/">
+                                                                                            教学-2020-07-08
+                                                                                        </a>
+                                                                                        
+                                                                                            
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/教学-2020-06-22/">
+                                                                                                    教学-2020-06-22
+                                                                                                </a>
+                                                                                                
+                                                                                </section>
+                    </article>
+                </div>
+                
+                                            
+                                                <script src="https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
 
 <style>
 	#vcomments{
@@ -336,9 +546,11 @@ box.onclick = function(){
 		}, 100);
 	}
 </script>
-	     
-	
-	
+                                                    
+            </div>
+    </div>
+    </div>
+    </div>
     
         <footer id="footer" class="footer">
             <div class="copyright">
@@ -460,7 +672,10 @@ box.onclick = function(){
                 </script>
                 
 
-    </div>
+        </div>
 </body>
+<script>
+    scroll();
+</script>
 
 </html>
