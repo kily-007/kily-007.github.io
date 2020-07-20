@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/css/style.min.css" />
 <link rel="stylesheet" href="https://kily-007.github.io//styles/main.css" />
 <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link type='text/css' rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sanarous/files@master/font-awesome-animation.min.css">
 <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/tocbot.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/itjoker233/Gridea-theme-Chic/assets/media/script/script.min.js"></script>
@@ -55,42 +56,30 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-header header-logo">
-                <a href="https://kily-007.github.io/">
+                <a class="siteName" href="https://kily-007.github.io/">
                     kily007
                 </a>
             </div>
 
-            <div class="menu navbar-right">
+            <div class="menu">
 				<ul>
+					<a class="menu-item" href="/"><span class="faa-parent animated-hover"><i class="fa fa-home faa-wrench"></i>首页</span></a>
+					<a class="menu-item" href="/post/about"><span class="faa-parent animated-hover"><i class="fa fa-user-circle faa-spin"></i>关于</span></a>
+					<a class="menu-item" href="/archives"><span class="faa-parent animated-hover"><i class="fa fa-bars faa-shake"></i>归档</span></a>
+					<a class="menu-item" href="/tags"><span class="faa-parent animated-hover"><i class="fa fa-tags faa-horizontal"></i>标签</span></a>
+					<a class="menu-item" href="/friends"><span class="faa-parent animated-hover"><i class="fa fa-address-book faa-vertical"></i>邻居</span></a>
+					<a class="menu-item" href="/message"><span class="faa-parent animated-hover"><i class="fa fa-commenting faa-vertical"></i>留言</span></a>
+					<a class="menu-item" href="/album"><span class="faa-parent animated-hover"><i class="fa fa-camera-retro faa-ring"></i>相册</span></a>
+					<a class="menu-item" href="/tag/life"><span class="faa-parent animated-hover"><i class="fa fa-coffee faa-tada"></i>生活</span></a>
+					<a class="menu-item" href="/post/source"><span class="faa-parent animated-hover"><i class="fa fa-cog fa-spin"></i>资源</span></a>
 					
-						<li><a class="menu-item" href="/">首页</a></li>
-                    
-						<li><a class="menu-item" href="/post/about">关于</a></li>
-                    
-						<li><a class="menu-item" href="/archives">归档</a></li>
-                    
-						<li><a class="menu-item" href="/tags">标签</a></li>
-                    
-						<li><a class="menu-item" href="/friends">邻居</a></li>
-                    
-						<li><a class="menu-item" href="/message">留言</a></li>
-                    
-					<li><a href="/tag/life">生活</a></li>
-					<li><a class="menu-item" >更多</a>
-						<ul class="dropdown-list">
-							<li><a href="/tag/album">相册</a></li>
-							<li><a href="/post/utils">工具</a></li>
-							<li><a href="/post/source">资源</a></li>
-						</ul>
-					</li>
-				<li>
 					<input id="switch_default" type="checkbox" class="switch_default">
 					<label for="switch_default" class="toggleBtn"></label>
-				</li>
+				
 				</ul>
             </div>
 			
-            <form id="gridea-search-form" data-update="1595214706651" action="/search/index.html">
+            <form id="gridea-search-form" data-update="1595221529539" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
             </form>
         </div>
@@ -152,7 +141,7 @@ box.onclick = function(){
                         <!--zh-->
                         <a id="mobile-toggle-theme-zh" class="a zh">&nbsp;&#x6697;&#x9ED1;</a>
                     </div>
-                    <form id="gridea-search-form" data-update="1595214706651" action="/search/index.html">
+                    <form id="gridea-search-form" data-update="1595221529539" action="/search/index.html">
                         <input class="search-input" autocomplete="off" spellcheck="false" name="q" autofocus="true" placeholder="Search...">
                     </form>
                     <!--en-->
@@ -185,6 +174,10 @@ box.onclick = function(){
                         
                         <a class="menu-item" href="/message">
                             留言
+                        </a>
+                        
+                        <a class="menu-item" href="/album">
+                            相册
                         </a>
                         
                 </div>
@@ -308,8 +301,8 @@ $ git push origin master</li>
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
                                                                     <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/如何将本地项目同步到GitHub/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/如何将本地项目同步到GitHub/&sharesource=qzone&title=如何将本地项目同步到GitHub&pics=https://kily-007.github.io//images/avatar.png?v=1595214706651&summary="><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/如何将本地项目同步到GitHub/&sharesource=weibo&title=如何将本地项目同步到GitHub + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1595214706651 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/如何将本地项目同步到GitHub/&sharesource=qzone&title=如何将本地项目同步到GitHub&pics=https://kily-007.github.io//images/avatar.png?v=1595221529539&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/如何将本地项目同步到GitHub/&sharesource=weibo&title=如何将本地项目同步到GitHub + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1595221529539 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -597,7 +590,7 @@ $ git push origin master</li>
                     console.clear();
                     
                     var newDate = new Date();
-                    newDate.setTime(1595214706651);
+                    newDate.setTime(1595221529539);
                     console.log(" Blog Update Time: " + newDate.toLocaleDateString());
                     console.log("\n %c \u26a1Theme:Chic Author's Blog:https://blog.itjoker.cn  Write By ITJoker  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;");
                 </script>
