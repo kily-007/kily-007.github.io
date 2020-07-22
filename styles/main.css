@@ -41,6 +41,32 @@
   display: block;
   background-color: lightgrey;
 }
+/*tags*/
+.tags-item {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  padding: 20px 0;
+}
+.tag-item {
+  color: #fff;
+  border-radius: 6px;
+  padding: 3px 8px 3px 5px;
+  display: inline-block;
+}
+.tag-item:hover {
+  text-decoration: none;
+  color: #fff !important;
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.night.tag-item {
+  -webkit-filter: brightness(0.3) !important;
+  filter: brightness(0.7) !important;
+}
 /*Reward*/
 .reward {
   padding: 5px 0;
