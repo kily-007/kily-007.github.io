@@ -216,7 +216,7 @@ box.onclick = function(){
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title" >
-                                资源
+                                linux驱动-总线协议
                             </h1>
                             
                                     <!--zh-->
@@ -225,12 +225,12 @@ box.onclick = function(){
                                         <a itemprop="author" rel="author" href="/">
                                             kily007
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-01-26</a></span>
-                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">0.9
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-10-08</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">9.9
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">241</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">2764</a></span>
                                         
-                                                <span id="/post/source/" data-hk-page="current" class="leancloud-visitors view">
+                                                <span id="/post/PsdYRNT3I/" data-hk-page="current" class="leancloud-visitors view">
 													 阅读量:
 												     <a class="leancloud-visitors-count">-</a>
 												 </span>
@@ -240,32 +240,135 @@ box.onclick = function(){
                         </header>
                         
                         <div class="post-content">
-                            <h2 id="资源">资源</h2>
-<div class="note info no-icon">
-名称：<a href="http://pic.netbian.com/" target="_blank">彼岸图网</a> </br>
-描述：每天免费下载一张4k超清壁纸
-</div>
-<div class="note primary no-icon">
-名称：<a href="http://www.officeplus.cn/Template/Home.shtml"  target="_blank">PPT/Word/Excle模板</a>  </br>
-描述：可以下载包括总结、报告、简历和财务报表等各个方面的PPT/Word/Excle模板
-</div>
-<div class="note warning no-icon">
-名称：<a href="https://fontawesome.dashgame.com/"  target="_blank">Font Awesome</a>  </br>
-描述：一套绝佳的图标字体库和CSS样式
-</div>
-<h2 id="工具">工具</h2>
-<div class="note warning no-icon">
-名称：<a href="https://www.zybuluo.com/cmd/"  target="_blank">Cmd Markdown编辑阅读器</a>  </br>
-描述：界面十分简洁舒适，可以线上写MarkDown文档，并同步到自己的账号，发布到社区
-</div>
-<div class="note danger no-icon">
-名称：<a href="https://www.sordum.org/files/download/windows-update-blocker/Wub.zip"  target="_blank">Windows Update Blocker</a>  </br>
-描述：一款禁止Win10升级的小工具
-</div>
-<div class="note primary no-icon">
-名称：<a href="https://www.deepl.com/app/thanks"  target="_blank">DeepL</a>  </br>
-描述：科技巨头谷歌（Google）、微软（Microsoft）和脸书（Facebook）都将机器学习应用到翻译领域，但一家名为DeepL的小公司却超越了他们，并且提高了该领域的标准。其翻译速度可与规模庞大的竞争者相媲美，但比我们使用过的任何一个翻译工具都要准确和细致。
-</div>
+                            <h2 id="linux驱动-modbus协议">linux驱动-MODBUS协议</h2>
+<p>  Modbus是使用主从关系实现的请求 - 响应协议。 在主从关系中，通信总是成对发生 -  一个设备必须发起请求，然后等待响应 - 并且发起设备（主设备）负责发起每次交互。  通常，主设备是人机或监控和数据采集（SCADA）系统，从设备是传感器、可编程逻辑控制器（PLC）或可编程自动化控制器（PAC）。 这些请求和响应的内容以及发送这些消息的网络层由协议的不同层来定义。</p>
+<figure data-type="image" tabindex="1"><img src="https://ni.scene7.com/is/image/ni/fdatawyg5871526514498411034?scl=1" alt="img" loading="lazy"></figure>
+<p>  在最初的做法中，Modbus是建立在串行端口之上的单一协议，因此它不能被分成多个层。  随着时间的推移，该协议引入了不同的应用程序数据单元来更改串行通信使用的数据包格式，或允许使用TCP/IP和用户数据报协议（UDP）网络。 这实现了定义协议数据单元（PDU）的核心协议和定义应用数据单元（ADU）的网络层的分离</p>
+<h3 id="应用场景">应用场景</h3>
+<p>  Modbus协议是一项应用层报文传输协议，包括<strong>ASCII</strong>、<strong>RTU</strong>、TCP三种报文类型，</p>
+<ul>
+<li>
+<p>modbus RTU协议紧凑，采用二进制表示数据的方式，一般默认使用RTU协议，可以使用RS232/RS485/RS422、无线、等介质，用于速度要求不高的场合，如：楼宇、工业现场、管道输送、远程泵站等；</p>
+</li>
+<li>
+<p>modbusASCII协议比较宽松，时序要求不高，可以用于条形码阅读器、打印机、仪器仪表读取等；</p>
+<p>这两类都使用串行通信（serial communication）方式。RTU格式后续的命令/数据带有<strong>循环冗余校验</strong>的校验和，而ASCII格式采用<strong>纵向冗余校验</strong>的校验和。被配置为RTU变种的节点不会和设置为ASCII变种的节点通信，反之亦然。</p>
+</li>
+<li>
+<p>modbusTCP速度很高，可以用于实时控制、时钟对时、全局数据、发送邮件、故障设备替换、网络管理、用户网页制定和浏览、固件更新等多种服务。</p>
+</li>
+</ul>
+<h3 id="基本原理">基本原理</h3>
+<p><strong>modbus RTU协议</strong></p>
+<p>  标准的Modbus协议物理层接口有RS232、RS422、RS485和以太网接口，采用master/slave方式通信。</p>
+<p><strong>帧结构</strong></p>
+<p><strong>帧结构 = 地址 + 功能吗 + 数据 + 校验</strong></p>
+<p><strong>地址:</strong> 占用一个字节,范围0-255,其中有效范围是1-247,其他有特殊用途,比如255是广播地址(广播地址就是应答所有地址,正常的需要两个设备的地址一样才能进行查询和回复)</p>
+<p><strong>功能码:</strong> 占用一个字节,功能码的意义就是,知道这个指令是干啥的,比如你可以查询从机的数据,也可以修改数据,所以不同功能码对应不同功能.</p>
+<p><strong>数据:</strong> 根据功能码不同,有不同结构</p>
+<p><strong>校验:</strong> 为了保证数据不错误,增加这个,然后再把前面的数据进行计算看数据是否一致,如果一致,就说明这帧数据是正确的,我再回复;如果不一样,说明你这个数据在传输的时候出了问题,数据不对的,所以就抛弃了</p>
+<figure data-type="image" tabindex="2"><img src="https://img-blog.csdnimg.cn/20190630210808145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BhbmRhNV9jc2Ru,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<p><strong>2.通讯</strong></p>
+<p>0x06功能码,修改从机数据：</p>
+<blockquote>
+<p><strong>主机发送:</strong> 01 06 00 00 00 01 48 0A<br>
+<strong>从机回复:</strong> 01 06 00 00 00 01 48 0A</p>
+</blockquote>
+<pre><code class="language-c">*发送数据解析*/
+01-主机要查的地址
+06-功能码,代表修改单个寄存器功能,修改有些不同,有修改一个寄存器和修改多个寄存器;
+00 00-代表修改的起始寄存器地址.说明从0x0000开始.
+00 01-代表修改的值为00 01.结合前面的00 00,意思就是修改0号寄存器值为00 01;
+48 0A-循环冗余校验,是modbus的校验公式,从首个字节开始到48前面为止;
+
+/*回复解析*/
+01-从机返回的地址,说明这就是主机查的从机
+06-功能码,代表修改单个寄存器功能;
+00 00-代表修改的起始寄存器地址.说明是0x0000.
+00 01-代表修改的值为00 01.结合前面的00 00,意思就是修改0号寄存器值为00 01;
+48 0A-循环冗余校验,是modbus的校验公式,从首个字节开始到48前面为止;
+</code></pre>
+<p>功能码<strong>0x10</strong>，修改<strong>连续多个寄存器</strong></p>
+<blockquote>
+<p><strong>主机发送:</strong> 01 10 00 00 00 01 02 11 22 2A 19<br>
+<strong>从机回复:</strong> 01 10 00 00 00 01 01 C9</p>
+</blockquote>
+<pre><code class="language-c">*发送数据解析*/
+01-主机要查的地址
+10-功能码,代表修改多个寄存器功能;
+00 00-代表修改的起始寄存器地址.说明从0x0000开始.
+00 01-代表修改的寄存器数量，这里开始于0x06的修改不同;
+02 -表示修改的总字节数，由于只修改了1个寄存器，所以数据要有两个字节；
+11 22-表示修改的值，结合上面，就是从第0000寄存器开始修改一个寄存器值为11 22，就是把0000寄存器改为11 22；
+2A 19-循环冗余校验,是modbus的校验公式,从首个字节开始到22前面为止;
+
+/*回复解析*/
+01-从机返回的地址,说明这就是主机查的从机
+10-功能码
+00 00-代表修改的起始寄存器地址.说明是0x0000.
+00 01-代表修改的寄存器数量，只需要回复这么多久足够了，从机告诉主机，你修改了哪几个寄存器就足够了;
+01 C9-循环冗余校验;
+</code></pre>
+<p><strong>归纳</strong><br>
+modbus RTU协议只需要看懂功能码0x03,0x06,0x10这三个基本的就已经足够了；分别回想下其数据域部分：<br>
+03-主机需要发送起始地址+寄存器数量，从机回复总字节数+数据；<br>
+06-主机发送起始地址+数据内容（因为你只需要修改一个，所以起始地址就是所要修改的地址），从机返回起始地址+数据内容（发现居然一样！）<br>
+10-主机发送起始地址+寄存器个数+总字节数+数据，从机返回起始地址+寄存器数量</p>
+<p><strong>Modbus-ACSII协议</strong></p>
+<p><strong>概述</strong></p>
+<p>一般只需要了解RTU协议，因为前面有说过，必须要有RTU协议的，所以只需要了解了RTU协议，就可以读出设备信息了，至于ACSII协议，做个大概了解</p>
+<p><strong>帧形式</strong></p>
+<p>对于RTU协议，比如RTU发送一个字节：0x12；<br>
+ASCII协议则需要发送2个字节：一个字节代表1，一个代表2，即31和32，才能代表0x12.<br>
+所以，acsii协议的效率比较低。<br>
+<img src="https://img-blog.csdnimg.cn/20190709113731235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BhbmRhNV9jc2Ru,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"><br>
+从上面的图中，看出：<br>
+1）比RTU多了起始段 <strong>:</strong>， 多个结束符<strong>CR，LF</strong><br>
+2）地址和功能都变成了2个字节；<br>
+3）数据部分更加繁琐，但是更符合人们的查看；</p>
+<hr>
+<p><strong>归纳：</strong><br>
+由于Modbus-RTU和modbus-ACSII都是基于232和485链路的，所以其通讯模式半双工，一般是主机和从机的模式。其差别就是其字节的格式不同，一个是16进制的数据，一个是acsii数据。<br>
+Ascii多了<strong>帧头和帧尾</strong>，也就是说可以有用这个头尾判断一帧字节来判断是否结束；而RTU<strong>没有帧头和帧尾，所以协议里明确两帧之间要大于3.5个字节时间间隔</strong>，作为一帧结束的判断依据。</p>
+<h3 id="操作接口">操作接口</h3>
+<h3 id="设备类型">设备类型</h3>
+<h3 id="调试方法">调试方法</h3>
+<p>一般在做Mobus前期的开发的时候，一般不是针对具体的Modbus设备进行寄存器的处理，而是使用Modbus模拟工具来进行调试，一般我们需要配合Modbus Slave、Modbus Poll、Virtual Serial Port Driver这几个模拟软件来进行开发的。</p>
+<p>Modbus Poll ：Modbus主机仿真器，用于测试和调试Modbus从设备。该软件支持Modbus的RTU、ASCII、TCP/IP。用来帮助开发人员测试Modbus从设备，或者其它Modbus协议的测试和仿真。</p>
+<p>Modbus Slave：  Modbus从设备仿真器，可以仿真32个从设备/地址域。每个接口都提供了对EXCEL报表的OLE自动化支持。主要用来模拟Modbus从站设备,接收主站的命令包,回送数据包。帮助Modbus通讯设备开发人员进行Modbus通讯协议的模拟和测试，用于模拟、测试、调试Modbus通讯设备。</p>
+<p>Virtual Serial Port Driver：虚拟串口工具，不需要串口接线，提供虚拟的串口，适合学习和调试使用。</p>
+<p>配合这几款软件，我们就可以实现串口Modbus协议的模拟测试了，如果我们使用Modbus的TCPIP协议，那么我们不需要VSPD也可以。</p>
+<h3 id="工作量评估">工作量评估</h3>
+<h2 id="linux驱动-usb协议">linux驱动-USB协议</h2>
+<h3 id="应用场景-2">应用场景</h3>
+<h3 id="基本原理-2">基本原理</h3>
+<p>USB（Universal Serial Bus）全称通用串口总线，USB为解决<a href="https://www.baidu.com/s?wd=%E5%8D%B3%E6%8F%92%E5%8D%B3%E7%94%A8&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd">即插即用</a>需求而诞生，支持热插拔。</p>
+<h3 id="操作接口-2">操作接口</h3>
+<h3 id="设备类型-2">设备类型</h3>
+<h3 id="调试方法-2">调试方法</h3>
+<h3 id="工作量评估-2">工作量评估</h3>
+<h2 id="linux驱动-can协议">linux驱动-CAN协议</h2>
+<h3 id="应用场景-3">应用场景</h3>
+<h3 id="基本原理-3">基本原理</h3>
+<p>CAN(Controller Area Network)总线，即控制器局域网总线</p>
+<p>USB端点有四种类型，分别对应了四种不同的数据传输方式。它们是控制传输、中断传输、批量传输和等时传输。</p>
+<ul>
+<li>控制传输用来控制对USB设备不同部分的访问，通常用于配置设备，获取设备信息，发送命令到设备，或者获取设备的状态报告。总之，就是用来传送控制信息的，每个USB设备都会有一个名为“端点0”的控制端点，内核中的USB Core使用它在设备插入时进行设备的配置。</li>
+<li>中断传输用来以一个固定的速率传送少量的数据，USB键盘和USB鼠标使用的就是这种方式，USB的触摸屏也是使用这种方式，传输的数据包含了坐标信息。</li>
+<li>批量传输用来传输大量的数据，确保没有数据丢失，但不保证在特定的时间内完成。U盘使用的就是批量传输，用它备份数据时需要确保数据不能丢，而且也不能指望它能在一个固定的比较快的时间内复制完。</li>
+<li>等时传输同样用来传输大量的数据，但并不保证数据是否到达，以稳定的速率发送和接收实时的信息，对传送延迟非常敏感，显然是用于音频和视频一类的设备。这类设备期望能够有一个比较稳定的数据流，比如在用QQ视频聊天时，肯定希望每分钟传输的图像/声音速率是比较稳定的。</li>
+</ul>
+<h3 id="操作接口-3">操作接口</h3>
+<h3 id="设备类型-3">设备类型</h3>
+<h3 id="调试方法-3">调试方法</h3>
+<h3 id="工作量评估-3">工作量评估</h3>
+<h2 id="linxu驱动-gpio协议">linxu驱动-GPIO协议</h2>
+<h3 id="应用场景-4">应用场景</h3>
+<h3 id="基本原理-4">基本原理</h3>
+<h3 id="操作接口-4">操作接口</h3>
+<h3 id="设备类型-4">设备类型</h3>
+<h3 id="调试方法-4">调试方法</h3>
+<h3 id="工作量评估-4">工作量评估</h3>
 
                         </div>
                         
@@ -273,8 +376,46 @@ box.onclick = function(){
                                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E8%B5%84%E6%BA%90">资源</a></li>
-<li><a href="#%E5%B7%A5%E5%85%B7">工具</a></li>
+<li><a href="#linux%E9%A9%B1%E5%8A%A8-modbus%E5%8D%8F%E8%AE%AE">linux驱动-MODBUS协议</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF">应用场景</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86">基本原理</a></li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E6%8E%A5%E5%8F%A3">操作接口</a></li>
+<li><a href="#%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B">设备类型</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95">调试方法</a></li>
+<li><a href="#%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AF%84%E4%BC%B0">工作量评估</a></li>
+</ul>
+</li>
+<li><a href="#linux%E9%A9%B1%E5%8A%A8-usb%E5%8D%8F%E8%AE%AE">linux驱动-USB协议</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2">应用场景</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-2">基本原理</a></li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E6%8E%A5%E5%8F%A3-2">操作接口</a></li>
+<li><a href="#%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B-2">设备类型</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95-2">调试方法</a></li>
+<li><a href="#%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AF%84%E4%BC%B0-2">工作量评估</a></li>
+</ul>
+</li>
+<li><a href="#linux%E9%A9%B1%E5%8A%A8-can%E5%8D%8F%E8%AE%AE">linux驱动-CAN协议</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-3">应用场景</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-3">基本原理</a></li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E6%8E%A5%E5%8F%A3-3">操作接口</a></li>
+<li><a href="#%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B-3">设备类型</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95-3">调试方法</a></li>
+<li><a href="#%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AF%84%E4%BC%B0-3">工作量评估</a></li>
+</ul>
+</li>
+<li><a href="#linxu%E9%A9%B1%E5%8A%A8-gpio%E5%8D%8F%E8%AE%AE">linxu驱动-GPIO协议</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-4">应用场景</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-4">基本原理</a></li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E6%8E%A5%E5%8F%A3-4">操作接口</a></li>
+<li><a href="#%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B-4">设备类型</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95-4">调试方法</a></li>
+<li><a href="#%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AF%84%E4%BC%B0-4">工作量评估</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -292,7 +433,7 @@ box.onclick = function(){
 
                                                 <p class="copyright-item">
                                                     <span>&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://kily-007.github.io/post/source/">https://kily-007.github.io/post/source/</a></span>
+                                                    <span><a href="https://kily-007.github.io/post/PsdYRNT3I/">https://kily-007.github.io/post/PsdYRNT3I/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -307,9 +448,9 @@ box.onclick = function(){
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/source/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/source/&sharesource=qzone&title=资源&pics=https://kily-007.github.io//images/avatar.png?v=1602145617794&summary="><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/source/&sharesource=weibo&title=资源 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1602145617794 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/PsdYRNT3I/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/PsdYRNT3I/&sharesource=qzone&title=linux驱动-总线协议&pics=https://kily-007.github.io//images/avatar.png?v=1602145617794&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/PsdYRNT3I/&sharesource=weibo&title=linux驱动-总线协议 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1602145617794 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -342,6 +483,10 @@ box.onclick = function(){
                                                                                 <section class="post-nav">
                                                                                     
                                                                                             
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/教学-2020-07-18/">
+                                                                                                    教学-2020-07-18
+                                                                                                </a>
+                                                                                                
                                                                                 </section>
                     </article>
                 </div>
