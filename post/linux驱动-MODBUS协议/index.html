@@ -216,7 +216,7 @@ box.onclick = function(){
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title" >
-                                瓜子二手车面经-大数据岗
+                                linux驱动-MODBUS协议
                             </h1>
                             
                                     <!--zh-->
@@ -225,18 +225,12 @@ box.onclick = function(){
                                         <a itemprop="author" rel="author" href="/">
                                             kily007
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2019-09-04</a></span>
-                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">11.7
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-10-08</a></span>
+                                        <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a href="#">11.1
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">3322</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">3104</a></span>
                                         
-                                            <span class="post-category">&#x5206;&#x7C7B;:
-                                
-                                <a href="https://kily-007.github.io/tag/面经/">面经</a>
-                                
-                            </span>
-                                            
-                                                <span id="/post/面经-瓜子二手车面经-大数据岗/" data-hk-page="current" class="leancloud-visitors view">
+                                                <span id="/post/linux驱动-MODBUS协议/" data-hk-page="current" class="leancloud-visitors view">
 													 阅读量:
 												     <a class="leancloud-visitors-count">-</a>
 												 </span>
@@ -246,118 +240,197 @@ box.onclick = function(){
                         </header>
                         
                         <div class="post-content">
-                            <h1 id="瓜子二手车面经">瓜子二手车面经</h1>
-<h2 id="一面">一面：</h2>
-<p>面试官是个比较耐心的大姐姐类型，很多问题都不会也跟我说没关系，总共面了45分钟。我问了一下瓜子的开发岗都是在一起面得，内容都很相似，并没有针对特定的岗位问对应的内容，下面说下面试过程趴。</p>
-<p><strong>1、自我介绍和项目介绍，没撑过5分钟，让直接讲里面用到的技术栈，不要讲业务逻辑。用到的技术包括缓冲区、kafka、spark、hbase之类的。</strong></p>
-<p><strong>2、java中的弱引用与强引用；</strong></p>
+                            <h2 id="linux驱动-modbus协议">linux驱动-MODBUS协议</h2>
+<p>  Modbus是使用主从关系实现的请求 - 响应协议。 在主从关系中，通信总是成对发生 -  一个设备必须发起请求，然后等待响应 - 并且发起设备（主设备）负责发起每次交互。  通常，主设备是人机或监控和数据采集（SCADA）系统，从设备是传感器、可编程逻辑控制器（PLC）或可编程自动化控制器（PAC）。 这些请求和响应的内容以及发送这些消息的网络层由协议的不同层来定义。</p>
+<figure data-type="image" tabindex="1"><img src="https://ni.scene7.com/is/image/ni/fdatawyg5871526514498411034?scl=1" alt="img" loading="lazy"></figure>
+<p>  在最初的做法中，Modbus是建立在串行端口之上的单一协议，因此它不能被分成多个层。  随着时间的推移，该协议引入了不同的应用程序数据单元来更改串行通信使用的数据包格式，或允许使用TCP/IP和用户数据报协议（UDP）网络。 这实现了定义协议数据单元（PDU）的核心协议和定义应用数据单元（ADU）的网络层的分离</p>
+<h3 id="应用场景">应用场景</h3>
+<p>  Modbus协议是一项应用层报文传输协议，包括<strong>ASCII</strong>、<strong>RTU</strong>、TCP三种报文类型，</p>
 <ul>
 <li>
-<p><strong>强引用</strong>是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。当内存空间不足时，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足的问题。<br>
-如果强引用对象不使用时，需要弱化从而使GC能够回收，如下：</p>
-<p>strongReference = null;</p>
-<p>显式地设置strongReference对象为null，或让其超出对象的生命周期范围，则gc认为该对象不存在引用，这时就可以回收这个对象。具体什么时候收集这要取决于GC算法。</p>
+<p>modbus RTU协议紧凑，采用二进制表示数据的方式，一般默认使用RTU协议，可以使用RS232/RS485/RS422、无线、等介质，用于速度要求不高的场合，如：楼宇、工业现场、管道输送、远程泵站等；</p>
 </li>
 <li>
-<p><strong>软引用</strong>如果一个对象只具有<strong>软引用</strong>，则<strong>内存空间充足</strong>时，<strong>垃圾回收器</strong>就<strong>不会</strong>回收它；如果<strong>内存空间不足</strong>了，就会<strong>回收</strong>这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。(软引用可用来实现内存敏感的高速缓存。)<strong>软引用</strong>可以和一个<strong>引用队列</strong>(<code>ReferenceQueue</code>)联合使用。如果<strong>软引用</strong>所引用对象被<strong>垃圾回收</strong>，<code>JAVA</code>虚拟机就会把这个<strong>软引用</strong>加入到与之关联的<strong>引用队列</strong>中。</p>
-<p>当内存不足时，<code>JVM</code>首先将<strong>软引用</strong>中的<strong>对象</strong>引用置为<code>null</code>，然后通知<strong>垃圾回收器</strong>进行回收,也就是说，<strong>垃圾收集线程</strong>会在虚拟机抛出<code>OutOfMemoryError</code>之前回<strong>收软引用对象</strong>，而且<strong>虚拟机</strong>会尽可能优先回收<strong>长时间闲置不用</strong>的<strong>软引用对象</strong>。对那些<strong>刚构建</strong>的或刚使用过的**“较新的”<strong>软对象会被虚拟机尽可能</strong>保留**，这就是引入<strong>引用队列</strong><code>ReferenceQueue</code>的原因。</p>
-<p>应用场景：</p>
-<p>浏览器的后退按钮。按后退时，这个后退时显示的网页内容是重新进行请求还是从缓存中取出呢？这就要看具体的实现策略了。</p>
-<p>如果一个网页在浏览结束时就进行内容的回收，则按后退查看前面浏览过的页面时，需要重新构建；<br>
-如果将浏览过的网页存储到内存中会造成内存的大量浪费，甚至会造成内存溢出。<br>
-这时候就可以使用软引用，很好的解决了实际的问题。</p>
+<p>modbusASCII协议比较宽松，时序要求不高，可以用于条形码阅读器、打印机、仪器仪表读取等；</p>
+<p>这两类都使用串行通信（serial communication）方式。RTU格式后续的命令/数据带有<strong>循环冗余校验</strong>的校验和，而ASCII格式采用<strong>纵向冗余校验</strong>的校验和。被配置为RTU变种的节点不会和设置为ASCII变种的节点通信，反之亦然。</p>
 </li>
 <li>
-<p><strong>弱引用</strong>与<strong>软引用</strong>的区别在于：只具有<strong>弱引用</strong>的对象拥有<strong>更短暂</strong>的<strong>生命周期</strong>。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有<strong>弱引用</strong>的对象，不管当前<strong>内存空间足够与否</strong>，都会<strong>回收</strong>它的内存。不过，由于垃圾回收器是一个<strong>优先级很低的线程</strong>，因此<strong>不一定</strong>会<strong>很快</strong>发现那些只具有<strong>弱引用</strong>的对象。</p>
-</li>
-<li>
-<p><strong>虚引用</strong>顾名思义，就是形同虚设，与其他几种引用都不同，虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就<strong>和没有任何引用一样，在任何时候都可能被垃圾回收。虚引用主要用来跟踪对象被垃圾回收的活动</strong>。虚引用与软引用和弱引用的一个区别在于：<strong>虚引用必须和引用队列（ReferenceQueue）联合使用</strong>。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之关联的引用队列中。程序可以通过判断引用队列中是否已经加入了虚引用，来了解被引用的对象是否将要被垃圾回收。程序如果发现某个虚引用已经被加入到引用队列，那么就可以在所引用的对象的内存被回收之前采取必要的行动。</p>
+<p>modbusTCP速度很高，可以用于实时控制、时钟对时、全局数据、发送邮件、故障设备替换、网络管理、用户网页制定和浏览、固件更新等多种服务。</p>
 </li>
 </ul>
-<p>特别注意，在实际程序设计中一般很少使用弱引用与虚引用，使用软用的情况较多，这是因为软引用可以加速JVM对垃圾内存的回收速度，可以维护系统的运行安全，防止内存溢出（OutOfMemory）等问题的产生。</p>
-<p><strong>3、让实现LRU算法，讲讲思路；</strong></p>
-<p>最近最少使用算法。常用于页面置换算法，是为虚拟页式存储管理服务的。当一个数据最近一段时间没有被访问，未来被访问的概率也很小。当空间被占满后，最先淘汰最近最少使用的数据。</p>
-<p>思路一：采用链表维持一个虚拟队列，有新元素进入时，插入到头结点；当某个结点被访问时，将其移到头结点；当超过队列容量时，删除表尾元素。</p>
-<p>思路二：采用容器与计数的方法。元素按顺序进入容器，每个元素有一个计数器，按照进入容器的顺序计数，每被访问一次计数器加一；</p>
-<p><strong>4、三次握手及详细过程，什么时候调用accept()函数，有什么作用；timewaite发生在什么时候，为什么要wait？</strong></p>
-<figure data-type="image" tabindex="1"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C04.png" alt="" loading="lazy"></figure>
-<p>1.服务器调用listen进行监听。</p>
-<p>2.客户端调用connect来发送syn报文<br>
-服务器协议栈负责三次握手的交互过程。</p>
-<p>3.连接建立后，往listen队列中添加一个成功的连接，直到队列的最大长度。</p>
-<p>4.服务器调用accept从listen队列中取出一条成功的tcp连接，listen队列中的连接个数就少一个</p>
-<p><strong>5、讲一下session和cookie的区别；在服务器上多台机器多实例需要共享session中的内容该怎么办？</strong></p>
-<p><strong>session</strong>在服务端，它 的含义是指一类用来在客户端与服务器之间保持状态的解决方案。每个客户端对应一个session，每个session有一个session id，</p>
-<p><strong>cookie</strong>在客户端，浏览器缓存访问信息、记录与资源在cookie中。 cookie的内容主要包括：名字，值，过期时间，路径和域。 由于cookie可以被人为的禁止，必须有其他机制以便在cookie被禁止时仍然能够把session id传递回服务器。经常被使用的一种技术叫做URL重写，就是把session id直接附加在URL路 径的后面，附加方式也有两种，一种是作为URL路径的附加信息，另一种是作为查询字符串附加在URL后面.</p>
-<p><strong>共享</strong>一般情况下，session都是存储在内存里，当服务器进程被停止或者重启的时候，内存里 的session也会被清空，如果设置了session的持久化特性，服务器就会把session保存到硬盘 上，当服务器进程重新启动或这些信息将能够被再次使用，Weblogic Server支持的持久性方 式包括文件、数据库、客户端cookie保存和复制。复制严格说来不算持久化保存，因为session实际上还是保存在内存里，不过同样的信息 被复制到各个cluster内的服务器进程中，这样即使某个服务器进程停止工作也仍然可以从其 他进程中取得session。</p>
-<p><strong>6、socket编程中，客户端和服务端建立连接需要用到哪些函数并解释一下作用。</strong></p>
-<p><strong>7、socket连接中shutdown()和close()有什么区别。</strong></p>
-<p>close关闭的是双向的，in out都关了~~但是是引用计数--直到--到为0才真正的关闭~因而是线程安全的。</p>
-<p>shutdown 是单向关闭，通过参数指定关闭不同的方向，直接强制关闭，非线程安全；</p>
-<p><strong>8、多线程和多进程的区别和联系，多进程访问临界资源如何处理。</strong></p>
-<p>进程是资源分配的最小单位，线程是CPU调度的最小单位</p>
-<p><strong>多线程</strong>之间共享同一<br>
-个进程的地址空间，线程间通信简单，同步复杂，线程创建、销毁和切换简单，速度快，占用内存少，适用于多核分布式系统，但是线程间会相互影响，一个线程意<br>
-外终止会导致同一个进程的其他线程也终止，程序可靠性弱。</p>
-<p><strong>多进程</strong>间拥有各自<br>
-独立的运行地址空间，进程间不会相互影响，程序可靠性强，但是进程创建、销毁<br>
-和切换复杂，速度慢，占用内存多，进程间通信复杂，但是同步简单，适用于多核<br>
-、多机分布。</p>
-<p><strong>8、手撕算法题，输出某二叉树中路径和等于定值n的所有路径，路径：从根节点到叶结点或从叶节点到叶节点</strong></p>
-<p>想法：将二叉树建立子节点指向父节点的引用，BFS遍历某叶节点或root结点到剩下结点的的路径，和为n则输出。</p>
-<p><strong>9、手撕代码，给出二叉树中的两个结点，找出它们的最低公共父节点。</strong></p>
-<p>BFS或DFS找到指点两个结点n1和n2，记录root结点到n1和n2结点的路径，最后一个重复结点即为最低公共父结点。</p>
-<h2 id="二面">二面：</h2>
-<p>一面面经写到一半，然后打电话来了二面，效率是真的高。二面小哥超帅的，总共面了47分钟，大多时间都在撕代码，或者在撕代码的路上。</p>
-<p>自我介绍，然后讲3分钟项目，根据项目提了一些对应的问题，然后就是你问我答环节。</p>
-<p><strong>1、kafka当分区数大于消费者数量的时候如何消费，反过来呢？</strong></p>
-<p>分区数&gt;消费者数：一个消费者消费固定负责一个或多个分区数据；</p>
-<p>分区数&lt;消费者数：一个消费者固定消费一个分区，多余消费者空闲。</p>
-<p><strong>2、kafka如何保证多分区数据的顺序性。</strong></p>
-<p>采用重排序、阻塞、单分区。</p>
-<p><strong>3、kakfa在消费者端调试过哪些参数，有什么意义；在使用poll拉取消息的时候有个除了有个每次拉取的数据条数设置还有哪些参数。</strong></p>
-<pre><code class="language-java">	// 创建一份kafka参数map
-	Map&lt;String, Object&gt; kafkaParams = new HashMap&lt;String, Object&gt;();
-	kafkaParams.put(&quot;bootstrap.servers&quot;, &quot;master:9092,slave1:9092,slave2:9092&quot;);
-	kafkaParams.put(&quot;key.deserializer&quot;, StringDeserializer.class);
-	kafkaParams.put(&quot;value.deserializer&quot;, ByteArrayDeserializer.class);
-	kafkaParams.put(&quot;group.id&quot;, &quot;topic6-groud1&quot;);
-	kafkaParams.put(&quot;auto.offset.reset&quot;, &quot;latest&quot;);
-	kafkaParams.put(&quot;enable.auto.commit&quot;, true);
-	Collection&lt;String&gt; topics = Arrays.asList(&quot;topic6&quot;);
+<h3 id="基本原理">基本原理</h3>
+<p><strong>modbus RTU协议</strong></p>
+<p>  标准的Modbus协议物理层接口有RS232、RS422、RS485和以太网接口，采用master/slave方式通信。</p>
+<p><strong>帧结构</strong></p>
+<p><strong>帧结构 = 地址 + 功能吗 + 数据 + 校验</strong></p>
+<p><strong>地址:</strong> 占用一个字节,范围0-255,其中有效范围是1-247,其他有特殊用途,比如255是广播地址(广播地址就是应答所有地址,正常的需要两个设备的地址一样才能进行查询和回复)</p>
+<p><strong>功能码:</strong> 占用一个字节,功能码的意义就是,知道这个指令是干啥的,比如你可以查询从机的数据,也可以修改数据,所以不同功能码对应不同功能.</p>
+<p><strong>数据:</strong> 根据功能码不同,有不同结构</p>
+<p><strong>校验:</strong> 为了保证数据不错误,增加这个,然后再把前面的数据进行计算看数据是否一致,如果一致,就说明这帧数据是正确的,我再回复;如果不一样,说明你这个数据在传输的时候出了问题,数据不对的,所以就抛弃了</p>
+<figure data-type="image" tabindex="2"><img src="https://img-blog.csdnimg.cn/20190630210808145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BhbmRhNV9jc2Ru,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<p><strong>2.通讯</strong></p>
+<p>0x06功能码,修改从机数据：</p>
+<blockquote>
+<p><strong>主机发送:</strong> 01 06 00 00 00 01 48 0A<br>
+<strong>从机回复:</strong> 01 06 00 00 00 01 48 0A</p>
+</blockquote>
+<pre><code class="language-c">*发送数据解析*/
+01-主机要查的地址
+06-功能码,代表修改单个寄存器功能,修改有些不同,有修改一个寄存器和修改多个寄存器;
+00 00-代表修改的起始寄存器地址.说明从0x0000开始.
+00 01-代表修改的值为00 01.结合前面的00 00,意思就是修改0号寄存器值为00 01;
+48 0A-循环冗余校验,是modbus的校验公式,从首个字节开始到48前面为止;
 
-while (true) {
-	ConsumerRecords&lt;String, byte[]&gt; records = consumer.poll(Duration.ofMillis(500));
-	for (ConsumerRecord&lt;String, byte[]&gt; record : records) {
-    }
-}
+/*回复解析*/
+01-从机返回的地址,说明这就是主机查的从机
+06-功能码,代表修改单个寄存器功能;
+00 00-代表修改的起始寄存器地址.说明是0x0000.
+00 01-代表修改的值为00 01.结合前面的00 00,意思就是修改0号寄存器值为00 01;
+48 0A-循环冗余校验,是modbus的校验公式,从首个字节开始到48前面为止;
 </code></pre>
-<p><strong>4、介绍一下spark流式计算框架，RDD弹性数据集以及对其的了解。</strong></p>
-<p><strong>5、hbase优化策略调过哪些参数。</strong></p>
-<p><strong>6、多线程与多进程的区别（两面都问到过），在线程和进程切换时有什么区别，哪个开销大，为什么？</strong></p>
-<p><strong>7、排序算法中有哪些是稳定的，哪些不稳定</strong></p>
-<p>稳定算法：冒泡排序、插入排序、归并排序、基数排序</p>
-<p>不稳定算法：选择排序、快速排序、希尔排序、堆排序</p>
-<p><strong>8、linux命令，查看内存情况，剩余磁盘空间，网络状态</strong></p>
-<p>top、df -lh、netstat</p>
-<p><strong>9、构造最小生成树Prim算法（不记得）</strong></p>
-<p><strong>10、迪杰斯特拉算法求最短路径（还是不记得，默默心疼一波自己）</strong></p>
-<p><strong>11、手撕一个算法题</strong></p>
-<p>有多个柱子靠在一起，柱子宽度固定为1，给定一个数组，表示每个柱子的高度，问从柱子上方泼水，柱子中最多能容纳多少水。示意图如下</p>
-<figure data-type="image" tabindex="2"><img src="https://blog-1300147267.cos.ap-shanghai.myqcloud.com/%E9%9D%A2%E7%BB%8F/%E6%9F%B1%E5%AD%90%E7%81%8C%E6%B0%B4.png" alt="" loading="lazy"></figure>
-<p>首先想到的是计算每个柱子相邻的两个柱子较低的那个高度，然后相加。在小哥的提醒下发现，当如图中第7根和第9根酱紫的时候不对。</p>
-<p>然后我又想了一会儿，提出对每个柱子遍历，找到其左右两边的最高的那个柱子，取较低的那个然后所有相加。然后小哥说复杂度太大了，有没有办法在O(n)的复杂度内把左右两边的最高柱子算出来。</p>
-<p>然后我想了会儿，采用遍历一次，每次用tempL和tempR记录当前最大值，放进辅助数组里，然后让我用代码写一下。然后在作业本上撕了一下：</p>
-<p>答案还在手打中，待续。。。</p>
+<p>功能码<strong>0x10</strong>，修改<strong>连续多个寄存器</strong></p>
+<blockquote>
+<p><strong>主机发送:</strong> 01 10 00 00 00 01 02 11 22 2A 19<br>
+<strong>从机回复:</strong> 01 10 00 00 00 01 01 C9</p>
+</blockquote>
+<pre><code class="language-c">*发送数据解析*/
+01-主机要查的地址
+10-功能码,代表修改多个寄存器功能;
+00 00-代表修改的起始寄存器地址.说明从0x0000开始.
+00 01-代表修改的寄存器数量，这里开始于0x06的修改不同;
+02 -表示修改的总字节数，由于只修改了1个寄存器，所以数据要有两个字节；
+11 22-表示修改的值，结合上面，就是从第0000寄存器开始修改一个寄存器值为11 22，就是把0000寄存器改为11 22；
+2A 19-循环冗余校验,是modbus的校验公式,从首个字节开始到22前面为止;
+
+/*回复解析*/
+01-从机返回的地址,说明这就是主机查的从机
+10-功能码
+00 00-代表修改的起始寄存器地址.说明是0x0000.
+00 01-代表修改的寄存器数量，只需要回复这么多久足够了，从机告诉主机，你修改了哪几个寄存器就足够了;
+01 C9-循环冗余校验;
+</code></pre>
+<p><strong>归纳</strong><br>
+modbus RTU协议只需要看懂功能码0x03,0x06,0x10这三个基本的就已经足够了；分别回想下其数据域部分：<br>
+03-主机需要发送起始地址+寄存器数量，从机回复总字节数+数据；<br>
+06-主机发送起始地址+数据内容（因为你只需要修改一个，所以起始地址就是所要修改的地址），从机返回起始地址+数据内容（发现居然一样！）<br>
+10-主机发送起始地址+寄存器个数+总字节数+数据，从机返回起始地址+寄存器数量</p>
+<p><strong>Modbus-ACSII协议</strong></p>
+<p><strong>概述</strong></p>
+<p>一般只需要了解RTU协议，因为前面有说过，必须要有RTU协议的，所以只需要了解了RTU协议，就可以读出设备信息了，至于ACSII协议，做个大概了解</p>
+<p><strong>帧形式</strong></p>
+<p>对于RTU协议，比如RTU发送一个字节：0x12；<br>
+ASCII协议则需要发送2个字节：一个字节代表1，一个代表2，即31和32，才能代表0x12.<br>
+所以，acsii协议的效率比较低。<br>
+<img src="https://img-blog.csdnimg.cn/20190709113731235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BhbmRhNV9jc2Ru,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"><br>
+从上面的图中，看出：<br>
+1）比RTU多了起始段 <strong>:</strong>， 多个结束符<strong>CR，LF</strong><br>
+2）地址和功能都变成了2个字节；<br>
+3）数据部分更加繁琐，但是更符合人们的查看；</p>
+<hr>
+<p><strong>归纳：</strong><br>
+由于Modbus-RTU和modbus-ACSII都是基于232和485链路的，所以其通讯模式半双工，一般是主机和从机的模式。其差别就是其字节的格式不同，一个是16进制的数据，一个是acsii数据。<br>
+Ascii多了<strong>帧头和帧尾</strong>，也就是说可以有用这个头尾判断一帧字节来判断是否结束；而RTU<strong>没有帧头和帧尾，所以协议里明确两帧之间要大于3.5个字节时间间隔</strong>，作为一帧结束的判断依据。</p>
+<h3 id="操作接口">操作接口</h3>
+<h3 id="设备类型">设备类型</h3>
+<h3 id="调试方法">调试方法</h3>
+<p>一般在做Mobus前期的开发的时候，一般不是针对具体的Modbus设备进行寄存器的处理，而是使用Modbus模拟工具来进行调试，一般我们需要配合Modbus Slave、Modbus Poll、Virtual Serial Port Driver这几个模拟软件来进行开发的。</p>
+<p>Modbus Poll ：Modbus主机仿真器，用于测试和调试Modbus从设备。该软件支持Modbus的RTU、ASCII、TCP/IP。用来帮助开发人员测试Modbus从设备，或者其它Modbus协议的测试和仿真。</p>
+<p>Modbus Slave：  Modbus从设备仿真器，可以仿真32个从设备/地址域。每个接口都提供了对EXCEL报表的OLE自动化支持。主要用来模拟Modbus从站设备,接收主站的命令包,回送数据包。帮助Modbus通讯设备开发人员进行Modbus通讯协议的模拟和测试，用于模拟、测试、调试Modbus通讯设备。</p>
+<p>Virtual Serial Port Driver：虚拟串口工具，不需要串口接线，提供虚拟的串口，适合学习和调试使用。</p>
+<p>配合这几款软件，我们就可以实现串口Modbus协议的模拟测试了，如果我们使用Modbus的TCPIP协议，那么我们不需要VSPD也可以。</p>
+<h3 id="工作量评估">工作量评估</h3>
+<h2 id="linux驱动-usb协议">linux驱动-USB协议</h2>
+<h3 id="应用场景-2">应用场景</h3>
+<h3 id="基本原理-2">基本原理</h3>
+<p>USB（Universal Serial Bus）全称通用串口总线，USB为解决<a href="https://www.baidu.com/s?wd=%E5%8D%B3%E6%8F%92%E5%8D%B3%E7%94%A8&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd">即插即用</a>需求而诞生，支持热插拔。</p>
+<p>USB端点有四种类型，分别对应了四种不同的数据传输方式。它们是控制传输、中断传输、批量传输和等时传输。</p>
+<ul>
+<li>控制传输用来控制对USB设备不同部分的访问，通常用于配置设备，获取设备信息，发送命令到设备，或者获取设备的状态报告。总之，就是用来传送控制信息的，每个USB设备都会有一个名为“端点0”的控制端点，内核中的USB Core使用它在设备插入时进行设备的配置。</li>
+<li>中断传输用来以一个固定的速率传送少量的数据，USB键盘和USB鼠标使用的就是这种方式，USB的触摸屏也是使用这种方式，传输的数据包含了坐标信息。</li>
+<li>批量传输用来传输大量的数据，确保没有数据丢失，但不保证在特定的时间内完成。U盘使用的就是批量传输，用它备份数据时需要确保数据不能丢，而且也不能指望它能在一个固定的比较快的时间内复制完。</li>
+<li>等时传输同样用来传输大量的数据，但并不保证数据是否到达，以稳定的速率发送和接收实时的信息，对传送延迟非常敏感，显然是用于音频和视频一类的设备。这类设备期望能够有一个比较稳定的数据流，比如在用QQ视频聊天时，肯定希望每分钟传输的图像/声音速率是比较稳定的。</li>
+</ul>
+<h3 id="操作接口-2">操作接口</h3>
+<h3 id="设备类型-2">设备类型</h3>
+<h3 id="调试方法-2">调试方法</h3>
+<h3 id="工作量评估-2">工作量评估</h3>
+<h2 id="linux驱动-can协议">linux驱动-CAN协议</h2>
+<h3 id="应用场景-3">应用场景</h3>
+<h3 id="基本原理-3">基本原理</h3>
+<p>CAN(Controller Area Network)总线，即控制器局域网总线。CAN通信协议在1986年由德国电气商博世公司所开发，主要面向汽车的通信系统。现已是ISO国际标准化的串行通信协议。根据不同的距离、不同的网络，可配置不同的速度，最高速度为1MBit/s。</p>
+<p>​     CAN被细分为三个层次：</p>
+<p>​          （1）CAN对象层（the object layer）；</p>
+<p>​          （2）CAN传输层（the transfer layer）；</p>
+<p>​          （3）CAN物理层（the phyical layer）；</p>
+<p><strong>对象层</strong>的作用范围包括：</p>
+<p>（1）查找被发送的报文。</p>
+<p>（2）确定由实际要使用的传输层接收哪一个报文。</p>
+<p>（3）为应用层相关硬件提供接口。</p>
+<p><strong>传输层</strong>的作用主要：</p>
+<p>（1）传送规则，也就是控制帧结构、执行仲裁、错误检测、出错标定、故障界定。</p>
+<p>（2）总线上什么时候开始发送新报文及什么时候开始接收报文，均在传输层里确定。</p>
+<p>（3）位定时的一些普通功能也可以看作是传输层的一部分。</p>
+<p>（4）传输层的修改是受到限制的。</p>
+<p><strong>物理层</strong>的作用：</p>
+<p>在不同节点之间根据所有的电气属性进行位信息的实际传输。当然，同一网络内，物理层对于所有的节点必须是相同的。尽管如此，在选择物理层方面还是很自由的。</p>
+<h3 id="操作接口-3">操作接口</h3>
+<h3 id="设备类型-3">设备类型</h3>
+<h3 id="调试方法-3">调试方法</h3>
+<h3 id="工作量评估-3">工作量评估</h3>
+<h2 id="linxu驱动-gpio协议">linxu驱动-GPIO协议</h2>
+<h3 id="应用场景-4">应用场景</h3>
+<h3 id="基本原理-4">基本原理</h3>
+<h3 id="操作接口-4">操作接口</h3>
+<h3 id="设备类型-4">设备类型</h3>
+<h3 id="调试方法-4">调试方法</h3>
+<h3 id="工作量评估-4">工作量评估</h3>
 
                         </div>
                         
                             <div class="post-toc">
                                 <ul class="markdownIt-TOC">
-<li><a href="#%E7%93%9C%E5%AD%90%E4%BA%8C%E6%89%8B%E8%BD%A6%E9%9D%A2%E7%BB%8F">瓜子二手车面经</a>
+<li>
 <ul>
-<li><a href="#%E4%B8%80%E9%9D%A2">一面：</a></li>
-<li><a href="#%E4%BA%8C%E9%9D%A2">二面：</a></li>
+<li><a href="#linux%E9%A9%B1%E5%8A%A8-modbus%E5%8D%8F%E8%AE%AE">linux驱动-MODBUS协议</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF">应用场景</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86">基本原理</a></li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E6%8E%A5%E5%8F%A3">操作接口</a></li>
+<li><a href="#%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B">设备类型</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95">调试方法</a></li>
+<li><a href="#%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AF%84%E4%BC%B0">工作量评估</a></li>
+</ul>
+</li>
+<li><a href="#linux%E9%A9%B1%E5%8A%A8-usb%E5%8D%8F%E8%AE%AE">linux驱动-USB协议</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2">应用场景</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-2">基本原理</a></li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E6%8E%A5%E5%8F%A3-2">操作接口</a></li>
+<li><a href="#%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B-2">设备类型</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95-2">调试方法</a></li>
+<li><a href="#%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AF%84%E4%BC%B0-2">工作量评估</a></li>
+</ul>
+</li>
+<li><a href="#linux%E9%A9%B1%E5%8A%A8-can%E5%8D%8F%E8%AE%AE">linux驱动-CAN协议</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-3">应用场景</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-3">基本原理</a></li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E6%8E%A5%E5%8F%A3-3">操作接口</a></li>
+<li><a href="#%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B-3">设备类型</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95-3">调试方法</a></li>
+<li><a href="#%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AF%84%E4%BC%B0-3">工作量评估</a></li>
+</ul>
+</li>
+<li><a href="#linxu%E9%A9%B1%E5%8A%A8-gpio%E5%8D%8F%E8%AE%AE">linxu驱动-GPIO协议</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-4">应用场景</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-4">基本原理</a></li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E6%8E%A5%E5%8F%A3-4">操作接口</a></li>
+<li><a href="#%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B-4">设备类型</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95-4">调试方法</a></li>
+<li><a href="#%E5%B7%A5%E4%BD%9C%E9%87%8F%E8%AF%84%E4%BC%B0-4">工作量评估</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -375,7 +448,7 @@ while (true) {
 
                                                 <p class="copyright-item">
                                                     <span>&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://kily-007.github.io/post/面经-瓜子二手车面经-大数据岗/">https://kily-007.github.io/post/面经-瓜子二手车面经-大数据岗/</a></span>
+                                                    <span><a href="https://kily-007.github.io/post/linux驱动-MODBUS协议/">https://kily-007.github.io/post/linux驱动-MODBUS协议/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -390,9 +463,9 @@ while (true) {
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/面经-瓜子二手车面经-大数据岗/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/面经-瓜子二手车面经-大数据岗/&sharesource=qzone&title=瓜子二手车面经-大数据岗&pics=https://kily-007.github.io//images/avatar.png?v=1605431161957&summary="><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/面经-瓜子二手车面经-大数据岗/&sharesource=weibo&title=瓜子二手车面经-大数据岗 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1605431161957 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kily-007.github.io/post/linux驱动-MODBUS协议/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://kily-007.github.io/post/linux驱动-MODBUS协议/&sharesource=qzone&title=linux驱动-MODBUS协议&pics=https://kily-007.github.io//images/avatar.png?v=1605431161957&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://kily-007.github.io/post/linux驱动-MODBUS协议/&sharesource=weibo&title=linux驱动-MODBUS协议 + " - " + &pic="https://kily-007.github.io//images/avatar.png?v=1605431161957 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -410,12 +483,6 @@ while (true) {
                                                                                     <span>&#x6807;&#x7B7E;:</span>
                                                                                     <span class="tag ">
                         
-                        
-                        <a href="https://kily-007.github.io/tag/面经/">#
-                    面经
-                        </a>
-                        
-                            
                                 </span>
                                                                                 </div>
                                                                                 <div>
@@ -430,13 +497,9 @@ while (true) {
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://kily-007.github.io/post/算法-KMP/">
-                                                                                            算法-KMP
-                                                                                        </a>
-                                                                                        
                                                                                             
-                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/笔记-集群搭建记录/">
-                                                                                                    集群搭建记录
+                                                                                                <a class="next" rel="next" href="https://kily-007.github.io/post/教学-2020-07-18/">
+                                                                                                    教学-2020-07-18
                                                                                                 </a>
                                                                                                 
                                                                                 </section>
